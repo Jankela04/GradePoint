@@ -41,7 +41,7 @@ const Home = (props: Props) => {
                             />
                         </svg>
                     </div>
-                    <div className="btn btn-pages">
+                    <div className="btn btn-grades">
                         <h3>Grades</h3>
                         <img src={gradeimg} alt="" />
                     </div>
