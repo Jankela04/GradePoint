@@ -1,0 +1,8 @@
+nav {
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    padding-inline: 2em;
+    height: 3em;
+    align-items: center;
+}
