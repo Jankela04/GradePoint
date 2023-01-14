@@ -1,30 +1,52 @@
 import { useRef } from "react";
 import useLocalStorage from "../../hooks/useLocalStorage";
-import "./styles.css";
+import styles from "./styles.module.css";
 import gradeimg from "../../assets/grade-icon.png";
+import { useNavigate } from "react-router-dom";
+import Logo from "../../components/Logo/Logo";
 
 type Props = {};
 
 const Home = (props: Props) => {
     const [name, setName] = useLocalStorage("name", "");
     const inputRef = useRef<HTMLInputElement>(null);
+    const navigate = useNavigate();
 
     return (
-        <div className="home">
-            <h1 className="title">Welcome to GradePoint</h1>
+        <div className={styles.home}>
+            <h1 className={styles.title}>
+                Welcome to <Logo type={"big"} />
+            </h1>
 
             {name === "" ? (
                 <>
-                    <h2>Please Insert your Name</h2>
-                    <form onSubmit={() => setName(inputRef.current?.value)}>
+                    <h2 className={styles.placeholder}>
+                        Please Insert your Name
+                    </h2>
+                    <form
+                        className={styles.form}
+                        onSubmit={() => setName(inputRef.current?.value)}
+                    >
                         {" "}
-                        <input type="text" ref={inputRef} placeholder="Name" />
-                        <button type="submit">Next</button>
+                        <input
+                            type="text"
+                            className={styles.input}
+                            ref={inputRef}
+                            placeholder="Name"
+                        />
+                        <button className={styles.button} type="submit">
+                            Next
+                        </button>
                     </form>
                 </>
             ) : (
-                <div className="buttons-container">
-                    <div className="btn btn-notes">
+                <div className={styles.buttons_container}>
+                    <div
+                        className={styles.btn + " " + styles.btn_notes}
+                        onClick={() => {
+                            navigate("/notes");
+                        }}
+                    >
                         <h3>Notes</h3>
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -41,7 +63,7 @@ const Home = (props: Props) => {
                             />
                         </svg>
                     </div>
-                    <div className="btn btn-grades">
+                    <div className={styles.btn + " " + styles.btn_grades}>
                         <h3>Grades</h3>
                         <img src={gradeimg} alt="" />
                     </div>

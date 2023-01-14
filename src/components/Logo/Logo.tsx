@@ -1,20 +1,22 @@
-import React from "react";
-import "./styles.css";
+import styles from "./styles.module.css";
 import { useNavigate } from "react-router-dom";
 
-type Props = {};
+type Props = {
+    type: "big" | "small";
+};
 
-const Logo = (props: Props) => {
+const Logo = ({ type }: Props) => {
     const navigate = useNavigate();
     return (
         <span
-            className="logo"
+            style={{ fontSize: type == "big" ? "3rem" : "1.5rem" }}
+            className={styles.logo}
             onClick={() => {
                 navigate("/");
             }}
         >
-            <span className="grade">Grade</span>
-            <span className="point">Point</span>
+            <span className={styles.grade}>Grade</span>
+            <span className={styles.point}>Point</span>
         </span>
     );
 };
