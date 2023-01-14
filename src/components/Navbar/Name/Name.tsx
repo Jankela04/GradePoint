@@ -6,9 +6,13 @@ type Props = {};
 const Name = (props: Props) => {
     const [name, setName] = useLocalStorage("name", "");
     const [editMode, setEditMode] = useState(false);
-
     return (
-        <div onClick={() => setEditMode((prev) => !prev)}>
+        <div
+            onBlur={() => {
+                setEditMode(false);
+            }}
+            onClick={() => setEditMode(true)}
+        >
             {editMode ? (
                 <form
                     className={styles.form}
@@ -17,6 +21,7 @@ const Name = (props: Props) => {
                     }}
                 >
                     <input
+                        style={{ width: name.length / 1.11 + "ch" }}
                         className={styles.input}
                         autoFocus
                         type="text"
@@ -25,7 +30,7 @@ const Name = (props: Props) => {
                     />
                 </form>
             ) : (
-                <span className="name">{name}</span>
+                <span className={styles.name}>{name}</span>
             )}
         </div>
     );
