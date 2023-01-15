@@ -1,6 +1,6 @@
 import Logo from "../Logo/Logo";
 import Name from "./Name/Name";
-import styles from "./styles.module.css";
+import styles from "./styles.module.scss";
 
 type Props = {};
 

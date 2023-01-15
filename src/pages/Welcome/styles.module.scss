@@ -1,0 +1,14 @@
+.home {
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(45deg, #f39237, #39a9db);
+    color: white;
+}
+
+.title {
+    pointer-events: none;
+    text-align: center;
+    padding: 1em 0;
+    font-size: 3rem;
+    letter-spacing: 0.05em;
+}
