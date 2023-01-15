@@ -1,0 +1,85 @@
+.card {
+    color: white;
+    cursor: pointer;
+    border-radius: 2em;
+    min-width: 150px;
+    width: 300px;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    transition: transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    img {
+        width: 80px;
+        margin: auto;
+    }
+    h3 {
+        user-select: none;
+        text-align: center;
+        font-size: 2rem;
+        margin-top: 0.5em;
+    }
+}
+
+.card:hover {
+    transform: translateY(-3em);
+}
+
+@media only screen and (max-width: 800px) {
+    .card h3 {
+        font-size: 1.5rem;
+    }
+    .card img {
+        width: 50px;
+    }
+}
+
+.card_notes::after {
+    display: none;
+    content: "View, Take and Edit Notes";
+    position: absolute;
+    bottom: -2em;
+    left: 0.5em;
+    font-size: 1.5rem;
+    animation: fade_in 0.5s ease-in;
+    text-align: center;
+}
+.card_notes:hover::after {
+    display: block;
+}
+
+.card_grades::after {
+    display: none;
+    content: "View and Add your Grades";
+    position: absolute;
+    bottom: -2em;
+    left: 0.5em;
+    font-size: 1.5rem;
+    animation: fade-in 0.5s ease-in;
+    text-align: center;
+}
+.card_grades:hover::after {
+    display: block;
+}
+@media only screen and (max-width: 1049px) {
+    .card_notes::after {
+        bottom: -3em;
+    }
+    .card_grades::after {
+        bottom: -3em;
+    }
+}
+@media only screen and (max-width: 705px) {
+    .card_notes::after {
+        bottom: -4em;
+    }
+}
+
+@keyframes fade_in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

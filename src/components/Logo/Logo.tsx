@@ -9,10 +9,13 @@ const Logo = ({ type }: Props) => {
     const navigate = useNavigate();
     return (
         <span
-            style={{ fontSize: type == "big" ? "3rem" : "1.5rem" }}
+            style={{
+                fontSize: type == "big" ? "3rem" : "1.5rem",
+                cursor: type == "small" ? "pointer" : "text",
+            }}
             className={styles.logo}
             onClick={() => {
-                navigate("/");
+                navigate("/home");
             }}
         >
             <span className={styles.grade}>Grade</span>

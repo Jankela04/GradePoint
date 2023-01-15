@@ -1,124 +1,13 @@
-.btn {
-    cursor: pointer;
-    border-radius: 2em;
-    min-width: 150px;
-    width: 300px;
-    aspect-ratio: 1;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    transition: transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
-    svg {
-        margin: auto;
-        min-width: 30px;
-        max-width: 75px;
-        fill: white;
-        stroke: 3px;
-    }
-    img {
-        width: 100px;
-        margin: auto;
-    }
-    h3 {
-        user-select: none;
-        text-align: center;
-        font-size: 2rem;
-        margin-top: 0.5em;
-    }
+.home {
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(45deg, #f39237, #39a9db);
 }
 
-.btn:hover {
-    transform: translateY(-3em);
-}
-
-@media only screen and (max-width: 800px) {
-    .btn h3 {
-        font-size: 1.5rem;
-    }
-    .btn svg {
-        width: 50px;
-    }
-    .btn img {
-        width: 75px;
-    }
-}
-
-.btn_grades {
-    background-color: #1c77c3;
-}
-.btn_notes {
-    position: relative;
-    background-color: #f39237;
-    vertical-align: bottom;
-}
-
-.btn_notes::after {
-    display: none;
-    content: "View, Take and Edit Notes";
-    position: absolute;
-    bottom: -2em;
-    left: 0.5em;
-    font-size: 1.5rem;
-    animation: fade_in 0.5s ease-in;
+.title {
+    letter-spacing: 0.05em;
     text-align: center;
-}
-.btn_notes:hover::after {
-    display: block;
-}
-
-.btn_grades::after {
-    display: none;
-    content: "View and Add your Grades";
-    position: absolute;
-    bottom: -2em;
-    left: 0.5em;
-    font-size: 1.5rem;
-    animation: fade-in 0.5s ease-in;
-    text-align: center;
-}
-.btn_grades:hover::after {
-    display: block;
-}
-@media only screen and (max-width: 1049px) {
-    .btn_notes::after {
-        bottom: -3em;
-    }
-    .btn_grades::after {
-        bottom: -3em;
-    }
-}
-@media only screen and (max-width: 705px) {
-    .btn_notes::after {
-        bottom: -4em;
-    }
-}
-
-@keyframes fade_in {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@media only screen and (max-width: calc(300px + 12em + 10em)) {
-    .buttons_container {
-        gap: 5em;
-        flex-direction: column;
-        align-items: center;
-    }
-    .btn {
-        width: 150px;
-    }
-    .btn_grades::after {
-        bottom: -4em;
-    }
-}
-.buttons_container {
-    max-width: 70vw;
-    margin: 5em auto;
-    display: flex;
-    justify-content: space-between;
-    gap: 10em;
+    color: white;
+    padding: 2em 0;
+    font-size: 3rem;
 }

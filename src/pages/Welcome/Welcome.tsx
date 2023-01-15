@@ -1,7 +1,7 @@
 import useLocalStorage from "../../hooks/useLocalStorage";
 import styles from "./styles.module.scss";
 import Logo from "../../components/Logo/Logo";
-import RegisterForm from "./RegisterForm/RegisterForm";
+import RegisterForm from "./components/RegisterForm/RegisterForm";
 import { Navigate } from "react-router-dom";
 
 type Props = {};
