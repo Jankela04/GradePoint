@@ -1,5 +1,7 @@
-import { useState, FormEvent } from "react";
+import { useState, FormEvent, ChangeEvent } from "react";
 import { useNavigate } from "react-router-dom";
+import Button from "../../../components/Button";
+import Input from "../../../components/Input";
 import useLocalStorage from "../../../hooks/useLocalStorage";
 import styles from "./styles.module.scss";
 
@@ -13,22 +15,27 @@ const RegisterForm = (props: Props) => {
         e.preventDefault();
         navigate("/home");
     };
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setName(e.target.value);
+    };
 
     return (
         <>
             <h2 className={styles.placeholder}>Please Insert your Name</h2>
             <form className={styles.form} onSubmit={handleSubmit}>
                 {" "}
-                <input
+                <Input
                     type="text"
                     value={name}
                     className={styles.input}
-                    placeholder="Name"
-                    onChange={(e) => setName(e.target.value)}
+                    placeholder={"Name"}
+                    onChange={handleChange}
                 />
-                <button className={styles.button} type="submit">
-                    Next
-                </button>
+                <Button
+                    label={"Next"}
+                    className={styles.button}
+                    type="submit"
+                />
             </form>
         </>
     );
