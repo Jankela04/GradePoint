@@ -5,9 +5,7 @@ import Input from "../../../../components/Input";
 import useLocalStorage from "../../../../hooks/useLocalStorage";
 import styles from "./styles.module.scss";
 
-type Props = {};
-
-const RegisterForm = (props: Props) => {
+const RegisterForm = () => {
     const navigate = useNavigate();
     const [name, setName] = useLocalStorage("name", "");
 

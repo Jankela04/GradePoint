@@ -1,9 +1,8 @@
 import { useState } from "react";
 import useLocalStorage from "../../../hooks/useLocalStorage";
 import styles from "./styles.module.scss";
-type Props = {};
 
-const Name = (props: Props) => {
+const Name = () => {
     const [name, setName] = useLocalStorage("name", "");
     const [editMode, setEditMode] = useState(false);
     return (

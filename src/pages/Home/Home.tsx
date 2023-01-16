@@ -3,9 +3,7 @@ import useLocalStorage from "../../hooks/useLocalStorage";
 import CardContainer from "./components/Card Container/CardContainer";
 import styles from "./styles.module.scss";
 
-type Props = {};
-
-const Home = (props: Props) => {
+const Home = () => {
     const [name] = useLocalStorage("name", "");
 
     return (

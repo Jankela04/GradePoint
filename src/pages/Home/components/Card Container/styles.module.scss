@@ -1,3 +1,5 @@
+@import "../../../../assets/variables";
+
 .buttons_container {
     max-width: 70vw;
     display: flex;
@@ -6,7 +8,7 @@
     gap: 20vw;
 }
 
-@media only screen and (max-width: calc(300px + 12em + 10em)) {
+@media only screen and (max-width: $mobile-breakpoint) {
     .buttons_container {
         gap: 5em;
         flex-direction: column;

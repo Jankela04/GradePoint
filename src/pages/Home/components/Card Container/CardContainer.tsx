@@ -3,9 +3,7 @@ import styles from "./styles.module.scss";
 import notesIcon from "../../../../assets/notes-icon.png";
 import gradeImg from "../../../../assets/grade-icon.png";
 
-type Props = {};
-
-const CardContainer = (props: Props) => {
+const CardContainer = () => {
     return (
         <div className={styles.buttons_container}>
             <Card

@@ -4,15 +4,13 @@ import Logo from "../../components/Logo/Logo";
 import RegisterForm from "./components/RegisterForm/RegisterForm";
 import { Navigate } from "react-router-dom";
 
-type Props = {};
-
-const Welcome = (props: Props) => {
+const Welcome = () => {
     const [name] = useLocalStorage("name", "");
 
     return (
         <div className={styles.home}>
             <h1 className={styles.title}>
-                Welcome to <Logo type={"big"} />
+                Welcome to <Logo type={"large"} />
             </h1>
 
             {name === "" ? <RegisterForm /> : <Navigate to="/home" />}

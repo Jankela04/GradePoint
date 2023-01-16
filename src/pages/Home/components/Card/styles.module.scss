@@ -1,3 +1,5 @@
+@import "../../../../assets/variables";
+
 .card {
     color: white;
     cursor: pointer;
@@ -25,7 +27,7 @@
     transform: translateY(-3em);
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: $tablet-breakpoint) {
     .card h3 {
         font-size: 1.5rem;
     }
@@ -61,19 +63,19 @@
 .card_grades:hover::after {
     display: block;
 }
-@media only screen and (max-width: 1049px) {
-    .card_notes::after {
-        bottom: -3em;
-    }
-    .card_grades::after {
-        bottom: -3em;
-    }
-}
-@media only screen and (max-width: 705px) {
-    .card_notes::after {
-        bottom: -4em;
-    }
-}
+// @media only screen and (max-width: 1049px) {
+//     .card_notes::after {
+//         bottom: -3em;
+//     }
+//     .card_grades::after {
+//         bottom: -3em;
+//     }
+// }
+// @media only screen and (max-width: 705px) {
+//     .card_notes::after {
+//         bottom: -4em;
+//     }
+// }
 
 @keyframes fade_in {
     from {

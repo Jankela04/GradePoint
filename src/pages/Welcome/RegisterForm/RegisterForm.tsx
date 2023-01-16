@@ -1,13 +1,11 @@
-import { useState, FormEvent, ChangeEvent } from "react";
+import { FormEvent, ChangeEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../../../components/Button";
 import Input from "../../../components/Input";
 import useLocalStorage from "../../../hooks/useLocalStorage";
 import styles from "./styles.module.scss";
 
-type Props = {};
-
-const RegisterForm = (props: Props) => {
+const RegisterForm = () => {
     const navigate = useNavigate();
     const [name, setName] = useLocalStorage("name", "");
 
