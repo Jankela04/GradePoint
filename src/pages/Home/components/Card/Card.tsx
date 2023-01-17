@@ -13,11 +13,15 @@ type Props = {
 const Card = ({ title, icon, color, to, label }: Props) => {
     const [hovered, setHovered] = useState(false);
 
+    const cardStyle = {
+        backgroundColor: color,
+    };
+
     const navigate = useNavigate();
     return (
         <div
             className={`${styles.card}`}
-            style={{ backgroundColor: color }}
+            style={cardStyle}
             onClick={() => navigate(to)}
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}

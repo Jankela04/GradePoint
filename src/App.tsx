@@ -2,19 +2,31 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Welcome from "./pages/Welcome/Welcome";
 import Notes from "./pages/Notes/Notes";
 import Home from "./pages/Home/Home";
+import ProtectedRoutes from "./utils/ProtectedRoutes";
+import ProtectedWelcome from "./utils/ProtectedWelcome";
 
 const router = createBrowserRouter([
     {
-        path: "/",
-        element: <Welcome />,
+        element: <ProtectedWelcome />,
+        children: [
+            {
+                path: "/",
+                element: <Welcome />,
+            },
+        ],
     },
     {
-        path: "/notes",
-        element: <Notes />,
-    },
-    {
-        path: "/home",
-        element: <Home />,
+        element: <ProtectedRoutes />,
+        children: [
+            {
+                path: "/home",
+                element: <Home />,
+            },
+            {
+                path: "/notes",
+                element: <Notes />,
+            },
+        ],
     },
 ]);
 

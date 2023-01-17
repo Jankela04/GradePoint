@@ -16,6 +16,10 @@
 
         & > div {
             width: 150px;
+
+            & > p {
+                bottom: -4em;
+            }
         }
     }
 }
