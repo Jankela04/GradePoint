@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./styles.module.scss";
 
@@ -6,21 +7,25 @@ type Props = {
     icon: string;
     color: string;
     to: string;
+    label: string;
 };
 
-const Card = ({ title, icon, color, to }: Props) => {
+const Card = ({ title, icon, color, to, label }: Props) => {
+    const [hovered, setHovered] = useState(false);
+
     const navigate = useNavigate();
     return (
         <div
             className={`${styles.card}`}
             style={{ backgroundColor: color }}
             onClick={() => navigate(to)}
+            onMouseEnter={() => setHovered(true)}
+            onMouseLeave={() => setHovered(false)}
         >
-            {/*
-            //todo fix missing text under card on hover,
-            */}
             <h3>{title}</h3>
             <img src={icon} />
+
+            {hovered && <p className={styles.label}>{label}</p>}
         </div>
     );
 };
