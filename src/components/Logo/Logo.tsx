@@ -2,17 +2,17 @@ import styles from "./styles.module.scss";
 import { useNavigate } from "react-router-dom";
 
 type Props = {
-    type: "big" | "small";
+    type: "large" | "small";
 };
 
 const Logo = ({ type }: Props) => {
+    const className = type === "large" ? styles.large : styles.small;
     const navigate = useNavigate();
     return (
         <span
-            style={{ fontSize: type == "big" ? "3rem" : "1.5rem" }}
-            className={styles.logo}
+            className={`${className} ${styles.logo}`}
             onClick={() => {
-                navigate("/");
+                navigate("/home");
             }}
         >
             <span className={styles.grade}>Grade</span>

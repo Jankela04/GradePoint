@@ -1,21 +1,15 @@
-import useLocalStorage from "../../hooks/useLocalStorage";
 import styles from "./styles.module.scss";
 import Logo from "../../components/Logo/Logo";
-import RegisterForm from "./RegisterForm/RegisterForm";
-import { Navigate } from "react-router-dom";
+import RegisterForm from "./components/RegisterForm/RegisterForm";
 
-type Props = {};
-
-const Welcome = (props: Props) => {
-    const [name] = useLocalStorage("name", "");
-
+const Welcome = () => {
     return (
         <div className={styles.home}>
             <h1 className={styles.title}>
-                Welcome to <Logo type={"big"} />
+                Welcome to <Logo type={"large"} />
             </h1>
 
-            {name === "" ? <RegisterForm /> : <Navigate to="/home" />}
+            <RegisterForm />
         </div>
     );
 };

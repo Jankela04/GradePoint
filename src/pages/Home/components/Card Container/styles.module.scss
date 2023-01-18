@@ -1,0 +1,25 @@
+@import "../../../../assets/variables";
+
+.buttons_container {
+    max-width: 70vw;
+    display: flex;
+    margin: 5em auto;
+    justify-content: space-between;
+    gap: 20vw;
+}
+
+@media only screen and (max-width: $mobile-breakpoint) {
+    .buttons_container {
+        gap: 5em;
+        flex-direction: column;
+        align-items: center;
+
+        & > div {
+            width: 150px;
+
+            & > p {
+                bottom: -4em;
+            }
+        }
+    }
+}
