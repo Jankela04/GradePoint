@@ -1,10 +1,16 @@
 import { Navigate, Outlet } from "react-router-dom";
 import useLocalStorage from "../hooks/useLocalStorage";
 
-const ProtectedHome = () => {
+const ProtectedRoutes = () => {
     const [name] = useLocalStorage("name", "");
 
     return name !== "" ? <Outlet /> : <Navigate to="/" />;
 };
 
-export default ProtectedHome;
+const ProtectedWelcome = () => {
+    const [name] = useLocalStorage("name", "");
+
+    return name === "" ? <Outlet /> : <Navigate to="/home" />;
+};
+
+export { ProtectedRoutes, ProtectedWelcome };

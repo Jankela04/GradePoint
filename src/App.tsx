@@ -2,8 +2,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Welcome from "./pages/Welcome/Welcome";
 import Notes from "./pages/Notes/Notes";
 import Home from "./pages/Home/Home";
-import ProtectedRoutes from "./utils/ProtectedRoutes";
-import ProtectedWelcome from "./utils/ProtectedWelcome";
+import { ProtectedRoutes } from "./utils/ProtectedRoutes";
+import { ProtectedWelcome } from "./utils/ProtectedRoutes";
 
 const router = createBrowserRouter([
     {
