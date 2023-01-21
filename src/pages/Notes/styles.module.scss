@@ -1,0 +1,13 @@
+@import "../../assets/variables";
+
+.page {
+    height: 100vh;
+    background: linear-gradient(135deg, $primary-dark, $primary-light);
+    // background: linear-gradient(120deg, $secondary-dark, $secondary-light);
+}
+
+.title {
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+}

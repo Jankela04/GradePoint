@@ -1,13 +1,15 @@
+@import "../../assets/variables";
+
 .logo {
     font-size: 5rem;
     cursor: pointer;
 }
 
 .grade {
-    color: #3e37a8;
+    color: $primary-light;
 }
 .point {
-    color: #f39237;
+    color: $secondary-light;
 }
 
 .large {

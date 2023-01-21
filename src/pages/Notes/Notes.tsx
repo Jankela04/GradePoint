@@ -1,12 +1,11 @@
 import Navbar from "../../components/Navbar/Navbar";
-import useLocalStorage from "../../hooks/useLocalStorage";
-import { NoteList } from "../../redux/slices/notesSlice";
+import styles from "./styles.module.scss";
 
 const Notes = () => {
-    const [notes, setNotes] = useLocalStorage<NoteList>("notes", []);
     return (
-        <div>
+        <div className={styles.page}>
             <Navbar />
+            <h1 className={styles.title}>Notes</h1>
         </div>
     );
 };
