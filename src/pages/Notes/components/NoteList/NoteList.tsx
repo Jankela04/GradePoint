@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import styles from "./styles.module.scss";
-import NoteCard from "../NoteCard/NoteCard";
+import NoteCard from "./components/NoteCard/NoteCard";
 import { useAppSelector } from "../../../../hooks/reduxHooks";
 
 export type TNote = {
@@ -34,7 +34,7 @@ const NoteList = () => {
     return (
         <div className={styles.container}>
             {filteredNotes?.map((note) => (
-                <NoteCard note={note} />
+                <NoteCard key={note.id} note={note} />
             ))}
         </div>
     );

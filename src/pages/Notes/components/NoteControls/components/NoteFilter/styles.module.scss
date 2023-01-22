@@ -1,8 +1,12 @@
+@import "../../../../../../assets/variables";
+
 .input {
-    height: 2em;
+    min-height: 2em;
     font-size: 1.5em;
     border-radius: 15px;
     padding: 0 1em;
+    max-width: 350px;
+    flex: 1;
     background-color: #185281;
     color: white;
     border: none;
@@ -16,3 +20,9 @@
         outline: 2px solid #063358;
     }
 }
+
+@media only screen and (max-width: $tablet-breakpoint) {
+    .input {
+        width: 100%;
+    }
+} ;
