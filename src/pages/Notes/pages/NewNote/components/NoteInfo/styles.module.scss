@@ -1,0 +1,37 @@
+@import "../../../../../../assets/variables";
+
+.note_info {
+    margin-top: 5em;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 2em;
+    margin-bottom: 2em;
+}
+
+.input {
+    min-height: 2em;
+    font-size: 1.5em;
+    border-radius: 15px;
+    padding: 0 1em;
+    max-width: 350px;
+    flex: 1;
+    background-color: #185281;
+    color: white;
+    border: none;
+    outline: none;
+
+    &::placeholder {
+        color: rgb(179, 179, 179);
+    }
+
+    &:focus {
+        outline: 2px solid #063358;
+    }
+}
+
+@media only screen and (max-width: $desktop-breakpoint) {
+    .input {
+        width: 100%;
+    }
+}
