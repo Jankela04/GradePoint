@@ -1,6 +1,4 @@
-import NoteActions from "./components/NoteActions/NoteActions";
-import NoteInfo from "./components/NoteInfo/NoteInfo";
-import NoteText from "./components/NoteText/NoteText";
+import NoteForm from "./components/NoteForm/NoteForm";
 import styles from "./styles.module.scss";
 
 const NewNote = () => {
@@ -8,11 +6,7 @@ const NewNote = () => {
         <div className={styles.page}>
             <div className={styles.container}>
                 <h1 className={styles.title}>Create a Note</h1>
-                <form>
-                    <NoteInfo />
-                    <NoteText />
-                    <NoteActions />
-                </form>
+                <NoteForm />
             </div>
         </div>
     );

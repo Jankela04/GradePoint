@@ -1,15 +1,15 @@
-import Button from "../../../../../../components/Button";
+import Button from "../../../../../../../../components/Button";
 import styles from "./styles.module.scss";
 import { useNavigate } from "react-router-dom";
 import { MouseEvent } from "react";
 import axios from "axios";
-import { TNote } from "../../../../components/NoteList/NoteList";
+import { TNote } from "../../../../../../components/NoteList/NoteList";
 import {
     useAppSelector,
     useAppDispatch,
-} from "../../../../../../hooks/reduxHooks";
+} from "../../../../../../../../hooks/reduxHooks";
 import { v4 as uuidv4 } from "uuid";
-import { clearNewNoteInfo } from "../../../../../../redux/slices/noteSlice";
+import { clearNewNoteInfo } from "../../../../../../../../redux/slices/noteSlice";
 
 const NoteActions = () => {
     const navigate = useNavigate();

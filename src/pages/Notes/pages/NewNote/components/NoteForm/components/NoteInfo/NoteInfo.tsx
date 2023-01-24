@@ -1,13 +1,13 @@
-import Input from "../../../../../../components/Input";
+import Input from "../../../../../../../../components/Input";
 import styles from "./styles.module.scss";
 import {
     useAppDispatch,
     useAppSelector,
-} from "../../../../../../hooks/reduxHooks";
+} from "../../../../../../../../hooks/reduxHooks";
 import {
     setNewNoteTag,
     setNewNoteTitle,
-} from "../../../../../../redux/slices/noteSlice";
+} from "../../../../../../../../redux/slices/noteSlice";
 
 const NoteInfo = () => {
     const newNoteInfo = useAppSelector((state) => state.note.new);

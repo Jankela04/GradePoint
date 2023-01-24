@@ -2,8 +2,8 @@ import styles from "./styles.module.scss";
 import {
     useAppSelector,
     useAppDispatch,
-} from "../../../../../../hooks/reduxHooks";
-import { setNewNoteText } from "../../../../../../redux/slices/noteSlice";
+} from "../../../../../../../../hooks/reduxHooks";
+import { setNewNoteText } from "../../../../../../../../redux/slices/noteSlice";
 
 const NoteText = () => {
     const dispatch = useAppDispatch();
