@@ -5,7 +5,7 @@ import NoteCard from "./components/NoteCard/NoteCard";
 import { useAppSelector } from "../../../../hooks/reduxHooks";
 
 export type TNote = {
-    id: number;
+    id: string;
     title: string;
     tag: string;
     note: string;
@@ -16,7 +16,7 @@ const NoteList = () => {
         const res = await axios.get("http://localhost:3000/notes");
         setNotes(res.data);
     };
-    const query = useAppSelector((state) => state.noteFilter);
+    const filter = useAppSelector((state) => state.note.filter);
 
     const [notes, setNotes] = useState<TNote[]>();
 
@@ -26,9 +26,9 @@ const NoteList = () => {
 
     const filteredNotes = notes?.filter(
         (note) =>
-            note.title.toLowerCase().includes(query.toLowerCase()) ||
-            note.tag.toLowerCase().includes(query.toLowerCase()) ||
-            note.note.toLowerCase().includes(query.toLowerCase())
+            note.title.toLowerCase().includes(filter.query.toLowerCase()) ||
+            note.tag.toLowerCase().includes(filter.query.toLowerCase()) ||
+            note.note.toLowerCase().includes(filter.query.toLowerCase())
     );
 
     return (
