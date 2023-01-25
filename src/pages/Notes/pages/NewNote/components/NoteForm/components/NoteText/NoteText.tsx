@@ -1,17 +1,17 @@
 import styles from "./styles.module.scss";
-import {
-    useAppSelector,
-    useAppDispatch,
-} from "../../../../../../../../hooks/reduxHooks";
-import { setNewNoteText } from "../../../../../../../../redux/slices/noteSlice";
+import { useContext } from "react";
+import NewNoteFormContext from "../../../../../../../../context/NewNoteFormContext";
 
 const NoteText = () => {
-    const dispatch = useAppDispatch();
-    const noteText = useAppSelector((state) => state.note.new.text);
+    const { form, setForm } = useContext(NewNoteFormContext);
     return (
         <textarea
-            value={noteText}
-            onChange={(e) => dispatch(setNewNoteText(e.target.value))}
+            value={form.text}
+            onChange={(e) =>
+                setForm((prev) => {
+                    return { ...prev, text: e.target.value };
+                })
+            }
             className={styles.textarea}
             placeholder="Your note..."
         ></textarea>

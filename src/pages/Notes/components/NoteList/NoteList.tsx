@@ -8,7 +8,7 @@ export type TNote = {
     id: string;
     title: string;
     tag: string;
-    note: string;
+    text: string;
 };
 
 const NoteList = () => {
@@ -28,7 +28,7 @@ const NoteList = () => {
         (note) =>
             note.title.toLowerCase().includes(filter.query.toLowerCase()) ||
             note.tag.toLowerCase().includes(filter.query.toLowerCase()) ||
-            note.note.toLowerCase().includes(filter.query.toLowerCase())
+            note.text.toLowerCase().includes(filter.query.toLowerCase())
     );
 
     return (
