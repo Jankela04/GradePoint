@@ -9,6 +9,18 @@
     grid-row-gap: 3em;
 }
 
+.alert_container {
+    max-width: 70vw;
+    text-align: center;
+    margin: auto;
+    height: 40vh;
+    font-size: 1.5rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 @media only screen and (max-width: $very-large-desktop-breakpoint) {
     .container {
         grid-template-columns: repeat(4, 1fr);

@@ -1,15 +1,11 @@
 import Input from "../../../../../../components/Input";
 import styles from "./styles.module.scss";
-import { setFilterQuery } from "../../../../../../redux/slices/noteSlice";
+import { useContext } from "react";
 
-import {
-    useAppDispatch,
-    useAppSelector,
-} from "../../../../../../hooks/reduxHooks";
+import NoteFilterContext from "../../../../../../context/NoteFilterContext";
 
 const NoteFilter = () => {
-    const filter = useAppSelector((state) => state.note.filter);
-    const dispatch = useAppDispatch();
+    const { filter, setFilter } = useContext(NoteFilterContext);
 
     return (
         <Input
@@ -17,7 +13,9 @@ const NoteFilter = () => {
             value={filter.query}
             placeholder="Search Notes"
             onChange={(e) => {
-                dispatch(setFilterQuery(e.target.value));
+                setFilter(() => {
+                    return { ...filter, query: e.target.value };
+                });
             }}
             className={styles.input}
         />

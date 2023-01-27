@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import styles from "./styles.module.scss";
 import NoteCard from "./components/NoteCard/NoteCard";
-import { useAppSelector } from "../../../../hooks/reduxHooks";
+import NoteFilterContext from "../../../../context/NoteFilterContext";
 
 export type TNote = {
     id: string;
@@ -12,17 +12,20 @@ export type TNote = {
 };
 
 const NoteList = () => {
-    const getNotes = async () => {
-        const res = await axios.get("http://localhost:3000/notes");
-        setNotes(res.data);
-    };
-    const filter = useAppSelector((state) => state.note.filter);
-
     const [notes, setNotes] = useState<TNote[]>();
+    const [loading, setLoading] = useState(true);
+    const { filter } = useContext(NoteFilterContext);
 
     useEffect(() => {
         getNotes();
     }, []);
+
+    const getNotes = async () => {
+        setLoading(true);
+        const res = await axios.get("http://localhost:3000/notes");
+        setNotes(res.data);
+        setLoading(false);
+    };
 
     const filteredNotes = notes?.filter(
         (note) =>
@@ -32,11 +35,26 @@ const NoteList = () => {
     );
 
     return (
-        <div className={styles.container}>
-            {filteredNotes?.map((note) => (
-                <NoteCard key={note.id} note={note} />
-            ))}
-        </div>
+        <>
+            {loading ? (
+                <div className={styles.alert_container}>
+                    <p>Loading...</p>
+                </div>
+            ) : !notes?.length ? (
+                <div className={styles.alert_container}>
+                    <p>
+                        You don't have any Notes, click "New Note" to create
+                        note.
+                    </p>
+                </div>
+            ) : (
+                <div className={styles.container}>
+                    {filteredNotes?.map((note) => (
+                        <NoteCard key={note.id} note={note} />
+                    ))}
+                </div>
+            )}
+        </>
     );
 };
 
