@@ -4,6 +4,8 @@ import Notes from "./pages/Notes/Notes";
 import Home from "./pages/Home/Home";
 import { ProtectedRoutes } from "./utils/ProtectedRoutes";
 import { ProtectedWelcome } from "./utils/ProtectedRoutes";
+import Note from "./pages/Notes/pages/Note/Note";
+import NewNote from "./pages/Notes/pages/NewNote/NewNote";
 
 const router = createBrowserRouter([
     {
@@ -25,6 +27,14 @@ const router = createBrowserRouter([
             {
                 path: "/notes",
                 element: <Notes />,
+            },
+            {
+                path: "/notes/new",
+                element: <NewNote />,
+            },
+            {
+                path: "/notes/:id",
+                element: <Note />,
             },
         ],
     },

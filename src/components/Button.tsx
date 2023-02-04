@@ -2,7 +2,7 @@ type Props = {
     label: string;
     className: string;
     type?: "button" | "submit" | "reset";
-    onClick?: () => any;
+    onClick?: (...args: any[]) => void;
 };
 
 const Button = ({ label, className, type, onClick }: Props) => {

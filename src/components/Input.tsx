@@ -1,14 +1,6 @@
-import { ChangeEvent } from "react";
+import { FC } from "react";
 
-type Props = {
-    type: string;
-    value: string;
-    className: string;
-    placeholder: string;
-    onChange: (e: ChangeEvent<HTMLInputElement>) => void;
-};
-
-const Input = (props: Props) => {
+const Input: FC<React.InputHTMLAttributes<HTMLInputElement>> = (props) => {
     return <input {...props} />;
 };
 

@@ -8,18 +8,14 @@
     gap: 20vw;
 }
 
-@media only screen and (max-width: $mobile-breakpoint) {
+@media only screen and (max-width: calc($tablet-breakpoint + 100px)) {
     .buttons_container {
         gap: 5em;
         flex-direction: column;
         align-items: center;
 
         & > div {
-            width: 150px;
-
-            & > p {
-                bottom: -4em;
-            }
+            width: 200px;
         }
     }
 }
