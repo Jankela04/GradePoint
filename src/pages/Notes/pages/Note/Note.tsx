@@ -1,5 +1,5 @@
 import styles from "./styles.module.scss";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { TNote } from "../../components/NoteList/NoteList";
@@ -7,11 +7,19 @@ import NoteActions from "./components/NoteActions/NoteActions";
 
 const Note = () => {
     const { id } = useParams();
+    const navigate = useNavigate();
     const [noteInfo, setNoteInfo] = useState<TNote>();
 
     const getNote = async () => {
-        const res = await axios.get(`http://localhost:3000/notes/${id}`);
-        setNoteInfo(res.data);
+        try {
+            const res = await axios.get(`http://localhost:3000/notes/${id}`);
+            setNoteInfo(res.data);
+        } catch (err: any) {
+            console.error(err);
+            if (err.request.status === 404) {
+                navigate("/notes/error");
+            }
+        }
     };
     useEffect(() => {
         getNote();

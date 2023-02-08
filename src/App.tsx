@@ -6,6 +6,7 @@ import { ProtectedRoutes } from "./utils/ProtectedRoutes";
 import { ProtectedWelcome } from "./utils/ProtectedRoutes";
 import Note from "./pages/Notes/pages/Note/Note";
 import NewNote from "./pages/Notes/pages/NewNote/NewNote";
+import NotesError from "./pages/Notes/pages/Error/Error";
 
 const router = createBrowserRouter([
     {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
             {
                 path: "/notes/:id",
                 element: <Note />,
+            },
+            {
+                path: "/notes/error",
+                element: <NotesError />,
             },
         ],
     },
