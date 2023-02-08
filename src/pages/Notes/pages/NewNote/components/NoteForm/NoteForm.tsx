@@ -1,4 +1,4 @@
-import NoteActions from "./components/NoteActions/NoteActions";
+import NoteCreateActions from "./components/NoteCreateActions/NoteCreateActions";
 import NoteInfo from "./components/NoteInfo/NoteInfo";
 import NoteText from "./components/NoteText/NoteText";
 import { FormEvent, useState } from "react";
@@ -32,7 +32,7 @@ const NoteForm = () => {
             <form onSubmit={(e) => handleSubmit(e)}>
                 <NoteInfo />
                 <NoteText />
-                <NoteActions />
+                <NoteCreateActions />
             </form>
         </NewNoteFormContext.Provider>
     );

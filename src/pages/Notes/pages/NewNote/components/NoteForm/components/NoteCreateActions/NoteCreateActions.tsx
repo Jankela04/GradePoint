@@ -2,7 +2,7 @@ import Button from "../../../../../../../../components/Button";
 import styles from "./styles.module.scss";
 import { useNavigate } from "react-router-dom";
 
-const NoteActions = () => {
+const NoteCreateActions = () => {
     const navigate = useNavigate();
 
     return (
@@ -24,4 +24,4 @@ const NoteActions = () => {
     );
 };
 
-export default NoteActions;
+export default NoteCreateActions;

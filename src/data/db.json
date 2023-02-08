@@ -1,10 +1,40 @@
 {
     "notes": [
         {
-            "title": "fdsg",
-            "tag": "gdfsg",
-            "text": "sdfg",
-            "id": "126e5c1e-2d2b-455b-9507-582be68e6c16"
+            "title": "Pythagorean Theorem",
+            "tag": "Math",
+            "text": "In a right triangle, the square of the length of the hypotenuse (the side opposite the right angle) is equal to the sum of the squares of the lengths of the other two sides. \n The Pythagorean theorem states that for a right triangle, the sum of the squares of the lengths of the two shorter sides is equal to the square of the length of the hypotenuse.",
+            "id": "c8c65841-bc43-416b-a584-32da854e0485"
+        },
+        {
+            "title": "Photosynthesis",
+            "tag": "Biology",
+            "text": "Photosynthesis is the process by which plants, algae, and some bacteria convert light energy from the sun into chemical energy in the form of glucose (sugar).\n \nThe process occurs in chloroplasts and consists of two main stages: the light-dependent reactions and the light-independent reactions (also known as the Calvin cycle).\n\nThe light-dependent reactions use energy from light to produce ATP (adenosine triphosphate) and NADPH (nicotinamide adenine dinucleotide phosphate), while the light-independent reactions use the energy from ATP and NADPH to convert carbon dioxide into glucose.",
+            "id": "c8c65841-bc43-416b-a584-32da854e0486"
+        },
+        {
+            "title": "The Solar System",
+            "tag": "Astronomy",
+            "text": "The solar system consists of the sun and all the objects that orbit around it, including planets, dwarf planets, moons, asteroids, comets, and other objects.\n \nThe eight planets in our solar system are Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, and Neptune.\n\nThe four inner planets (Mercury, Venus, Earth, and Mars) are small and rocky, while the four outer planets (Jupiter, Saturn, Uranus, and Neptune) are large and gaseous.",
+            "id": "c8c65841-bc43-416b-a584-32da854e0487"
+        },
+        {
+            "title": "The American Revolution",
+            "tag": "History",
+            "text": "The American Revolution was a political and military conflict between the American colonies and Great Britain from 1775 to 1783.\n \nThe conflict was sparked by growing tensions between the colonies and Britain over issues such as taxation, representation, and British attempts to exert control over the colonies.\n\nThe American Revolution resulted in the founding of the United States of America and the adoption of the U.S. Constitution, which established a federal government with a system of checks and balances.",
+            "id": "c8c65841-bc43-416b-a584-32da854e0488"
+        },
+        {
+            "title": "The Structure of the Atom",
+            "tag": "Chemistry",
+            "text": "An atom is the basic unit of matter and consists of a nucleus, which contains protons and neutrons, and electrons, which orbit around the nucleus.\n \nThe number of protons in an atom's nucleus determines what element the atom represents. The number of protons in the nucleus is known as the atomic number. The electrons in an atom occupy specific energy levels, or shells, around the nucleus. The number of electrons in an atom can be determined by its atomic number. The behavior of an atom is determined by the arrangement of its electrons in their energy levels and their ability to interact with other atoms. This is the basis of chemical reactions and the formation of molecules.",
+            "id": "c8c65841-bc43-416b-a584-32da854e0489"
+        },
+        {
+            "title": "The Human Anatomy",
+            "tag": "Biology",
+            "text": "The human body is a complex and fascinating structure that is made up of various systems that work together to maintain life. \n\n The anatomy of the human body can be divided into several major systems, including the skeletal system, the muscular system, the respiratory system, the digestive system, the circulatory system, the nervous system, the endocrine system, the urinary system, and the reproductive system. \n\nThe skeletal system provides support and structure to the body and also protects vital organs, such as the heart and lungs. The bones in the skeletal system also serve as a storage site for minerals, such as calcium. \n\nThe muscular system allows for movement and the control of body posture. It is made up of three types of muscles: skeletal, smooth, and cardiac. Skeletal muscles are attached to the bones and are responsible for voluntary movements, such as lifting a weight or moving a limb. \n\nThe respiratory system is responsible for bringing oxygen into the body and removing carbon dioxide. This system includes the lungs, trachea, bronchi, and alveoli. \n\nThe digestive system processes the food we eat and converts it into energy and nutrients. It includes the mouth, esophagus, stomach, small intestine, large intestine, rectum, and anus. \n\nThe circulatory system delivers oxygen, nutrients, and hormones to the cells and organs in the body and also removes waste products. It is made up of the heart, blood vessels, and blood. \n\nThe nervous system controls and coordinates the actions and movements of the body. It is made up of the brain, spinal cord, and nerves. \n\nThe endocrine system produces hormones that regulate the functions of the body, such as growth and metabolism. It includes the pituitary gland, thyroid gland, adrenal glands, pancreas, and gonads. \n\nThe urinary system removes waste from the body and helps to maintain fluid and electrolyte balance. It includes the kidneys, ureters, bladder, and urethra. \n\nThe reproductive system is responsible for producing offspring. In males, this system includes the testes, epididymis, vas deferens, seminal vesicles, prostate gland, and penis. In females, this system includes the ovaries, fallopian tubes, uterus, cervix, and vagina. Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus, debitis et unde obcaecati rerum inventore nesciunt iusto aut repellat accusamus?",
+            "id": "c8c65841-bc43-416b-a584-32da854e0490"
         }
     ]
 }

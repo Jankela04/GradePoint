@@ -1,0 +1,40 @@
+.modal {
+    position: absolute;
+    bottom: 110%;
+    right: -25px;
+    min-width: 150px;
+    padding: 1em;
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+.label {
+    display: inline-block;
+    margin-bottom: 1em;
+}
+
+.btn_container {
+    gap: 0.5em;
+    display: flex;
+}
+.btn {
+    cursor: pointer;
+    padding: 0.5em 0.7em;
+    border-radius: 0.5em;
+    border: none;
+    font-size: 1.2em;
+}
+
+.btn_delete {
+    background-color: #ff0000;
+    color: white;
+    &:hover {
+        background-color: rgb(209, 0, 0);
+    }
+}
+
+.btn_cancel {
+    &:hover {
+        background-color: rgb(214, 214, 214);
+    }
+}
