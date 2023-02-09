@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
-import Button from "../../../../components/Button";
+import Button from "../../components/Button";
 import styles from "./styles.module.scss";
 
-const NotesError = () => {
+const Error = () => {
     const navigate = useNavigate();
     return (
         <div className={styles.page}>
@@ -12,11 +12,11 @@ const NotesError = () => {
                 label="Go Back"
                 className={styles.btn}
                 onClick={() => {
-                    navigate(`/notes`);
+                    navigate(`/`);
                 }}
             />
         </div>
     );
 };
 
-export default NotesError;
+export default Error;

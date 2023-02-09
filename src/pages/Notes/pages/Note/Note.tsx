@@ -17,7 +17,7 @@ const Note = () => {
         } catch (err: any) {
             console.error(err);
             if (err.request.status === 404) {
-                navigate("/notes/error");
+                navigate("/404");
             }
         }
     };
