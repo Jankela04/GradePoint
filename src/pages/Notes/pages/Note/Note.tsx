@@ -9,8 +9,10 @@ const Note = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const [noteInfo, setNoteInfo] = useState<TNote>();
+    const [loading, setLoading] = useState(true);
 
     const getNote = async () => {
+        setLoading(true);
         try {
             const res = await axios.get(`http://localhost:3000/notes/${id}`);
             setNoteInfo(res.data);
@@ -20,6 +22,7 @@ const Note = () => {
                 navigate("/404");
             }
         }
+        setLoading(false);
     };
     useEffect(() => {
         getNote();
@@ -27,12 +30,20 @@ const Note = () => {
 
     return (
         <div className={styles.page}>
-            <h1 className={styles.title}>{noteInfo?.title}</h1>
-            <div className={styles.tag}>{noteInfo?.tag}</div>
-            <div className={styles.container}>
-                <div className={styles.text}>{noteInfo?.text}</div>
-                <NoteActions />
-            </div>
+            {loading ? (
+                <div className={styles.loading}>
+                    <span>Loading...</span>
+                </div>
+            ) : (
+                <>
+                    <h1 className={styles.title}>{noteInfo?.title}</h1>
+                    <div className={styles.tag}>{noteInfo?.tag}</div>
+                    <div className={styles.container}>
+                        <div className={styles.text}>{noteInfo?.text}</div>
+                        <NoteActions />
+                    </div>
+                </>
+            )}
         </div>
     );
 };

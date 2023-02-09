@@ -36,3 +36,15 @@
     max-width: 80vw;
     margin: 2em auto;
 }
+
+.loading {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    span {
+        font-weight: bold;
+        font-size: 3rem;
+    }
+}
