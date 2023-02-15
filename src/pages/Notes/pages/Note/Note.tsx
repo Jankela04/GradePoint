@@ -4,6 +4,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { TNote } from "../../components/NoteList/NoteList";
 import NoteActions from "./components/NoteActions/NoteActions";
+import { DeleteModalProvider } from "../../../../context/DeleteModalContext";
 
 const Note = () => {
     const { id } = useParams();
@@ -40,7 +41,9 @@ const Note = () => {
                     <div className={styles.tag}>{noteInfo?.tag}</div>
                     <div className={styles.container}>
                         <div className={styles.text}>{noteInfo?.text}</div>
-                        <NoteActions />
+                        <DeleteModalProvider>
+                            <NoteActions />
+                        </DeleteModalProvider>
                     </div>
                 </>
             )}

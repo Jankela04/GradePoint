@@ -1,6 +1,5 @@
-import { useContext } from "react";
 import Button from "../../../../../../components/Button";
-import DeleteModalContext from "../../../../../../context/DeleteModalContext";
+import { useDeleteModal } from "../../../../../../context/DeleteModalContext";
 import styles from "./styles.module.scss";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
@@ -8,10 +7,10 @@ import { useParams, useNavigate } from "react-router-dom";
 const DeleteModal = () => {
     const { id } = useParams();
     const navigate = useNavigate();
-    const { setShowModal } = useContext(DeleteModalContext);
+    const { toggleShowModal } = useDeleteModal();
 
     const handleCancelClick = () => {
-        setShowModal(false);
+        toggleShowModal();
     };
     const handleDeleteConfirm = async () => {
         try {

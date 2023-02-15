@@ -1,12 +1,11 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { useState } from "react";
 import Button from "../../../../../../components/Button";
 import styles from "./styles.module.scss";
 import DeleteModal from "../DeleteModal/DeleteModal";
-import DeleteModalContext from "../../../../../../context/DeleteModalContext";
+import {useDeleteModal} from "../../../../../../context/DeleteModalContext";
 
 const NoteActions = () => {
-    const [showModal, setShowModal] = useState(false);
+    const {showModal,toggleShowModal}= useDeleteModal();
     const navigate = useNavigate();
     const { id } = useParams();
 
@@ -19,11 +18,11 @@ const NoteActions = () => {
     };
 
     const handleDeleteClick = () => {
-        setShowModal(true);
+        console.log(showModal)
+        toggleShowModal();
     };
 
     return (
-        <DeleteModalContext.Provider value={{ setShowModal }}>
             <div className={styles.btn_container}>
                 <Button
                     onClick={handleGoBackClick}
@@ -44,7 +43,6 @@ const NoteActions = () => {
                     {showModal && <DeleteModal />}
                 </div>
             </div>
-        </DeleteModalContext.Provider>
     );
 };
 
