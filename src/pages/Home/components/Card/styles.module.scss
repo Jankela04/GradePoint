@@ -1,0 +1,52 @@
+@import "../../../../assets/variables";
+
+.card {
+    color: white;
+    cursor: pointer;
+    border-radius: 2em;
+    min-width: 200px;
+    width: 300px;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    transition: transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    img {
+        width: 35%;
+        margin: auto;
+    }
+    h3 {
+        user-select: none;
+        text-align: center;
+        font-size: 2rem;
+        margin-top: 0.5em;
+    }
+}
+
+.card:hover {
+    transform: translateY(-3em);
+}
+
+.label {
+    content: "View, Take and Edit Notes";
+    position: absolute;
+    bottom: -2em;
+    left: 0.5em;
+    font-size: 1.5rem;
+    animation: fade_in 0.5s ease-in;
+}
+
+@media only screen and (max-width: calc($desktop-breakpoint + 100px)) {
+    .label {
+        bottom: -2.5em;
+    }
+}
+
+@keyframes fade_in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

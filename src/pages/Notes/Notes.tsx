@@ -1,14 +1,24 @@
 import Navbar from "../../components/Navbar/Navbar";
-import useLocalStorage from "../../hooks/useLocalStorage";
-import { NoteList } from "../../redux/slices/notesSlice";
+import NoteControls from "./components/NoteControls/NoteControls";
+import NoteList from "./components/NoteList/NoteList";
+import styles from "./styles.module.scss";
+import NoteFilterContext from "../../context/NoteFilterContext";
+import { useState } from "react";
+import {
+    TNoteFilter,
+    initialFilterState,
+} from "../../context/NoteFilterContext";
 
-type Props = {};
-
-const Notes = (props: Props) => {
-    const [notes, setNotes] = useLocalStorage<NoteList>("notes", []);
+const Notes = () => {
+    const [filter, setFilter] = useState<TNoteFilter>(initialFilterState);
     return (
-        <div>
+        <div className={styles.page}>
             <Navbar />
+            <h1 className={styles.title}>Notes</h1>
+            <NoteFilterContext.Provider value={{ filter, setFilter }}>
+                <NoteControls />
+                <NoteList />
+            </NoteFilterContext.Provider>
         </div>
     );
 };

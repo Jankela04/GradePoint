@@ -1,6 +1,7 @@
 .name {
     cursor: pointer;
     font-size: 1.1rem;
+    color: white;
 }
 
 .input {
@@ -14,5 +15,7 @@
 }
 
 .input:focus {
+    color: white;
+    background-color: transparent;
     outline: none;
 }

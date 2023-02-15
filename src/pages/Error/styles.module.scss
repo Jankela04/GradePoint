@@ -1,0 +1,26 @@
+@import "../../assets/variables";
+
+.page {
+    color: white;
+    min-height: 100vh;
+    background: linear-gradient(135deg, $primary-dark, $primary-light);
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.5em;
+    align-items: center;
+}
+
+.btn {
+    background-color: $primary-dark;
+    color: white;
+    cursor: pointer;
+    padding: 0.5em 0.7em;
+    border-radius: 0.5em;
+    border: none;
+    font-size: 1.2em;
+    &:hover {
+        color: rgb(182, 179, 179);
+    }
+}
