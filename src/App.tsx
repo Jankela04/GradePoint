@@ -7,6 +7,7 @@ import { ProtectedWelcome } from "./utils/ProtectedRoutes";
 import Note from "./pages/Notes/pages/Note/Note";
 import NewNote from "./pages/Notes/pages/NewNote/NewNote";
 import Error from "./pages/Error/Error";
+import { ThemeProvider } from "./context/ThemeContext";
 
 const router = createBrowserRouter([
     {
@@ -46,7 +47,13 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-    return <RouterProvider router={router} />;
+    return( 
+    <>
+    <ThemeProvider>
+        <RouterProvider router={router} />;
+    </ThemeProvider>
+    </>
+    )
 }
 
 export default App;
