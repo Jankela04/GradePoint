@@ -1,11 +1,10 @@
 import Input from "../../../../../../components/Input";
 import styles from "./styles.module.scss";
-import { useContext } from "react";
 
-import NoteFilterContext from "../../../../../../context/NoteFilterContext";
+import { useNoteFilter } from "../../../../../../context/NoteFilterContext";
 
 const NoteFilter = () => {
-    const { filter, setFilter } = useContext(NoteFilterContext);
+    const { filter, setFilter } = useNoteFilter();
 
     return (
         <Input

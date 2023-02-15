@@ -1,8 +1,8 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import styles from "./styles.module.scss";
 import NoteCard from "./components/NoteCard/NoteCard";
-import NoteFilterContext from "../../../../context/NoteFilterContext";
+import { useNoteFilter } from "../../../../context/NoteFilterContext";
 
 export type TNote = {
     id: string;
@@ -14,7 +14,7 @@ export type TNote = {
 const NoteList = () => {
     const [notes, setNotes] = useState<TNote[]>();
     const [loading, setLoading] = useState(true);
-    const { filter } = useContext(NoteFilterContext);
+    const { filter } = useNoteFilter();
 
     useEffect(() => {
         getNotes();
