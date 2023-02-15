@@ -1,9 +1,8 @@
 import styles from "./styles.module.scss";
-import { useContext } from "react";
-import NewNoteFormContext from "../../../../../../../../context/NewNoteFormContext";
+import { useNewNoteForm } from "../../../../../../../../context/NewNoteFormContext";
 
 const NoteText = () => {
-    const { form, setForm } = useContext(NewNoteFormContext);
+    const { form, setForm } = useNewNoteForm();
     return (
         <textarea
             value={form.text}

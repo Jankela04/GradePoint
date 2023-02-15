@@ -1,10 +1,9 @@
 import Input from "../../../../../../../../components/Input";
 import styles from "./styles.module.scss";
-import { useContext } from "react";
-import NewNoteFormContext from "../../../../../../../../context/NewNoteFormContext";
+import { useNewNoteForm } from "../../../../../../../../context/NewNoteFormContext";
 
 const NoteInfo = () => {
-    const { form, setForm } = useContext(NewNoteFormContext);
+    const { form, setForm } = useNewNoteForm();
     return (
         <div className={styles.note_info}>
             <Input

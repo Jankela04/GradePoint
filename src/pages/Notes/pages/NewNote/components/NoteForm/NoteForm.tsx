@@ -9,10 +9,11 @@ import { useNavigate } from "react-router-dom";
 import NewNoteFormContext, {
     TForm,
     initialFormState,
+    useNewNoteForm,
 } from "../../../../../../context/NewNoteFormContext";
 
 const NoteForm = () => {
-    const [form, setForm] = useState<TForm>(initialFormState);
+    const { form, setForm } = useNewNoteForm();
 
     const navigate = useNavigate();
 
@@ -28,13 +29,11 @@ const NoteForm = () => {
         }
     };
     return (
-        <NewNoteFormContext.Provider value={{ form, setForm }}>
-            <form onSubmit={(e) => handleSubmit(e)}>
-                <NoteInfo />
-                <NoteText />
-                <NoteCreateActions />
-            </form>
-        </NewNoteFormContext.Provider>
+        <form onSubmit={(e) => handleSubmit(e)}>
+            <NoteInfo />
+            <NoteText />
+            <NoteCreateActions />
+        </form>
     );
 };
 
