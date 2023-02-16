@@ -1,5 +1,7 @@
+import classNames from "classnames";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTheme } from "../../../../context/ThemeContext";
 import styles from "./styles.module.scss";
 
 type Props = {
@@ -11,6 +13,7 @@ type Props = {
 };
 
 const Card = ({ title, icon, color, to, label }: Props) => {
+    const { theme } = useTheme();
     const [hovered, setHovered] = useState(false);
 
     const cardStyle = {
@@ -29,7 +32,11 @@ const Card = ({ title, icon, color, to, label }: Props) => {
             <h3>{title}</h3>
             <img src={icon} />
 
-            {hovered && <p className={styles.label}>{label}</p>}
+            {hovered && (
+                <p className={classNames(styles.label, styles[theme])}>
+                    {label}
+                </p>
+            )}
         </div>
     );
 };
