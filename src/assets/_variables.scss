@@ -1,11 +1,17 @@
-$primary: #39a9db;
-$primary-light: #40bcd8;
-$primary-dark: #1c77c3;
+$primary: #007bff;
 $primary-action: rgb(31, 8, 134);
+$primary-light: lighten($primary, 10%);
+$primary-dark: darken($primary, 10%);
 
-$secondary: #f39237;
-$secondary-light: #ffc56a;
-$secondary-dark: #da791e;
+$secondary: #ff8c00;
+$secondary-light: lighten($secondary, 10%);
+$secondary-dark: darken($secondary, 10%);
+
+$background-color-light: #f8f9fa;
+$text-color-light: #212529;
+
+$background-color-dark: #343a40;
+$text-color-dark: #f8f9fa;
 
 $large-mobile-breakpoint: 550px;
 $tablet-breakpoint: 700px;

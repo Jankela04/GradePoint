@@ -1,5 +1,6 @@
 import styles from "./styles.module.scss";
 import { useNavigate } from "react-router-dom";
+import classnames from "classnames";
 
 type Props = {
     type: "large" | "small";
@@ -10,7 +11,7 @@ const Logo = ({ type }: Props) => {
     const navigate = useNavigate();
     return (
         <span
-            className={`${className} ${styles.logo}`}
+            className={classnames(className, styles.logo)}
             onClick={() => {
                 navigate("/home");
             }}

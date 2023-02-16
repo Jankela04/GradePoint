@@ -3,13 +3,14 @@
 .logo {
     font-size: 5rem;
     cursor: pointer;
-}
 
-.grade {
-    color: $primary-light;
-}
-.point {
-    color: $secondary-light;
+    .grade {
+        color: $primary-light;
+    }
+
+    .point {
+        color: $secondary;
+    }
 }
 
 .large {
