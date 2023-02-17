@@ -1,6 +1,7 @@
 @import "../../assets/variables";
 
 .logo {
+    user-select: none;
     font-size: 5rem;
     cursor: pointer;
 

@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import { FormEvent, ChangeEvent } from "react";
 import { useNavigate } from "react-router-dom";
-import Button from "../../../../components/Button";
+import Button from "../../../../components/Button/Button";
 import Input from "../../../../components/Input";
 import { useTheme } from "../../../../context/ThemeContext";
 import useLocalStorage from "../../../../hooks/useLocalStorage";
@@ -36,11 +36,9 @@ const RegisterForm = () => {
                     placeholder={"Name"}
                     onChange={handleChange}
                 />
-                <Button
-                    label={"Next"}
-                    className={styles.button}
-                    type="submit"
-                />
+                <Button type="submit" variant="primary">
+                    Next
+                </Button>
             </form>
         </>
     );

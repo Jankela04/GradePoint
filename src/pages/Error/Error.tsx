@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import Button from "../../components/Button";
+import Button from "../../components/Button/Button";
 import styles from "./styles.module.scss";
 
 const Error = () => {
@@ -9,12 +9,14 @@ const Error = () => {
             <h1>Error 404</h1>
             <h3>Wrong Page</h3>
             <Button
-                label="Go Back"
-                className={styles.btn}
+                variant="primary"
+                rounded
                 onClick={() => {
                     navigate(`/`);
                 }}
-            />
+            >
+                Go Back
+            </Button>
         </div>
     );
 };

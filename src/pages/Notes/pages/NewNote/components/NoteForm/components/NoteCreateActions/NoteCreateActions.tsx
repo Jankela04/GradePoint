@@ -1,25 +1,25 @@
-import Button from "../../../../../../../../components/Button";
 import styles from "./styles.module.scss";
 import { useNavigate } from "react-router-dom";
+import Button from "../../../../../../../../components/Button/Button";
 
 const NoteCreateActions = () => {
     const navigate = useNavigate();
 
     return (
         <div className={styles.actions}>
-            <Button
-                type="submit"
-                className={styles.button_primary}
-                label="Create Note"
-            />
+            <Button type="submit" variant="primary" rounded>
+                Create Note
+            </Button>
             <Button
                 type="button"
-                className={styles.button_secondary}
-                label="Cancel"
+                variant="neutral"
+                rounded
                 onClick={() => {
                     navigate("/notes");
                 }}
-            />
+            >
+                Cancel
+            </Button>
         </div>
     );
 };

@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import Button from "../../../../components/Button";
+import Button from "../../../../components/Button/Button";
 import NoteFilter from "./components/NoteFilter/NoteFilter";
 import styles from "./styles.module.scss";
 
@@ -9,10 +9,12 @@ const NoteControls = () => {
         <div className={styles.note_controls}>
             <NoteFilter />
             <Button
-                label="New Note"
-                className={styles.button}
+                variant="primary"
+                rounded
                 onClick={() => navigate("/notes/new")}
-            />
+            >
+                New Note
+            </Button>
         </div>
     );
 };

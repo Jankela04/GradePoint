@@ -8,38 +8,7 @@
     gap: 1em;
 }
 
-.btn {
-    cursor: pointer;
-    padding: 0.5em 0.7em;
-    border-radius: 0.5em;
-    border: none;
-    font-size: 1.2em;
-}
-
-.btn_cancel {
-    &:hover {
-        background-color: rgb(214, 214, 214);
-    }
-}
-
-.btn_delete {
-    background-color: rgb(255, 0, 0);
-    color: white;
-    &:hover {
-        background-color: rgb(209, 0, 0);
-    }
-}
-
 .note_alter_btn_container {
     display: flex;
-    gap: 0.5em;
-}
-
-.btn_edit {
-    background-color: $primary-dark;
-    color: white;
-    &:hover {
-        background-color: $primary-light;
-        color: black;
-    }
+    gap: 1em;
 }

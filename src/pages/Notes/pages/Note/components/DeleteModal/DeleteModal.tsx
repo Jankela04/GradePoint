@@ -1,8 +1,8 @@
-import Button from "../../../../../../components/Button";
 import { useDeleteModal } from "../../../../../../context/DeleteModalContext";
 import styles from "./styles.module.scss";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
+import Button from "../../../../../../components/Button/Button";
 
 const DeleteModal = () => {
     const { id } = useParams();
@@ -24,16 +24,12 @@ const DeleteModal = () => {
         <div className={styles.modal}>
             <span className={styles.label}>Are you Sure?</span>
             <div className={styles.btn_container}>
-                <Button
-                    onClick={handleCancelClick}
-                    label="Cancel"
-                    className={`${styles.btn} ${styles.btn_cancel}`}
-                />
-                <Button
-                    onClick={handleDeleteConfirm}
-                    label="Delete"
-                    className={`${styles.btn} ${styles.btn_delete}`}
-                />
+                <Button onClick={handleCancelClick} variant="neutral" rounded>
+                    Cancel
+                </Button>
+                <Button onClick={handleDeleteConfirm} variant="danger">
+                    Delete
+                </Button>
             </div>
         </div>
     );
