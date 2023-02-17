@@ -17,14 +17,15 @@ $bg-dark-action: darken($bg-dark, 10%);
 $bg-dark-action-secondary: lighten($bg-dark, 5%);
 $bg-dark-hover: lighten($bg-dark-action, 5%);
 $bg-dark-border: lighten($bg-dark, 10%);
+$bg-dark-outline: lighten($bg-dark-action-secondary, 50%);
 
-$bg-light-action: darken($bg-light, 10%);
-$bg-light-action-secondary: desaturate(darken($bg-light, 10%), 10%);
-$bg-light-hover: lighten($bg-light-action, 3%);
+$bg-light-action: desaturate(darken($bg-light, 15%), 100%);
+$bg-light-action-secondary: desaturate(darken($bg-light, 15%), 5%);
+$bg-light-hover: darken($bg-light-action, 5%);
 $bg-light-border: desaturate(darken($bg-light, 30%), 10%);
 
 $large-mobile-breakpoint: 550px;
 $tablet-breakpoint: 700px;
-$desktop-breakpoint: 1050px;
+$desktop-breakpoint: 1150px;
 $large-desktop-breakpoint: 1400px;
 $very-large-desktop-breakpoint: 1750px;

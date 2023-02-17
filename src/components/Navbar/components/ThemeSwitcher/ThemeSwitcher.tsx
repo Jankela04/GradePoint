@@ -6,11 +6,11 @@ const Sun = () => {
         <svg
             xmlns="http://www.w3.org/2000/svg"
             className="icon icon-tabler icon-tabler-sun"
-            width="28"
-            height="28"
+            width="24"
+            height="24"
             viewBox="0 0 24 24"
             strokeWidth="1.5"
-            stroke="#ffffff"
+            stroke="#000000"
             fill="none"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -27,11 +27,11 @@ const Moon = () => {
         <svg
             xmlns="http://www.w3.org/2000/svg"
             className="icon icon-tabler icon-tabler-moon"
-            width="28"
-            height="28"
+            width="24"
+            height="24"
             viewBox="0 0 24 24"
             strokeWidth="1.5"
-            stroke="#000000"
+            stroke="#ffffff"
             fill="none"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -47,7 +47,7 @@ const ThemeSwitcher = () => {
 
     return (
         <button className={styles.button} onClick={toggleTheme}>
-            {theme === "dark" ? <Sun /> : <Moon />}
+            {theme === "light" ? <Sun /> : <Moon />}
         </button>
     );
 };

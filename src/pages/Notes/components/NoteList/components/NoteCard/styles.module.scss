@@ -3,9 +3,38 @@
 .card {
     padding: 1em;
     width: 500px;
-    flex-basis: calc(33.3% - 20px);
+    flex-basis: calc(25% - 20px);
     margin: 0.5em;
     cursor: pointer;
+
+    .title {
+        margin-bottom: 1em;
+    }
+
+    .info {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .tag {
+            display: inline-block;
+            padding: 0.3em 0.6em;
+            border-radius: 1em;
+
+            &.dark {
+                background-color: $bg-dark-border;
+                color: white;
+            }
+            &.light {
+                background-color: lighten($bg-light-border, 5%);
+            }
+        }
+    }
+
+    .date {
+        &.dark {
+            color: $bg-dark-outline;
+        }
+    }
 
     &.dark {
         background-color: $bg-dark-action;
@@ -25,13 +54,19 @@
     }
 }
 
-@media only screen and (max-width: $desktop-breakpoint) {
+@media only screen and (max-width: calc($large-desktop-breakpoint)) {
+    .card {
+        flex-basis: calc(33.3% - 20px);
+    }
+}
+
+@media only screen and (max-width: calc($desktop-breakpoint)) {
     .card {
         flex-basis: calc(50% - 20px);
     }
 }
 
-@media only screen and (max-width: $tablet-breakpoint) {
+@media only screen and (max-width: calc($tablet-breakpoint + 50px)) {
     .card {
         flex-basis: 100%;
     }

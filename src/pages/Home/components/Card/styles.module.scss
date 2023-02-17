@@ -40,9 +40,9 @@
     }
 }
 
-@media only screen and (max-width: calc($desktop-breakpoint + 100px)) {
+@media only screen and (max-width: calc($desktop-breakpoint)) {
     .label {
-        bottom: -2.5em;
+        bottom: -3em;
     }
 }
 
