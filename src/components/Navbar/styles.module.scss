@@ -1,9 +1,22 @@
-nav {
-    backdrop-filter: brightness(90%);
+@import "../../assets/variables";
+
+.navbar {
     width: 100vw;
     display: flex;
     justify-content: space-between;
     padding-inline: 2em;
     height: 3em;
     align-items: center;
+    &.dark {
+        background-color: $bg-dark-action-secondary;
+    }
+    &.light {
+        background-color: $bg-light-action-secondary;
+    }
+
+    .right_side {
+        display: flex;
+        gap: 1em;
+        align-items: center;
+    }
 }

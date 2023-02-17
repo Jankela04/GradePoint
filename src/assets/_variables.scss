@@ -18,7 +18,8 @@ $bg-dark-action-secondary: lighten($bg-dark, 5%);
 $bg-dark-hover: lighten($bg-dark-action, 5%);
 $bg-dark-border: lighten($bg-dark, 10%);
 
-$bg-light-action: desaturate(darken($bg-light, 20%), 10%);
+$bg-light-action: darken($bg-light, 10%);
+$bg-light-action-secondary: desaturate(darken($bg-light, 10%), 10%);
 $bg-light-hover: lighten($bg-light-action, 3%);
 $bg-light-border: desaturate(darken($bg-light, 30%), 10%);
 

@@ -1,16 +1,19 @@
 import { useState } from "react";
-import useLocalStorage from "../../../hooks/useLocalStorage";
+import { useTheme } from "../../../../context/ThemeContext";
+import useLocalStorage from "../../../../hooks/useLocalStorage";
 import styles from "./styles.module.scss";
 
 const Name = () => {
     const [name, setName] = useLocalStorage("name", "");
     const [editMode, setEditMode] = useState(false);
+    const { theme } = useTheme();
     return (
         <div
             onBlur={() => {
                 setEditMode(false);
             }}
             onClick={() => setEditMode(true)}
+            className={styles[theme]}
         >
             {editMode ? (
                 <form
