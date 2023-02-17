@@ -25,13 +25,13 @@
     }
 }
 .home .light {
-    background-color: $background-color-light;
-    color: $text-color-light;
+    background-color: $bg-light;
+    color: $text-light;
 }
 
 .home.dark {
-    background-color: $background-color-dark;
-    color: $text-color-dark;
+    background-color: $bg-dark;
+    color: $text-dark;
     .title {
         color: inherit;
     }

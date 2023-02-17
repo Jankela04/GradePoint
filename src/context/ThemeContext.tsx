@@ -5,34 +5,34 @@ type Theme = "dark" | "light";
 type ThemeContextType = {
     theme: Theme;
     toggleTheme: () => void;
-}
+};
 
 const ThemeContext = createContext<ThemeContextType>({
     theme: "dark",
-    toggleTheme: ()=>{}
-})
+    toggleTheme: () => {},
+});
 
-type ThemeProviderProps ={
+type ThemeProviderProps = {
     children: ReactNode;
-}
+};
 
-const ThemeProvider = ({children}: ThemeProviderProps): JSX.Element =>{
-    const [theme, setTheme] = useState<Theme>('dark');
+const ThemeProvider = ({ children }: ThemeProviderProps): JSX.Element => {
+    const [theme, setTheme] = useState<Theme>("dark");
 
-    const toggleTheme = () =>{
+    const toggleTheme = () => {
         setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
-    }
-    return(
-        <ThemeContext.Provider value={{theme,toggleTheme}}>
+    };
+    return (
+        <ThemeContext.Provider value={{ theme, toggleTheme }}>
             {children}
         </ThemeContext.Provider>
-    )
-}
+    );
+};
 
-const useTheme = () =>{
-    const {theme, toggleTheme} = useContext(ThemeContext);
-    return {theme, toggleTheme}
-}
+const useTheme = () => {
+    const { theme, toggleTheme } = useContext(ThemeContext);
+    return { theme, toggleTheme };
+};
 
-export {ThemeProvider, useTheme};
+export { ThemeProvider, useTheme };
 export default ThemeContext;

@@ -1,0 +1,11 @@
+@import "../assets/variables";
+
+.main_layout {
+    min-height: 100vh;
+    background-color: $bg-light;
+    color: $text-light;
+    &.dark {
+        background-color: $bg-dark;
+        color: $text-dark;
+    }
+}

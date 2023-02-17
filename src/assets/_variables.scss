@@ -7,11 +7,20 @@ $secondary: #ff8c00;
 $secondary-light: lighten($secondary, 10%);
 $secondary-dark: darken($secondary, 10%);
 
-$background-color-light: #f8f9fa;
-$text-color-light: #212529;
+$bg-light: #f8f9fa;
+$text-light: #212529;
 
-$background-color-dark: #343a40;
-$text-color-dark: #f8f9fa;
+$bg-dark: #343a40;
+$text-dark: #f8f9fa;
+
+$bg-dark-action: darken($bg-dark, 10%);
+$bg-dark-action-secondary: lighten($bg-dark, 5%);
+$bg-dark-hover: lighten($bg-dark-action, 5%);
+$bg-dark-border: lighten($bg-dark, 10%);
+
+$bg-light-action: desaturate(darken($bg-light, 20%), 10%);
+$bg-light-hover: lighten($bg-light-action, 3%);
+$bg-light-border: desaturate(darken($bg-light, 30%), 10%);
 
 $large-mobile-breakpoint: 550px;
 $tablet-breakpoint: 700px;

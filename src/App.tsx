@@ -8,6 +8,7 @@ import Note from "./pages/Notes/pages/Note/Note";
 import NewNote from "./pages/Notes/pages/NewNote/NewNote";
 import Error from "./pages/Error/Error";
 import { ThemeProvider } from "./context/ThemeContext";
+import MainLayout from "./layout/MainLayout";
 
 const router = createBrowserRouter([
     {
@@ -28,15 +29,27 @@ const router = createBrowserRouter([
             },
             {
                 path: "/notes",
-                element: <Notes />,
+                element: (
+                    <MainLayout>
+                        <Notes />
+                    </MainLayout>
+                ),
             },
             {
                 path: "/notes/new",
-                element: <NewNote />,
+                element: (
+                    <MainLayout>
+                        <NewNote />
+                    </MainLayout>
+                ),
             },
             {
                 path: "/notes/:id",
-                element: <Note />,
+                element: (
+                    <MainLayout>
+                        <Note />
+                    </MainLayout>
+                ),
             },
             {
                 path: "/*",
@@ -47,11 +60,11 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-    return( 
+    return (
         <ThemeProvider>
             <RouterProvider router={router} />
         </ThemeProvider>
-    )
+    );
 }
 
 export default App;
