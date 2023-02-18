@@ -4,14 +4,14 @@ import styles from "./styles.module.scss";
 
 const NewNote = () => {
     return (
-        <div className={styles.page}>
+        <>
             <div className={styles.container}>
                 <h1 className={styles.title}>Create a Note</h1>
                 <NewNoteFormProvider>
                     <NoteForm />
                 </NewNoteFormProvider>
             </div>
-        </div>
+        </>
     );
 };
 

@@ -1,8 +1,11 @@
 import styles from "./styles.module.scss";
 import { useNewNoteForm } from "../../../../../../../../context/NewNoteFormContext";
+import classNames from "classnames";
+import { useTheme } from "../../../../../../../../context/ThemeContext";
 
 const NoteText = () => {
     const { form, setForm } = useNewNoteForm();
+    const { theme } = useTheme();
     return (
         <textarea
             value={form.text}
@@ -11,7 +14,7 @@ const NoteText = () => {
                     return { ...prev, text: e.target.value };
                 })
             }
-            className={styles.textarea}
+            className={classNames(styles.textarea, styles[theme])}
             placeholder="Your note..."
         ></textarea>
     );

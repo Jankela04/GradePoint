@@ -1,13 +1,12 @@
 import NoteCreateActions from "./components/NoteCreateActions/NoteCreateActions";
 import NoteInfo from "./components/NoteInfo/NoteInfo";
 import NoteText from "./components/NoteText/NoteText";
-import { FormEvent, useState } from "react";
+import { FormEvent } from "react";
 import axios from "axios";
 import { TNote } from "../../../../components/NoteList/NoteList";
 import { v4 as uuidv4 } from "uuid";
 import { useNavigate } from "react-router-dom";
-import NewNoteFormContext, {
-    TForm,
+import {
     initialFormState,
     useNewNoteForm,
 } from "../../../../../../context/NewNoteFormContext";
