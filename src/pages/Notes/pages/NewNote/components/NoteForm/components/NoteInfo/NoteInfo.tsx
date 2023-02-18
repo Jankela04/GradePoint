@@ -1,6 +1,6 @@
-import Input from "../../../../../../../../components/Input";
 import styles from "./styles.module.scss";
 import { useNewNoteForm } from "../../../../../../../../context/NewNoteFormContext";
+import Input from "../../../../../../../../components/Input/Input";
 
 const NoteInfo = () => {
     const { form, setForm } = useNewNoteForm();

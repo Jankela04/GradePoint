@@ -1,7 +1,5 @@
-import Input from "../../../../../../components/Input";
-import styles from "./styles.module.scss";
-
 import { useNoteFilter } from "../../../../../../context/NoteFilterContext";
+import Input from "../../../../../../components/Input/Input";
 
 const NoteFilter = () => {
     const { filter, setFilter } = useNoteFilter();
@@ -16,7 +14,6 @@ const NoteFilter = () => {
                     return { ...filter, query: e.target.value };
                 });
             }}
-            className={styles.input}
         />
     );
 };

@@ -1,0 +1,18 @@
+@import "../../assets/variables";
+
+.input {
+    min-height: 2em;
+    font-size: 1.5em;
+    border-radius: 15px;
+    padding: 0 1em;
+    max-width: 350px;
+    border: none;
+    outline: none;
+    &.dark {
+        background-color: $bg-dark-action;
+        color: $text-dark;
+    }
+    &.light {
+        background-color: $bg-light-hover;
+    }
+}
