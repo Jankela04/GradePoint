@@ -1,63 +1,48 @@
 import styles from "./styles.module.scss";
-import { useParams, useNavigate } from "react-router-dom";
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { TNote } from "../../components/NoteList/NoteList";
 import NoteActions from "./components/NoteActions/NoteActions";
 import { DeleteModalProvider } from "../../../../context/DeleteModalContext";
 import Tag from "../../../../components/Tag/Tag";
 import { useTheme } from "../../../../context/ThemeContext";
 import classNames from "classnames";
+import useFetch from "../../../../hooks/useFetch";
 
 const Note = () => {
     const { id } = useParams();
-    const navigate = useNavigate();
-    const [noteInfo, setNoteInfo] = useState<TNote>();
-    const [loading, setLoading] = useState(true);
     const { theme } = useTheme();
+    const { data: note, loading, error } = useFetch<TNote>(`/notes/${id}`);
 
-    const getNote = async () => {
-        setLoading(true);
-        try {
-            const res = await axios.get(`http://localhost:3000/notes/${id}`);
-            setNoteInfo(res.data);
-        } catch (err: any) {
-            console.error(err);
-            if (err.request.status === 404) {
-                navigate("/404");
-            }
-        }
-        setLoading(false);
-    };
-    useEffect(() => {
-        getNote();
-    }, []);
+    if (loading)
+        return (
+            <div className={styles.alert}>
+                <span>Loading...</span>
+            </div>
+        );
+
+    if (error)
+        return (
+            <div className={styles.alert}>
+                <span>Something Went Wrong</span>
+            </div>
+        );
 
     return (
         <>
-            {loading ? (
-                <div className={styles.loading}>
-                    <span>Loading...</span>
-                </div>
-            ) : (
-                <>
-                    <h1 className={styles.title}>{noteInfo?.title}</h1>
-                    <div className={styles.tag}>
-                        <Tag tag={noteInfo?.tag} />
-                    </div>
+            <h1 className={styles.title}>{note?.title}</h1>
+            <div className={styles.tag}>
+                <Tag tag={note?.tag} />
+            </div>
 
-                    <div className={styles.container}>
-                        <div className={classNames(styles.text, styles[theme])}>
-                            {noteInfo?.text}
-                        </div>
-                        <DeleteModalProvider>
-                            <NoteActions />
-                        </DeleteModalProvider>
-                    </div>
-                </>
-            )}
+            <div className={styles.container}>
+                <div className={classNames(styles.text, styles[theme])}>
+                    {note?.text}
+                </div>
+                <DeleteModalProvider>
+                    <NoteActions />
+                </DeleteModalProvider>
+            </div>
         </>
     );
 };
-
 export default Note;
