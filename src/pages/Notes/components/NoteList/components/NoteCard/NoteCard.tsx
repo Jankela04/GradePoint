@@ -4,20 +4,11 @@ import { useTheme } from "../../../../../../context/ThemeContext";
 import { TNote } from "../../NoteList";
 import styles from "./styles.module.scss";
 import formatDate from "../../../../../../utils/FormatDate";
+import Tag from "../../../../../../components/Tag/Tag";
 
 const NoteCard = ({ note }: { note: TNote }) => {
     const navigate = useNavigate();
     const { theme } = useTheme();
-    const date = new Date();
-    const options = {
-        weekday: "short",
-        month: "short",
-        day: "numeric",
-        year: "numeric",
-        hour: "numeric",
-        minute: "numeric",
-        second: "numeric",
-    };
     return (
         <div
             className={classNames(styles.card, styles[theme])}
@@ -25,9 +16,7 @@ const NoteCard = ({ note }: { note: TNote }) => {
         >
             <h3 className={styles.title}>{note.title}</h3>
             <div className={classNames(styles.info)}>
-                <span className={classNames(styles.tag, styles[theme])}>
-                    {note.tag}
-                </span>
+                <Tag tag={note.tag} />
                 <span className={classNames(styles.date, styles[theme])}>
                     {formatDate(new Date())}
                 </span>

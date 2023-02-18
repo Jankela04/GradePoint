@@ -3,8 +3,11 @@ import styles from "./styles.module.scss";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import Button from "../../../../../../components/Button/Button";
+import classNames from "classnames";
+import { useTheme } from "../../../../../../context/ThemeContext";
 
 const DeleteModal = () => {
+    const { theme } = useTheme();
     const { id } = useParams();
     const navigate = useNavigate();
     const { toggleShowModal } = useDeleteModal();
@@ -21,7 +24,7 @@ const DeleteModal = () => {
         }
     };
     return (
-        <div className={styles.modal}>
+        <div className={classNames(styles.modal, styles[theme])}>
             <span className={styles.label}>Are you Sure?</span>
             <div className={styles.btn_container}>
                 <Button onClick={handleCancelClick} variant="neutral" rounded>

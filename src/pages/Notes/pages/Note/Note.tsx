@@ -5,12 +5,16 @@ import { useEffect, useState } from "react";
 import { TNote } from "../../components/NoteList/NoteList";
 import NoteActions from "./components/NoteActions/NoteActions";
 import { DeleteModalProvider } from "../../../../context/DeleteModalContext";
+import Tag from "../../../../components/Tag/Tag";
+import { useTheme } from "../../../../context/ThemeContext";
+import classNames from "classnames";
 
 const Note = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const [noteInfo, setNoteInfo] = useState<TNote>();
     const [loading, setLoading] = useState(true);
+    const { theme } = useTheme();
 
     const getNote = async () => {
         setLoading(true);
@@ -30,7 +34,7 @@ const Note = () => {
     }, []);
 
     return (
-        <div className={styles.page}>
+        <>
             {loading ? (
                 <div className={styles.loading}>
                     <span>Loading...</span>
@@ -38,16 +42,21 @@ const Note = () => {
             ) : (
                 <>
                     <h1 className={styles.title}>{noteInfo?.title}</h1>
-                    <div className={styles.tag}>{noteInfo?.tag}</div>
+                    <div className={styles.tag}>
+                        <Tag tag={noteInfo?.tag} />
+                    </div>
+
                     <div className={styles.container}>
-                        <div className={styles.text}>{noteInfo?.text}</div>
+                        <div className={classNames(styles.text, styles[theme])}>
+                            {noteInfo?.text}
+                        </div>
                         <DeleteModalProvider>
                             <NoteActions />
                         </DeleteModalProvider>
                     </div>
                 </>
             )}
-        </div>
+        </>
     );
 };
 

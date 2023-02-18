@@ -9,27 +9,27 @@
     text-align: center;
     padding-top: 1em;
 }
-
 .tag {
-    padding: 0.4em 0.6em;
-
-    border-radius: 1em;
-    background-color: white;
-    color: black;
-    text-align: center;
-    width: fit-content;
-    margin: 1em auto;
+    display: flex;
+    justify-content: center;
+    margin-top: 1em;
 }
 
 .text {
     white-space: pre-wrap;
     overflow: auto;
-    background-color: white;
     font-family: cursive, "Courier New", Courier, monospace;
     font-size: 1.2rem;
-    color: black;
     padding: 1em;
-    height: 70vh;
+    height: 60vh;
+    &.dark {
+        border: 1px solid $bg-dark-border;
+        background-color: $bg-dark-hover;
+    }
+    &.light {
+        border: 1px solid $bg-light-border;
+        background-color: $bg-light-action;
+    }
 }
 
 .container {

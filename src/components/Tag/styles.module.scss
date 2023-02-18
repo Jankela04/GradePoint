@@ -1,0 +1,15 @@
+@import "../../assets/variables";
+
+.tag {
+    display: inline-block;
+    padding: 0.3em 0.6em;
+    border-radius: 1em;
+
+    &.dark {
+        background-color: $bg-dark-border;
+        color: white;
+    }
+    &.light {
+        background-color: lighten($bg-light-border, 5%);
+    }
+}

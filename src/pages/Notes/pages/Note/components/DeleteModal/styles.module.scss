@@ -1,12 +1,19 @@
+@import "../../../../../../assets/variables";
+
 .modal {
     position: absolute;
     bottom: 110%;
     right: -25px;
     min-width: 150px;
     padding: 1em;
-    background-color: black;
-    color: white;
     text-align: center;
+    &.dark {
+        background-color: black;
+        color: white;
+    }
+    &.light {
+        background-color: $bg-light-border;
+    }
 }
 .label {
     display: inline-block;
