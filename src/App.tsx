@@ -8,7 +8,8 @@ import Note from "./pages/Notes/pages/Note/Note";
 import NewNote from "./pages/Notes/pages/NewNote/NewNote";
 import Error from "./pages/Error/Error";
 import { ThemeProvider } from "./context/ThemeContext";
-import MainLayout from "./layout/MainLayout";
+import MainLayout from "./layout/MainLayout/MainLayout";
+import Edit from "./pages/Notes/pages/Note/pages/Edit/Edit";
 
 const router = createBrowserRouter([
     {
@@ -48,6 +49,14 @@ const router = createBrowserRouter([
                 element: (
                     <MainLayout>
                         <Note />
+                    </MainLayout>
+                ),
+            },
+            {
+                path: "/notes/:id/edit",
+                element: (
+                    <MainLayout>
+                        <Edit />
                     </MainLayout>
                 ),
             },

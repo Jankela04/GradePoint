@@ -1,10 +1,10 @@
 import styles from "./styles.module.scss";
-import { useNewNoteForm } from "../../../../../../../../context/NewNoteFormContext";
+import { useNoteForm } from "../../../../../../../../context/NoteFormContext";
 import classNames from "classnames";
 import { useTheme } from "../../../../../../../../context/ThemeContext";
 
 const NoteText = () => {
-    const { form, setForm } = useNewNoteForm();
+    const { form, setForm } = useNoteForm();
     const { theme } = useTheme();
     return (
         <textarea
