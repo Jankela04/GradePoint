@@ -1,7 +1,7 @@
 import styles from "./styles.module.scss";
 import { useNavigate } from "react-router-dom";
-import Button from "../../../../../../../../components/Button/Button";
-import { Mode } from "../../../../../../../../layout/NoteFormLayout/NoteFormLayout";
+import Button from "../../../Button/Button";
+import { Mode } from "../../../../layout/NoteFormLayout/NoteFormLayout";
 
 const NoteFormActions = ({ mode }: { mode: Mode }) => {
     const navigate = useNavigate();

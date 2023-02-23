@@ -1,7 +1,7 @@
 import styles from "./styles.module.scss";
-import { useNoteForm } from "../../../../../../../../context/NoteFormContext";
+import { useNoteForm } from "../../../../context/NoteFormContext";
 import classNames from "classnames";
-import { useTheme } from "../../../../../../../../context/ThemeContext";
+import { useTheme } from "../../../../context/ThemeContext";
 
 const NoteText = () => {
     const { form, setForm } = useNoteForm();
