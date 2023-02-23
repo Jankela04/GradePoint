@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { useTheme } from "../../../../../../context/ThemeContext";
 import { TNote } from "../../NoteList";
 import styles from "./styles.module.scss";
-import formatDate from "../../../../../../utils/FormatDate";
 import Tag from "../../../../../../components/Tag/Tag";
 
 const NoteCard = ({ note }: { note: TNote }) => {
@@ -18,7 +17,7 @@ const NoteCard = ({ note }: { note: TNote }) => {
             <div className={classNames(styles.info)}>
                 <Tag tag={note.tag} />
                 <span className={classNames(styles.date, styles[theme])}>
-                    {formatDate(new Date())}
+                    {note.created}
                 </span>
             </div>
         </div>
