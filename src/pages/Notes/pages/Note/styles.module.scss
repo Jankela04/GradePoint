@@ -34,7 +34,13 @@
 
 .container {
     max-width: 80vw;
-    margin: 2em auto;
+    margin: 2em auto 0 auto;
+    padding-bottom: 2em;
+    .dates {
+        padding: 1em;
+        display: flex;
+        justify-content: space-around;
+    }
 }
 
 .alert {
@@ -46,5 +52,13 @@
     span {
         font-weight: bold;
         font-size: 3rem;
+    }
+}
+
+@media only screen and (max-width: calc($tablet-breakpoint + 100px)) {
+    .dates {
+        flex-direction: column;
+        gap: 1em;
+        align-items: center;
     }
 }
