@@ -8,8 +8,8 @@ export type TNote = {
     title: string;
     tag: string;
     text: string;
-    created: string;
-    edited: string | null;
+    created: Date;
+    edited: Date;
 };
 
 const NoteList = () => {

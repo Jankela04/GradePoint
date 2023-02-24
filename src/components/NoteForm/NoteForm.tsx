@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { initialFormState, useNoteForm } from "../../context/NoteFormContext";
 import { Mode } from "../../layout/NoteFormLayout/NoteFormLayout";
 import axiosService from "../../services/axios";
-import formatDate from "../../utils/FormatDate";
+import { formatDate } from "../../utils/FormatDate";
 
 const NoteForm = ({ mode, note }: { mode: Mode; note: TNote | null }) => {
     const { form, setForm } = useNoteForm();
@@ -19,8 +19,8 @@ const NoteForm = ({ mode, note }: { mode: Mode; note: TNote | null }) => {
         const newNote: TNote = {
             ...form,
             id: uuidv4(),
-            created: formatDate(new Date()),
-            edited: formatDate(new Date()),
+            created: new Date(),
+            edited: new Date(),
         };
         await axiosService.post("/notes", newNote);
         setForm(initialFormState);
@@ -32,7 +32,7 @@ const NoteForm = ({ mode, note }: { mode: Mode; note: TNote | null }) => {
                 ...form,
                 id: note.id,
                 created: note.created,
-                edited: formatDate(new Date()),
+                edited: new Date(),
             };
             await axiosService.put(`/notes/${note.id}`, editedNote);
             setForm(initialFormState);
