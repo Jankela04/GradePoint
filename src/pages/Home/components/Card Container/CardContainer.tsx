@@ -14,11 +14,11 @@ const CardContainer = () => {
                 label="View, Take and Edit Notes"
             />
             <Card
-                title="Grades"
+                title="Classes"
                 icon={gradeImg}
                 color={"#ff8c00"}
-                to="/grades"
-                label="View and Add your Grades"
+                to="/classes"
+                label="View Classes and Grades"
             />
         </div>
     );

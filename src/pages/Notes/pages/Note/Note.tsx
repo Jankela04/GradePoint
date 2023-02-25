@@ -28,27 +28,26 @@ const Note = () => {
             </div>
         );
 
-    if (note)
-        return (
-            <>
-                <h1 className={styles.title}>{note?.title}</h1>
-                <div className={styles.tag}>
-                    <Tag tag={note?.tag} />
-                </div>
+    return (
+        <>
+            <h1 className={styles.title}>{note?.title}</h1>
+            <div className={styles.tag}>
+                <Tag tag={note?.tag} />
+            </div>
 
-                <div className={styles.container}>
-                    <div className={styles.dates}>
-                        <span>Created: {formatDate(note?.created)}</span>
-                        <span>Last Edited: {formatDate(note?.edited)}</span>
-                    </div>
-                    <div className={classNames(styles.text, styles[theme])}>
-                        {note?.text}
-                    </div>
-                    <DeleteModalProvider>
-                        <NoteActions />
-                    </DeleteModalProvider>
+            <div className={styles.container}>
+                <div className={styles.dates}>
+                    <span>Created: {formatDate(note?.created)}</span>
+                    <span>Last Edited: {formatDate(note?.edited)}</span>
                 </div>
-            </>
-        );
+                <div className={classNames(styles.text, styles[theme])}>
+                    {note?.text}
+                </div>
+                <DeleteModalProvider>
+                    <NoteActions />
+                </DeleteModalProvider>
+            </div>
+        </>
+    );
 };
 export default Note;

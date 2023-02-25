@@ -10,6 +10,7 @@ import Error from "./pages/Error/Error";
 import { ThemeProvider } from "./context/ThemeContext";
 import MainLayout from "./layout/MainLayout/MainLayout";
 import Edit from "./pages/Notes/pages/Note/pages/Edit/Edit";
+import Classes from "./pages/Classes/Classes";
 
 const router = createBrowserRouter([
     {
@@ -57,6 +58,14 @@ const router = createBrowserRouter([
                 element: (
                     <MainLayout>
                         <Edit />
+                    </MainLayout>
+                ),
+            },
+            {
+                path: "/classes",
+                element: (
+                    <MainLayout>
+                        <Classes />
                     </MainLayout>
                 ),
             },
