@@ -1,0 +1,66 @@
+@import "../../../../../assets/variables";
+
+.class_card {
+    max-width: 500px;
+    width: 500px;
+    padding: 1em;
+    cursor: pointer;
+    &.dark {
+        background-color: $bg-dark-action;
+        border: 1px solid $bg-dark-border;
+        color: $text-dark;
+        &:hover {
+            background-color: $bg-dark-hover;
+        }
+    }
+    &.light {
+        background-color: $bg-light-action;
+        color: $text-light;
+        border: 1px solid $bg-light-border;
+        &:hover {
+            background-color: $bg-light-hover;
+        }
+    }
+}
+
+.divider {
+    height: 1px;
+    width: 100%;
+    margin: 1em 0;
+    &.dark {
+        background-color: $bg-dark-border;
+    }
+    &.light {
+        background-color: $bg-light-border;
+    }
+}
+
+.grades {
+    display: flex;
+    justify-content: space-between;
+    gap: 1em;
+    .grades_list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.7em;
+    }
+    .gpa {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 1em;
+        &::before {
+            position: absolute;
+            left: -1em;
+            display: block;
+            content: "";
+            width: 2px;
+            height: 100%;
+            background-color: $bg-dark-border;
+        }
+        &.light::before {
+            background-color: $bg-light-border;
+        }
+    }
+}

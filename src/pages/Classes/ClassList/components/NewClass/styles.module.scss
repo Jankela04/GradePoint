@@ -1,0 +1,25 @@
+@import "../../../../../assets/variables";
+
+.card {
+    max-width: 500px;
+    width: 500px;
+    padding: 3em 0;
+    cursor: pointer;
+    text-align: center;
+    &.dark {
+        background-color: $bg-dark-action;
+        border: 1px solid $bg-dark-border;
+        color: $text-dark;
+        &:hover {
+            background-color: $bg-dark-hover;
+        }
+    }
+    &.light {
+        background-color: $bg-light-action;
+        color: $text-light;
+        border: 1px solid $bg-light-border;
+        &:hover {
+            background-color: $bg-light-hover;
+        }
+    }
+}
