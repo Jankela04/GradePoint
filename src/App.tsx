@@ -11,6 +11,7 @@ import { ThemeProvider } from "./context/ThemeContext";
 import MainLayout from "./layout/MainLayout/MainLayout";
 import Edit from "./pages/Notes/pages/Note/pages/Edit/Edit";
 import Classes from "./pages/Classes/Classes";
+import NewClassPage from "./pages/Classes/pages/NewClassPage/NewClassPage";
 
 const router = createBrowserRouter([
     {
@@ -66,6 +67,14 @@ const router = createBrowserRouter([
                 element: (
                     <MainLayout>
                         <Classes />
+                    </MainLayout>
+                ),
+            },
+            {
+                path: "/classes/new",
+                element: (
+                    <MainLayout>
+                        <NewClassPage />
                     </MainLayout>
                 ),
             },
