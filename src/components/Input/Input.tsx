@@ -14,7 +14,7 @@ type InputProps = {
     className?: string;
 };
 
-const BetterInput: FC<InputProps> = ({
+const Input: FC<InputProps> = ({
     autoFocus = false,
     type,
     name,
@@ -38,5 +38,4 @@ const BetterInput: FC<InputProps> = ({
         />
     );
 };
-
-export default BetterInput;
+export default Input;

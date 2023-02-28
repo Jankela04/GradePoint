@@ -8,7 +8,6 @@ import { useNavigate } from "react-router-dom";
 import { initialFormState, useNoteForm } from "../../context/NoteFormContext";
 import { Mode } from "../../layout/NoteFormLayout/NoteFormLayout";
 import axiosService from "../../services/axios";
-import { formatDate } from "../../utils/FormatDate";
 
 const NoteForm = ({ mode, note }: { mode: Mode; note: TNote | null }) => {
     const { form, setForm } = useNoteForm();

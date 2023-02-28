@@ -8,6 +8,7 @@ import { useTheme } from "../../../../context/ThemeContext";
 import classNames from "classnames";
 import useFetch from "../../../../hooks/useFetch";
 import { formatDate } from "../../../../utils/FormatDate";
+import Title from "../../../../components/Title/Title";
 
 const Note = () => {
     const { id } = useParams();
@@ -30,7 +31,7 @@ const Note = () => {
 
     return (
         <>
-            <h1 className={styles.title}>{note?.title}</h1>
+            <Title>{note?.title}</Title>
             <div className={styles.tag}>
                 <Tag tag={note?.tag} />
             </div>

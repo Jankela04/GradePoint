@@ -1,9 +1,10 @@
+import Title from "../../components/Title/Title";
 import ClassList from "./ClassList/ClassList";
-import styles from "./styles.module.scss";
+
 const Classes = () => {
     return (
         <>
-            <h1 className={styles.title}>Classes</h1>
+            <Title>Classes</Title>
             <ClassList />
         </>
     );

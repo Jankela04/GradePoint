@@ -2,6 +2,7 @@ import { NoteFormProvider, TForm } from "../../context/NoteFormContext";
 import { TNote } from "../../pages/Notes/components/NoteList/NoteList";
 import NoteForm from "../../components/NoteForm/NoteForm";
 import styles from "./styles.module.scss";
+import Title from "../../components/Title/Title";
 
 export type Mode = "edit" | "new";
 
@@ -23,9 +24,7 @@ const NoteFormLayout = ({ mode, note }: NoteFormLayoutProps) => {
     return (
         <>
             <div className={styles.container}>
-                <h1 className={styles.title}>
-                    {mode === "new" ? "Create" : "Edit"} Note
-                </h1>
+                <Title>{mode === "new" ? "Create" : "Edit"} Note</Title>
                 <NoteFormProvider
                     formState={mode === "new" ? null : getNoteInfo(note)}
                 >

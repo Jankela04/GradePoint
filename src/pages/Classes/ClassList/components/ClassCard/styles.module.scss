@@ -1,7 +1,6 @@
 @import "../../../../../assets/variables";
 
 .class_card {
-    max-width: 500px;
     width: 500px;
     padding: 1em;
     cursor: pointer;
@@ -20,6 +19,12 @@
         &:hover {
             background-color: $bg-light-hover;
         }
+    }
+}
+
+@media only screen and (max-width: $large-mobile-breakpoint) {
+    .class_card {
+        width: 100%;
     }
 }
 

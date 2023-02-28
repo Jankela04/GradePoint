@@ -5,14 +5,10 @@
     min-height: 100vh;
     background: linear-gradient(135deg, $primary-dark, $primary-light);
 }
-.title {
-    text-align: center;
-    padding-top: 1em;
-}
+
 .tag {
     display: flex;
     justify-content: center;
-    margin-top: 1em;
 }
 
 .text {

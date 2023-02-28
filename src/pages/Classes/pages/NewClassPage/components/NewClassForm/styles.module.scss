@@ -1,3 +1,5 @@
+@import "../../../../../../assets/variables";
+
 .form {
     max-width: 500px;
     margin: auto;
@@ -6,12 +8,20 @@
     align-items: center;
 
     .section {
+        padding: 0 1em;
         display: flex;
         flex-direction: column;
         margin-bottom: 2em;
         label {
             font-size: 1.3rem;
             margin-bottom: 0.5em;
+        }
+    }
+}
+@media only screen and (max-width: $large-mobile-breakpoint) {
+    .section {
+        input {
+            width: 100%;
         }
     }
 }
