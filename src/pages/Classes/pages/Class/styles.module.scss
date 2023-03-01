@@ -1,0 +1,47 @@
+@import "../../../../assets/variables";
+
+.container {
+    max-width: 90vw;
+    margin: 0 auto;
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .info {
+            display: flex;
+            flex-direction: column;
+            gap: 1em;
+            span {
+                font-size: 1.3rem;
+            }
+        }
+        .actions {
+            display: flex;
+            gap: 1em;
+        }
+    }
+    .grades {
+        padding-bottom: 2em;
+        margin-top: 1em;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        place-items: center;
+        gap: 1em;
+        .grade {
+            border: 1px solid white;
+            width: 200px;
+            padding: 1em;
+            h3 {
+                margin-bottom: 0.5em;
+            }
+            &.light {
+                border: 1px solid black;
+            }
+        }
+        .new_grade {
+            width: 200px;
+            padding: 1em;
+            background-color: $primary;
+        }
+    }
+}

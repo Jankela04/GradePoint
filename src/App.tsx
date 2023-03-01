@@ -12,6 +12,7 @@ import MainLayout from "./layout/MainLayout/MainLayout";
 import Edit from "./pages/Notes/pages/Note/pages/Edit/Edit";
 import Classes from "./pages/Classes/Classes";
 import NewClassPage from "./pages/Classes/pages/NewClassPage/NewClassPage";
+import Class from "./pages/Classes/pages/Class/Class";
 
 const router = createBrowserRouter([
     {
@@ -75,6 +76,14 @@ const router = createBrowserRouter([
                 element: (
                     <MainLayout>
                         <NewClassPage />
+                    </MainLayout>
+                ),
+            },
+            {
+                path: "/classes/:id",
+                element: (
+                    <MainLayout>
+                        <Class />
                     </MainLayout>
                 ),
             },

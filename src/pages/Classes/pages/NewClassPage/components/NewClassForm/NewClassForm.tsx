@@ -25,7 +25,7 @@ const NewClassForm = () => {
         } else {
             const newClass = { id: v4(), ...form, grades: [] };
             await axiosService.post("/classes", newClass);
-            navigate("/classes");
+            navigate(`/classes/${newClass.id}`);
         }
     };
     return (
