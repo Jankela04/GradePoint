@@ -3,7 +3,7 @@ import ClassCard from "./components/ClassCard/ClassCard";
 import NewClass from "./components/NewClass/NewClass";
 import styles from "./styles.module.scss";
 
-type Grade = {
+export type Grade = {
     grade: number;
     date: string;
 };

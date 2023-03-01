@@ -4,11 +4,10 @@ import useFetch from "../../../../hooks/useFetch";
 import CalculateGpa from "../../../../utils/CalculateGpa";
 import { Class as TClass } from "../../ClassList/ClassList";
 import styles from "./styles.module.scss";
-import { v4 } from "uuid";
-import { shortFormatDate } from "../../../../utils/FormatDate";
-import { useTheme } from "../../../../context/ThemeContext";
-import classNames from "classnames";
 import Button from "../../../../components/Button/Button";
+import GradeList from "./components/GradeList/GradeList";
+import { TNote } from "../../../../components/NoteList/NoteList";
+import ClassNotes from "./components/ClassNotes/ClassNotes";
 
 const Class = () => {
     const { id } = useParams();
@@ -17,10 +16,15 @@ const Class = () => {
         loading,
         error,
     } = useFetch<TClass>(`/classes/${id}`);
-    const { theme } = useTheme();
-    if (loading) return <Title>Loading...</Title>;
 
-    if (error || !classObj) return <Title>Something Went Wrong</Title>;
+    const { data: notes, loading: notesLoading } = useFetch<TNote[]>(
+        `/notes?tag=${classObj?.class}`
+    );
+
+    if (loading || notesLoading) return <Title>Loading...</Title>;
+
+    if (error || !classObj || !notes)
+        return <Title>Something Went Wrong</Title>;
 
     return (
         <>
@@ -38,6 +42,7 @@ const Class = () => {
                                       .map((grade) => grade.grade)
                                       .join(", ")}
                         </span>
+                        <span>Notes: {notes.length}</span>
                     </div>
                     <div className={styles.actions}>
                         <Button rounded variant="danger">
@@ -48,24 +53,8 @@ const Class = () => {
                         </Button>
                     </div>
                 </div>
-                <div className={styles.grades}>
-                    {classObj.grades.length === 0 ? (
-                        <span>This class has no grades</span>
-                    ) : (
-                        classObj.grades.map((grade) => (
-                            <div
-                                key={v4()}
-                                className={classNames(
-                                    styles.grade,
-                                    styles[theme]
-                                )}
-                            >
-                                <h3>{grade.grade}</h3>
-                                <span>Date: {shortFormatDate(grade.date)}</span>
-                            </div>
-                        ))
-                    )}
-                </div>
+                <GradeList grades={classObj.grades} />
+                <ClassNotes classObj={classObj} notes={notes} />
             </div>
         </>
     );

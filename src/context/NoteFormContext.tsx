@@ -6,6 +6,7 @@ import {
     useState,
     useContext,
 } from "react";
+import { useSearchParams } from "react-router-dom";
 
 export type TForm = {
     title: string;
@@ -35,10 +36,12 @@ const NoteFormProvider = ({
     children: ReactNode;
     formState?: TForm | null;
 }) => {
+    const [searchParams] = useSearchParams();
+    const searchParamTag = searchParams.get("tag") || "";
     const [form, setForm] = useState<TForm>(
         formState ?? {
             title: "",
-            tag: "",
+            tag: searchParamTag,
             text: "",
         }
     );
