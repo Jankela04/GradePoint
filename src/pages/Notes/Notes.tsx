@@ -2,7 +2,7 @@ import Title from "../../components/Title/Title";
 import { NoteFilterProvider } from "../../context/NoteFilterContext";
 import useFetch from "../../hooks/useFetch";
 import NoteControls from "./components/NoteControls/NoteControls";
-import NoteList, { TNote } from "./components/NoteList/NoteList";
+import NoteList, { TNote } from "../../components/NoteList/NoteList";
 import styles from "./styles.module.scss";
 
 const Notes = () => {

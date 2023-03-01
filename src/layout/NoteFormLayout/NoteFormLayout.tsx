@@ -1,5 +1,5 @@
 import { NoteFormProvider, TForm } from "../../context/NoteFormContext";
-import { TNote } from "../../pages/Notes/components/NoteList/NoteList";
+import { TNote } from "../../components/NoteList/NoteList";
 import NoteForm from "../../components/NoteForm/NoteForm";
 import styles from "./styles.module.scss";
 import Title from "../../components/Title/Title";

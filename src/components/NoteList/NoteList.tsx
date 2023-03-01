@@ -1,6 +1,6 @@
 import styles from "./styles.module.scss";
-import NoteCard from "./components/NoteCard/NoteCard";
-import { useNoteFilter } from "../../../../context/NoteFilterContext";
+import NoteCard from "./NoteCard/NoteCard";
+import { useNoteFilter } from "../../context/NoteFilterContext";
 
 export type TNote = {
     id: string;

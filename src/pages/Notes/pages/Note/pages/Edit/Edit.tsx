@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import useFetch from "../../../../../../hooks/useFetch";
 import NoteFormLayout from "../../../../../../layout/NoteFormLayout/NoteFormLayout";
-import { TNote } from "../../../../components/NoteList/NoteList";
+import { TNote } from "../../../../../../components/NoteList/NoteList";
 
 const Edit = () => {
     const { id } = useParams();

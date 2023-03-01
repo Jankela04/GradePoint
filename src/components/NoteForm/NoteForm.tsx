@@ -2,7 +2,7 @@ import NoteFormActions from "./components/NoteFormActions/NoteFormActions";
 import NoteInfo from "./components/NoteInfo/NoteInfo";
 import NoteText from "./components/NoteText/NoteText";
 import { FormEvent } from "react";
-import { TNote } from "../../pages/Notes/components/NoteList/NoteList";
+import { TNote } from "../NoteList/NoteList";
 import { v4 as uuidv4 } from "uuid";
 import { useNavigate } from "react-router-dom";
 import { initialFormState, useNoteForm } from "../../context/NoteFormContext";
