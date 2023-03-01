@@ -1,7 +1,6 @@
 import styles from "./styles.module.scss";
 import NoteCard from "./components/NoteCard/NoteCard";
 import { useNoteFilter } from "../../../../context/NoteFilterContext";
-import useFetch from "../../../../hooks/useFetch";
 
 export type TNote = {
     id: string;
@@ -12,10 +11,8 @@ export type TNote = {
     edited: Date;
 };
 
-const NoteList = () => {
+const NoteList = ({ notes }: { notes: TNote[] }) => {
     const { filter } = useNoteFilter();
-
-    const { data: notes, loading, error } = useFetch<TNote[]>("/notes");
 
     const filteredNotes = notes?.filter(
         (note) =>
@@ -24,21 +21,10 @@ const NoteList = () => {
             note.text.toLowerCase().includes(filter.query.toLowerCase())
     );
 
-    if (loading)
-        return (
-            <div className={styles.alert_container}>
-                <p>Loading...</p>
-            </div>
-        );
-
-    if (error) return <div>Error, Something Went Wrong</div>;
-
     if (!notes?.length)
         return (
             <div className={styles.alert_container}>
-                <p>
-                    You don't have any Notes, click "New Note" to create note.
-                </p>
+                <p>You don't have any Notes.</p>
             </div>
         );
 
