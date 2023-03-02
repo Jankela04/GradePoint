@@ -15,12 +15,17 @@ const ClassNotes = ({
 }) => {
     const navigate = useNavigate();
     const handleCreateNote = () => {
-        navigate({
-            pathname: "/notes/new",
-            search: createSearchParams({
-                tag: classObj.class,
-            }).toString(),
-        });
+        navigate(
+            {
+                pathname: "/notes/new",
+                search: createSearchParams({
+                    tag: classObj.class,
+                }).toString(),
+            },
+            {
+                state: { fromClass: classObj.id },
+            }
+        );
     };
     return (
         <>
