@@ -1,0 +1,28 @@
+@import "../../assets/variables";
+
+.title {
+    text-align: center;
+    color: white;
+    line-height: 1.4rem;
+}
+
+.actions {
+    margin-top: 2em;
+    display: flex;
+    gap: 3em;
+    justify-content: space-around;
+}
+
+.modal {
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .cancel_btn {
+        border: 1px solid white;
+        color: white;
+        &:hover {
+            background-color: $bg-dark-action-secondary;
+        }
+    }
+}
