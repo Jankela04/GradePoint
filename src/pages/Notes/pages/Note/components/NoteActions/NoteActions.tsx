@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import styles from "./styles.module.scss";
 import DeleteModal from "../DeleteModal/DeleteModal";
 import { useDeleteModal } from "../../../../../../context/DeleteModalContext";
@@ -7,6 +7,9 @@ import Button from "../../../../../../components/Button/Button";
 const NoteActions = () => {
     const { showModal, toggleShowModal } = useDeleteModal();
     const navigate = useNavigate();
+    const location = useLocation();
+    const path = location.state?.prevPath ?? "/notes";
+
     const { id } = useParams();
 
     const handleEditClick = () => {
@@ -14,11 +17,10 @@ const NoteActions = () => {
     };
 
     const handleGoBackClick = () => {
-        navigate(`/notes`);
+        navigate(path);
     };
 
     const handleDeleteClick = () => {
-        console.log(showModal);
         toggleShowModal();
     };
 

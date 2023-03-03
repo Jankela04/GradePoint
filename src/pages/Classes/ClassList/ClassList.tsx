@@ -1,3 +1,4 @@
+import Title from "../../../components/Title/Title";
 import useFetch from "../../../hooks/useFetch";
 import ClassCard from "./components/ClassCard/ClassCard";
 import NewClass from "./components/NewClass/NewClass";
@@ -20,12 +21,12 @@ const ClassList = () => {
 
     if (loading)
         return (
-            <div className={styles.alert_container}>
+            <Title>
                 <p>Loading...</p>
-            </div>
+            </Title>
         );
 
-    if (error) return <div>Error, Something Went Wrong</div>;
+    if (error) return <Title>Error, Something Went Wrong</Title>;
 
     return (
         <div className={styles.class_container}>

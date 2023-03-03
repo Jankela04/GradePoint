@@ -11,11 +11,13 @@ type ClassForm = {
     teacher: string;
 };
 
+const initialFormState: ClassForm = {
+    class: "",
+    teacher: "",
+};
+
 const NewClassForm = () => {
-    const [form, setForm] = useState<ClassForm>({
-        class: "",
-        teacher: "",
-    });
+    const [form, setForm] = useState<ClassForm>(initialFormState);
     const navigate = useNavigate();
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -27,6 +29,10 @@ const NewClassForm = () => {
             await axiosService.post("/classes", newClass);
             navigate(`/classes/${newClass.id}`);
         }
+    };
+    const handleCancelClick = () => {
+        setForm(initialFormState);
+        navigate("/classes");
     };
     return (
         <form className={styles.form} onSubmit={(e) => handleSubmit(e)}>
@@ -56,9 +62,19 @@ const NewClassForm = () => {
                     placeholder="Enter Teacher's Name"
                 />
             </div>
-            <Button variant="primary" rounded type="submit">
-                Create Class
-            </Button>
+            <div className={styles.actions}>
+                <Button variant="primary" rounded type="submit">
+                    Create Class
+                </Button>
+                <Button
+                    variant="neutral"
+                    rounded
+                    type="button"
+                    onClick={handleCancelClick}
+                >
+                    Cancel
+                </Button>
+            </div>
         </form>
     );
 };
