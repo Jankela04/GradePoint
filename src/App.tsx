@@ -13,6 +13,7 @@ import Edit from "./pages/Notes/pages/Note/pages/Edit/Edit";
 import Classes from "./pages/Classes/Classes";
 import NewClassPage from "./pages/Classes/pages/NewClassPage/NewClassPage";
 import Class from "./pages/Classes/pages/Class/Class";
+import NewGrade from "./pages/Classes/pages/Class/pages/NewGrade/NewGrade";
 
 const router = createBrowserRouter([
     {
@@ -84,6 +85,14 @@ const router = createBrowserRouter([
                 element: (
                     <MainLayout>
                         <Class />
+                    </MainLayout>
+                ),
+            },
+            {
+                path: "/classes/:id/newGrade",
+                element: (
+                    <MainLayout>
+                        <NewGrade />
                     </MainLayout>
                 ),
             },

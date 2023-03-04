@@ -12,6 +12,7 @@ type InputProps = {
     onChange: ChangeEventHandler<HTMLInputElement>;
     disabled?: boolean;
     className?: string;
+    id: string;
 };
 
 const Input: FC<InputProps> = ({
@@ -22,6 +23,7 @@ const Input: FC<InputProps> = ({
     value,
     onChange,
     className,
+    id,
 }) => {
     const { theme } = useTheme();
 
@@ -35,6 +37,7 @@ const Input: FC<InputProps> = ({
             value={value}
             onChange={onChange}
             className={inputClass}
+            id={id}
         />
     );
 };

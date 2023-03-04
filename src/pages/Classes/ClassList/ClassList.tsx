@@ -6,7 +6,7 @@ import styles from "./styles.module.scss";
 
 export type Grade = {
     grade: number;
-    date: string;
+    date: Date;
 };
 
 export type Class = {

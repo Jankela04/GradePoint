@@ -63,7 +63,15 @@ const Class = () => {
                         >
                             Delete Class
                         </Button>
-                        <Button rounded variant="secondary">
+                        <Button
+                            rounded
+                            variant="secondary"
+                            onClick={() =>
+                                navigate(`/classes/${classObj.id}/newGrade`, {
+                                    state: { id: classObj.id },
+                                })
+                            }
+                        >
                             New Grade
                         </Button>
                     </div>
