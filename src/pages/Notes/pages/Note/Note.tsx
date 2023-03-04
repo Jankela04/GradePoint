@@ -2,7 +2,6 @@ import styles from "./styles.module.scss";
 import { useParams } from "react-router-dom";
 import { TNote } from "../../../../components/NoteList/NoteList";
 import NoteActions from "./components/NoteActions/NoteActions";
-import { DeleteModalProvider } from "../../../../context/DeleteModalContext";
 import Tag from "../../../../components/Tag/Tag";
 import { useTheme } from "../../../../context/ThemeContext";
 import classNames from "classnames";
@@ -44,9 +43,7 @@ const Note = () => {
                 <div className={classNames(styles.text, styles[theme])}>
                     {note?.text}
                 </div>
-                <DeleteModalProvider>
-                    <NoteActions />
-                </DeleteModalProvider>
+                <NoteActions />
             </div>
         </>
     );

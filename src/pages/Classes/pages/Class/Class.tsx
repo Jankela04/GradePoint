@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Title from "../../../../components/Title/Title";
 import useFetch from "../../../../hooks/useFetch";
 import CalculateGpa from "../../../../utils/CalculateGpa";
@@ -8,14 +8,25 @@ import Button from "../../../../components/Button/Button";
 import GradeList from "./components/GradeList/GradeList";
 import { TNote } from "../../../../components/NoteList/NoteList";
 import ClassNotes from "./components/ClassNotes/ClassNotes";
+import DeleteModal from "../../../../components/Modal/Modal";
+import { useState } from "react";
+import axiosService from "../../../../services/axios";
 
 const Class = () => {
     const { id } = useParams();
+    const navigate = useNavigate();
     const {
         data: classObj,
         loading,
         error,
     } = useFetch<TClass>(`/classes/${id}`);
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+    const closeModal = () => setModalIsOpen(false);
+    const openModal = () => setModalIsOpen(true);
+    const deleteClass = async () => {
+        await axiosService.delete(`/classes/${classObj?.id}`);
+        navigate(`/classes`);
+    };
 
     const { data: notes, loading: notesLoading } = useFetch<TNote[]>(
         `/notes?tag=${classObj?.class}`
@@ -45,7 +56,11 @@ const Class = () => {
                         <span>Notes: {notes.length}</span>
                     </div>
                     <div className={styles.actions}>
-                        <Button rounded variant="danger">
+                        <Button
+                            rounded
+                            variant="danger"
+                            onClick={() => openModal()}
+                        >
                             Delete Class
                         </Button>
                         <Button rounded variant="secondary">
@@ -53,6 +68,13 @@ const Class = () => {
                         </Button>
                     </div>
                 </div>
+                <DeleteModal
+                    isOpen={modalIsOpen}
+                    closeModal={closeModal}
+                    confirmLabel={"Delete"}
+                    onConfirm={deleteClass}
+                    title={"Are You sure You want to delete Class?"}
+                />
                 <GradeList grades={classObj.grades} />
                 <ClassNotes classObj={classObj} notes={notes} />
             </div>

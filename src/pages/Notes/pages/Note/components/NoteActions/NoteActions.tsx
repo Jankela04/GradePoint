@@ -1,11 +1,15 @@
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import styles from "./styles.module.scss";
-import DeleteModal from "../DeleteModal/DeleteModal";
-import { useDeleteModal } from "../../../../../../context/DeleteModalContext";
 import Button from "../../../../../../components/Button/Button";
+import { useState } from "react";
+import DeleteModal from "../../../../../../components/Modal/Modal";
+import axiosService from "../../../../../../services/axios";
 
 const NoteActions = () => {
-    const { showModal, toggleShowModal } = useDeleteModal();
+    const [isOpen, setIsOpen] = useState(false);
+    const closeModal = () => setIsOpen(false);
+    const openModal = () => setIsOpen(true);
+
     const navigate = useNavigate();
     const location = useLocation();
     const path = location.state?.prevPath ?? "/notes";
@@ -20,8 +24,9 @@ const NoteActions = () => {
         navigate(path);
     };
 
-    const handleDeleteClick = () => {
-        toggleShowModal();
+    const deleteNote = async () => {
+        await axiosService.delete(`/notes/${id}`);
+        navigate(path);
     };
 
     return (
@@ -33,10 +38,16 @@ const NoteActions = () => {
                 <Button onClick={handleEditClick} variant="primary" rounded>
                     Edit Note
                 </Button>
-                <Button onClick={handleDeleteClick} variant="danger">
+                <Button onClick={openModal} variant="danger">
                     Delete Note
                 </Button>
-                {showModal && <DeleteModal />}
+                <DeleteModal
+                    isOpen={isOpen}
+                    closeModal={closeModal}
+                    confirmLabel={"Delete"}
+                    onConfirm={deleteNote}
+                    title={"Are You sure You want to delete this Note?"}
+                />
             </div>
         </div>
     );

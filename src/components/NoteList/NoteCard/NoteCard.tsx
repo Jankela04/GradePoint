@@ -12,7 +12,6 @@ const NoteCard = ({ note }: { note: TNote }) => {
 
     const { theme } = useTheme();
 
-    console.log(location);
     return (
         <div
             className={classNames(styles.card, styles[theme])}
