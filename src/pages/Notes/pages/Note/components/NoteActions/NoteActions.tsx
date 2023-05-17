@@ -1,9 +1,9 @@
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import styles from "./styles.module.scss";
-import Button from "../../../../../../components/Button/Button";
+import Button from "@/components/Button/Button";
 import { useState } from "react";
-import DeleteModal from "../../../../../../components/Modal/Modal";
-import axiosService from "../../../../../../services/axios";
+import DeleteModal from "@/components/Modal/Modal";
+import axiosService from "@/services/axios";
 
 const NoteActions = () => {
     const [isOpen, setIsOpen] = useState(false);

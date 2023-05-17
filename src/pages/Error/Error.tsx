@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import Button from "../../components/Button/Button";
+import Button from "@/components/Button/Button";
 import styles from "./styles.module.scss";
 
 const Error = () => {

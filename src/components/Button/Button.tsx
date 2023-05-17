@@ -1,7 +1,7 @@
 import { FC, ReactNode } from "react";
 import styles from "./styles.module.scss";
 import classNames from "classnames";
-import { useTheme } from "../../context/ThemeContext";
+import { useTheme } from "@/context/ThemeContext";
 
 type ButtonProps = {
     variant: "primary" | "secondary" | "danger" | "neutral";

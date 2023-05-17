@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { useTheme } from "../../context/ThemeContext";
+import { useTheme } from "@/context/ThemeContext";
 import styles from "./styles.module.scss";
 
 const Tag = ({ tag }: { tag?: string }) => {

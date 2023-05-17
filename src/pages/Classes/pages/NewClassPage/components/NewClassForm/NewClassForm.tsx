@@ -1,9 +1,9 @@
 import { FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { v4 } from "uuid";
-import Button from "../../../../../../components/Button/Button";
-import Input from "../../../../../../components/Input/Input";
-import axiosService from "../../../../../../services/axios";
+import Button from "@/components/Button/Button";
+import Input from "@/components/Input/Input";
+import axiosService from "@/services/axios";
 import styles from "./styles.module.scss";
 
 type ClassForm = {

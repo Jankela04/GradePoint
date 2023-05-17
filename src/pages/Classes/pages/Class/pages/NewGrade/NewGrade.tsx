@@ -1,15 +1,15 @@
 import { FormEvent, useState } from "react";
-import Input from "../../../../../../components/Input/Input";
-import Title from "../../../../../../components/Title/Title";
+import Input from "@/components/Input/Input";
+import Title from "@/components/Title/Title";
 import styles from "./styles.module.scss";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import Button from "../../../../../../components/Button/Button";
+import Button from "@/components/Button/Button";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import convertNumber from "../../../../../../utils/ConvertToNumber";
-import useFetch from "../../../../../../hooks/useFetch";
+import convertNumber from "@/utils/ConvertToNumber";
+import useFetch from "@/hooks/useFetch";
 import { Class, Grade } from "../../../../ClassList/ClassList";
-import axiosService from "../../../../../../services/axios";
+import axiosService from "@/services/axios";
 
 const NewGrade = () => {
     const [grade, setGrade] = useState<string>("");

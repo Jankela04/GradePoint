@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import { useNavigate } from "react-router-dom";
-import { useTheme } from "../../../../../context/ThemeContext";
+import { useTheme } from "@/context/ThemeContext";
 import styles from "./styles.module.scss";
 
 const NewClass = () => {

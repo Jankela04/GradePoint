@@ -1,4 +1,4 @@
-import Title from "../../../../components/Title/Title";
+import Title from "@/components/Title/Title";
 import NewClassForm from "./components/NewClassForm/NewClassForm";
 
 const NewClassPage = () => {

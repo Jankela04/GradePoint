@@ -1,7 +1,7 @@
 import Card from "../Card/Card";
 import styles from "./styles.module.scss";
-import notesIcon from "../../../../assets/notes-icon.png";
-import gradeImg from "../../../../assets/grade-icon.png";
+import notesIcon from "@/assets/notes-icon.png";
+import gradeImg from "@/assets/grade-icon.png";
 
 const CardContainer = () => {
     return (

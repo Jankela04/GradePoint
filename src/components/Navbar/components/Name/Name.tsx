@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { useTheme } from "../../../../context/ThemeContext";
-import useLocalStorage from "../../../../hooks/useLocalStorage";
+import { useTheme } from "@/context/ThemeContext";
+import useLocalStorage from "@/hooks/useLocalStorage";
 import styles from "./styles.module.scss";
 
 const Name = () => {

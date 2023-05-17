@@ -1,16 +1,16 @@
 import { useNavigate, useParams } from "react-router-dom";
-import Title from "../../../../components/Title/Title";
-import useFetch from "../../../../hooks/useFetch";
-import CalculateGpa from "../../../../utils/CalculateGpa";
+import Title from "@/components/Title/Title";
+import useFetch from "@/hooks/useFetch";
+import CalculateGpa from "@/utils/CalculateGpa";
 import { Class as TClass } from "../../ClassList/ClassList";
 import styles from "./styles.module.scss";
-import Button from "../../../../components/Button/Button";
+import Button from "@/components/Button/Button";
 import GradeList from "./components/GradeList/GradeList";
-import { TNote } from "../../../../components/NoteList/NoteList";
+import { TNote } from "@/components/NoteList/NoteList";
 import ClassNotes from "./components/ClassNotes/ClassNotes";
-import DeleteModal from "../../../../components/Modal/Modal";
+import DeleteModal from "@/components/Modal/Modal";
 import { useState } from "react";
-import axiosService from "../../../../services/axios";
+import axiosService from "@/services/axios";
 
 const Class = () => {
     const { id } = useParams();

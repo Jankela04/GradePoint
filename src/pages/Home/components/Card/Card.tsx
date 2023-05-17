@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useTheme } from "../../../../context/ThemeContext";
+import { useTheme } from "@/context/ThemeContext";
 import styles from "./styles.module.scss";
 
 type Props = {

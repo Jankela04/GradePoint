@@ -1,8 +1,8 @@
-import { NoteFormProvider, TForm } from "../../context/NoteFormContext";
-import { TNote } from "../../components/NoteList/NoteList";
-import NoteForm from "../../components/NoteForm/NoteForm";
+import { NoteFormProvider, TForm } from "@/context/NoteFormContext";
+import { TNote } from "@/components/NoteList/NoteList";
+import NoteForm from "@/components/NoteForm/NoteForm";
 import styles from "./styles.module.scss";
-import Title from "../../components/Title/Title";
+import Title from "@/components/Title/Title";
 
 export type Mode = "edit" | "new";
 

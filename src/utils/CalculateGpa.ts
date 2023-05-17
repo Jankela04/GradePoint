@@ -1,4 +1,4 @@
-import { Class } from "../pages/Classes/ClassList/ClassList";
+import type { Class } from "@/pages/Classes/ClassList/ClassList";
 
 const CalculateGpa = (classobj: Class) => {
     const grades = classobj.grades.map((grade) => grade.grade);

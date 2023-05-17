@@ -2,7 +2,7 @@ import Logo from "../Logo/Logo";
 import Name from "./components/Name/Name";
 import styles from "./styles.module.scss";
 import classNames from "classnames";
-import { useTheme } from "../../context/ThemeContext";
+import { useTheme } from "@/context/ThemeContext";
 import ThemeSwitcher from "./components/ThemeSwitcher/ThemeSwitcher";
 import { Link } from "react-router-dom";
 import { useState } from "react";

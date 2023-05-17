@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axiosService from "../services/axios";
+import axiosService from "@/services/axios";
 
 const useFetch = <T>(url: string) => {
     const [data, setData] = useState<T | null>(null);

@@ -1,5 +1,5 @@
 import styles from "./styles.module.scss";
-import { useNoteForm } from "../../../../context/NoteFormContext";
+import { useNoteForm } from "@/context/NoteFormContext";
 import Input from "../../../Input/Input";
 
 const NoteInfo = () => {

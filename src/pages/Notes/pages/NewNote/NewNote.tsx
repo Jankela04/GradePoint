@@ -1,4 +1,4 @@
-import NoteFormLayout from "../../../../layout/NoteFormLayout/NoteFormLayout";
+import NoteFormLayout from "@/layout/NoteFormLayout/NoteFormLayout";
 
 const NewNote = () => {
     return <NoteFormLayout mode="new" />;

@@ -1,8 +1,8 @@
-import useLocalStorage from "../../hooks/useLocalStorage";
+import useLocalStorage from "@/hooks/useLocalStorage";
 import CardContainer from "./components/Card Container/CardContainer";
 import styles from "./styles.module.scss";
 import classNames from "classnames";
-import { useTheme } from "../../context/ThemeContext";
+import { useTheme } from "@/context/ThemeContext";
 
 const Home = () => {
     const [name] = useLocalStorage("name", "");

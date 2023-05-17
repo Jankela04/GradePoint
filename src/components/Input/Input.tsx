@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import { ChangeEventHandler, FC } from "react";
-import { useTheme } from "../../context/ThemeContext";
+import { useTheme } from "@/context/ThemeContext";
 import styles from "./styles.module.scss";
 
 type InputProps = {
@@ -12,7 +12,7 @@ type InputProps = {
     onChange: ChangeEventHandler<HTMLInputElement>;
     disabled?: boolean;
     className?: string;
-    id: string;
+    id?: string;
 };
 
 const Input: FC<InputProps> = ({

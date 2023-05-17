@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import { v4 } from "uuid";
-import { useTheme } from "../../../../../../context/ThemeContext";
-import { shortFormatDate } from "../../../../../../utils/FormatDate";
+import { useTheme } from "@/context/ThemeContext";
+import { shortFormatDate } from "@/utils/FormatDate";
 import { Grade } from "../../../../ClassList/ClassList";
 import styles from "./styles.module.scss";
 

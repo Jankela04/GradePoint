@@ -1,13 +1,13 @@
 import styles from "./styles.module.scss";
 import { useParams } from "react-router-dom";
-import { TNote } from "../../../../components/NoteList/NoteList";
+import { TNote } from "@/components/NoteList/NoteList";
 import NoteActions from "./components/NoteActions/NoteActions";
-import Tag from "../../../../components/Tag/Tag";
-import { useTheme } from "../../../../context/ThemeContext";
+import Tag from "@/components/Tag/Tag";
+import { useTheme } from "@/context/ThemeContext";
 import classNames from "classnames";
-import useFetch from "../../../../hooks/useFetch";
-import { formatDate } from "../../../../utils/FormatDate";
-import Title from "../../../../components/Title/Title";
+import useFetch from "@/hooks/useFetch";
+import { formatDate } from "@/utils/FormatDate";
+import Title from "@/components/Title/Title";
 
 const Note = () => {
     const { id } = useParams();

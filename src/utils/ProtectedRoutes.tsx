@@ -1,5 +1,5 @@
 import { Navigate, Outlet } from "react-router-dom";
-import useLocalStorage from "../hooks/useLocalStorage";
+import useLocalStorage from "@/hooks/useLocalStorage";
 
 const ProtectedRoutes = () => {
     const [name] = useLocalStorage("name", "");

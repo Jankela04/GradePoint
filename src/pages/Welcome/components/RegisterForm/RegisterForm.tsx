@@ -1,10 +1,10 @@
 import classNames from "classnames";
 import { FormEvent, ChangeEvent } from "react";
 import { useNavigate } from "react-router-dom";
-import Input from "../../../../components/Input/Input";
-import Button from "../../../../components/Button/Button";
-import { useTheme } from "../../../../context/ThemeContext";
-import useLocalStorage from "../../../../hooks/useLocalStorage";
+import Input from "@/components/Input/Input";
+import Button from "@/components/Button/Button";
+import { useTheme } from "@/context/ThemeContext";
+import useLocalStorage from "@/hooks/useLocalStorage";
 import styles from "./styles.module.scss";
 
 const RegisterForm = () => {

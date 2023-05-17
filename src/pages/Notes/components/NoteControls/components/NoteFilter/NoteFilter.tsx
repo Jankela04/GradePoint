@@ -1,5 +1,5 @@
-import { useNoteFilter } from "../../../../../../context/NoteFilterContext";
-import Input from "../../../../../../components/Input/Input";
+import { useNoteFilter } from "@/context/NoteFilterContext";
+import Input from "@/components/Input/Input";
 import styles from "./styles.module.scss";
 
 const NoteFilter = () => {
