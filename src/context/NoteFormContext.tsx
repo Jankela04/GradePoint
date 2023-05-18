@@ -29,13 +29,13 @@ const NoteFormContext = createContext<FormContextProps>({
     setForm: () => {},
 });
 
-const NoteFormProvider = ({
+function NoteFormProvider({
     children,
     formState,
 }: {
     children: ReactNode;
     formState?: TForm | null;
-}) => {
+}) {
     const [searchParams] = useSearchParams();
     const searchParamTag = searchParams.get("tag") || "";
     const [form, setForm] = useState<TForm>(
@@ -51,7 +51,7 @@ const NoteFormProvider = ({
             {children}
         </NoteFormContext.Provider>
     );
-};
+}
 const useNoteForm = () => {
     const { form, setForm } = useContext(NoteFormContext);
     return { form, setForm };

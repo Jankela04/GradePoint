@@ -27,14 +27,14 @@ const NoteFilterContext = createContext<FilterContextProps>({
     setFilter: () => {},
 });
 
-const NoteFilterProvider = ({ children }: { children: ReactNode }) => {
+function NoteFilterProvider({ children }: { children: ReactNode }) {
     const [filter, setFilter] = useState<TNoteFilter>(initialFilterState);
     return (
         <NoteFilterContext.Provider value={{ filter, setFilter }}>
             {children}
         </NoteFilterContext.Provider>
     );
-};
+}
 const useNoteFilter = () => {
     const { filter, setFilter } = useContext(NoteFilterContext);
     return { filter, setFilter };

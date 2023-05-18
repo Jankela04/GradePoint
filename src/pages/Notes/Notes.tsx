@@ -5,19 +5,20 @@ import NoteControls from "./components/NoteControls/NoteControls";
 import NoteList, { TNote } from "@/components/NoteList/NoteList";
 import styles from "./styles.module.scss";
 
-const Notes = () => {
+function Notes() {
     const { data: notes, loading, error } = useFetch<TNote[]>("/notes");
 
-    if (loading)
+    if (loading) {
         return (
             <div className={styles.alert_container}>
                 <p>Loading...</p>
             </div>
         );
+    }
 
     if (error) return <div>Error, Something Went Wrong</div>;
 
-    if (notes)
+    if (notes) {
         return (
             <div className={styles.container}>
                 <Title>Notes</Title>
@@ -27,6 +28,7 @@ const Notes = () => {
                 </NoteFilterProvider>
             </div>
         );
-};
+    }
+}
 
 export default Notes;

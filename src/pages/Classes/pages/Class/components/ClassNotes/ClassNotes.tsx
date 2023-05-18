@@ -4,13 +4,13 @@ import NoteList, { TNote } from "@/components/NoteList/NoteList";
 import { Class } from "../../../../ClassList/ClassList";
 import styles from "./styles.module.scss";
 
-const ClassNotes = ({
+function ClassNotes({
     classObj,
     notes,
 }: {
     classObj: Class;
     notes: TNote[];
-}) => {
+}) {
     const navigate = useNavigate();
     const handleCreateNote = () => {
         navigate(
@@ -36,6 +36,6 @@ const ClassNotes = ({
             <NoteList notes={notes} />
         </>
     );
-};
+}
 
 export default ClassNotes;

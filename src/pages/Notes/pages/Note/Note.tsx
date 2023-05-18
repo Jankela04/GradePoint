@@ -1,32 +1,34 @@
-import styles from "./styles.module.scss";
 import { useParams } from "react-router-dom";
+import classNames from "classnames";
+import styles from "./styles.module.scss";
 import { TNote } from "@/components/NoteList/NoteList";
 import NoteActions from "./components/NoteActions/NoteActions";
 import Tag from "@/components/Tag/Tag";
 import { useTheme } from "@/context/ThemeContext";
-import classNames from "classnames";
 import useFetch from "@/hooks/useFetch";
 import { formatDate } from "@/utils/FormatDate";
 import Title from "@/components/Title/Title";
 
-const Note = () => {
+function Note() {
     const { id } = useParams();
     const { theme } = useTheme();
     const { data: note, loading, error } = useFetch<TNote>(`/notes/${id}`);
 
-    if (loading)
+    if (loading) {
         return (
             <div className={styles.alert}>
                 <span>Loading...</span>
             </div>
         );
+    }
 
-    if (error || !note)
+    if (error || !note) {
         return (
             <div className={styles.alert}>
                 <span>Something Went Wrong</span>
             </div>
         );
+    }
 
     return (
         <>
@@ -37,8 +39,14 @@ const Note = () => {
 
             <div className={styles.container}>
                 <div className={styles.dates}>
-                    <span>Created: {formatDate(note?.created)}</span>
-                    <span>Last Edited: {formatDate(note?.edited)}</span>
+                    <span>
+                        Created:
+                        {formatDate(note?.created)}
+                    </span>
+                    <span>
+                        Last Edited:
+                        {formatDate(note?.edited)}
+                    </span>
                 </div>
                 <div className={classNames(styles.text, styles[theme])}>
                     {note?.text}
@@ -47,5 +55,5 @@ const Note = () => {
             </div>
         </>
     );
-};
+}
 export default Note;

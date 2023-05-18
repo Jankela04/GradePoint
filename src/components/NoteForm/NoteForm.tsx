@@ -1,15 +1,15 @@
+import { FormEvent } from "react";
+import { v4 as uuidv4 } from "uuid";
+import { useNavigate } from "react-router-dom";
 import NoteFormActions from "./components/NoteFormActions/NoteFormActions";
 import NoteInfo from "./components/NoteInfo/NoteInfo";
 import NoteText from "./components/NoteText/NoteText";
-import { FormEvent } from "react";
 import { TNote } from "../NoteList/NoteList";
-import { v4 as uuidv4 } from "uuid";
-import { useNavigate } from "react-router-dom";
 import { initialFormState, useNoteForm } from "@/context/NoteFormContext";
 import { Mode } from "@/layout/NoteFormLayout/NoteFormLayout";
 import axiosService from "@/services/axios";
 
-const NoteForm = ({ mode, note }: { mode: Mode; note: TNote | null }) => {
+function NoteForm({ mode, note }: { mode: Mode; note: TNote | null }) {
     const { form, setForm } = useNoteForm();
 
     const navigate = useNavigate();
@@ -58,6 +58,6 @@ const NoteForm = ({ mode, note }: { mode: Mode; note: TNote | null }) => {
             <NoteFormActions mode={mode} />
         </form>
     );
-};
+}
 
 export default NoteForm;

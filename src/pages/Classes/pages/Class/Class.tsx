@@ -1,4 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom";
+import { useState } from "react";
 import Title from "@/components/Title/Title";
 import useFetch from "@/hooks/useFetch";
 import CalculateGpa from "@/utils/CalculateGpa";
@@ -9,10 +10,9 @@ import GradeList from "./components/GradeList/GradeList";
 import { TNote } from "@/components/NoteList/NoteList";
 import ClassNotes from "./components/ClassNotes/ClassNotes";
 import DeleteModal from "@/components/Modal/Modal";
-import { useState } from "react";
 import axiosService from "@/services/axios";
 
-const Class = () => {
+function Class() {
     const { id } = useParams();
     const navigate = useNavigate();
     const {
@@ -25,7 +25,7 @@ const Class = () => {
     const openModal = () => setModalIsOpen(true);
     const deleteClass = async () => {
         await axiosService.delete(`/classes/${classObj?.id}`);
-        navigate(`/classes`);
+        navigate("/classes");
     };
 
     const { data: notes, loading: notesLoading } = useFetch<TNote[]>(
@@ -34,8 +34,7 @@ const Class = () => {
 
     if (loading || notesLoading) return <Title>Loading...</Title>;
 
-    if (error || !classObj || !notes)
-        return <Title>Something Went Wrong</Title>;
+    if (error || !classObj || !notes) return <Title>Something Went Wrong</Title>;
 
     return (
         <>
@@ -43,17 +42,27 @@ const Class = () => {
             <div className={styles.container}>
                 <div className={styles.header}>
                     <div className={styles.info}>
-                        <span>Teacher: {classObj.teacher}</span>
-                        <span>Gpa: {CalculateGpa(classObj)}</span>
                         <span>
-                            Grades:{" "}
+                            Teacher:
+                            {classObj.teacher}
+                        </span>
+                        <span>
+                            Gpa:
+                            {CalculateGpa(classObj)}
+                        </span>
+                        <span>
+                            Grades:
+                            {" "}
                             {classObj.grades.length === 0
                                 ? "No Grades"
                                 : classObj.grades
-                                      .map((grade) => grade.grade)
-                                      .join(", ")}
+                                    .map((grade) => grade.grade)
+                                    .join(", ")}
                         </span>
-                        <span>Notes: {notes.length}</span>
+                        <span>
+                            Notes:
+                            {notes.length}
+                        </span>
                     </div>
                     <div className={styles.actions}>
                         <Button
@@ -66,11 +75,9 @@ const Class = () => {
                         <Button
                             rounded
                             variant="secondary"
-                            onClick={() =>
-                                navigate(`/classes/${classObj.id}/newGrade`, {
-                                    state: { id: classObj.id },
-                                })
-                            }
+                            onClick={() => navigate(`/classes/${classObj.id}/newGrade`, {
+                                state: { id: classObj.id },
+                            })}
                         >
                             New Grade
                         </Button>
@@ -79,15 +86,15 @@ const Class = () => {
                 <DeleteModal
                     isOpen={modalIsOpen}
                     closeModal={closeModal}
-                    confirmLabel={"Delete"}
+                    confirmLabel="Delete"
                     onConfirm={deleteClass}
-                    title={"Are You sure You want to delete Class?"}
+                    title="Are You sure You want to delete Class?"
                 />
                 <GradeList grades={classObj.grades} />
                 <ClassNotes classObj={classObj} notes={notes} />
             </div>
         </>
     );
-};
+}
 
 export default Class;

@@ -7,7 +7,7 @@ import { useTheme } from "@/context/ThemeContext";
 import useLocalStorage from "@/hooks/useLocalStorage";
 import styles from "./styles.module.scss";
 
-const RegisterForm = () => {
+function RegisterForm() {
     const navigate = useNavigate();
     const [name, setName] = useLocalStorage("name", "");
     const { theme } = useTheme();
@@ -33,7 +33,7 @@ const RegisterForm = () => {
                     type="text"
                     value={name}
                     className={styles.input}
-                    placeholder={"Name"}
+                    placeholder="Name"
                     onChange={handleChange}
                 />
                 <Button type="submit" variant="primary">
@@ -42,6 +42,6 @@ const RegisterForm = () => {
             </form>
         </>
     );
-};
+}
 
 export default RegisterForm;

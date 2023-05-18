@@ -3,7 +3,7 @@ import useFetch from "@/hooks/useFetch";
 import NoteFormLayout from "@/layout/NoteFormLayout/NoteFormLayout";
 import { TNote } from "@/components/NoteList/NoteList";
 
-const Edit = () => {
+function Edit() {
     const { id } = useParams();
     const { data: note, loading, error } = useFetch<TNote>(`/notes/${id}`);
     if (loading) {
@@ -19,6 +19,6 @@ const Edit = () => {
     }
 
     return <NoteFormLayout mode="edit" note={note} />;
-};
+}
 
 export default Edit;

@@ -1,7 +1,7 @@
 import NoteFormLayout from "@/layout/NoteFormLayout/NoteFormLayout";
 
-const NewNote = () => {
+function NewNote() {
     return <NoteFormLayout mode="new" />;
-};
+}
 
 export default NewNote;

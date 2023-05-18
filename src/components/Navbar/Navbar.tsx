@@ -1,13 +1,13 @@
+import classNames from "classnames";
+import { Link } from "react-router-dom";
+import { useState } from "react";
 import Logo from "../Logo/Logo";
 import Name from "./components/Name/Name";
 import styles from "./styles.module.scss";
-import classNames from "classnames";
 import { useTheme } from "@/context/ThemeContext";
 import ThemeSwitcher from "./components/ThemeSwitcher/ThemeSwitcher";
-import { Link } from "react-router-dom";
-import { useState } from "react";
 
-const Navbar = () => {
+function Navbar() {
     const { theme } = useTheme();
     const [showMenu, setShowMenu] = useState(false);
     const toggleMenu = () => {
@@ -19,7 +19,7 @@ const Navbar = () => {
     return (
         <nav className={classNames(styles.navbar, styles[theme])}>
             <div className={styles.left_side}>
-                <Logo type={"small"} />
+                <Logo type="small" />
                 <button className={styles.button} onClick={toggleMenu}>
                     {!showMenu ? <MenuOpenIcon /> : <MenuCloseIcon />}
                 </button>
@@ -27,10 +27,10 @@ const Navbar = () => {
                     className={
                         showMenu
                             ? classNames(
-                                  styles.links,
-                                  styles.active,
-                                  styles[theme]
-                              )
+                                styles.links,
+                                styles.active,
+                                styles[theme]
+                            )
                             : styles.links
                     }
                 >
@@ -56,11 +56,11 @@ const Navbar = () => {
             </div>
         </nav>
     );
-};
+}
 
 export default Navbar;
 
-const MenuOpenIcon = () => {
+function MenuOpenIcon() {
     const { theme } = useTheme();
 
     return (
@@ -82,9 +82,9 @@ const MenuOpenIcon = () => {
             <line x1="4" y1="18" x2="20" y2="18" />
         </svg>
     );
-};
+}
 
-const MenuCloseIcon = () => {
+function MenuCloseIcon() {
     const { theme } = useTheme();
     return (
         <svg
@@ -104,4 +104,4 @@ const MenuCloseIcon = () => {
             <line x1="6" y1="6" x2="18" y2="18" />
         </svg>
     );
-};
+}

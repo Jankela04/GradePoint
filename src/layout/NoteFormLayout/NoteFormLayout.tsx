@@ -8,31 +8,31 @@ export type Mode = "edit" | "new";
 
 type NoteFormLayoutProps =
     | {
-          mode: "new";
-          note?: null;
-      }
+        mode: "new";
+        note?: null;
+    }
     | {
-          mode: "edit";
-          note: TNote;
-      };
-
-const NoteFormLayout = ({ mode, note }: NoteFormLayoutProps) => {
-    const getNoteInfo = (note: TNote): TForm => {
-        return { tag: note.tag, text: note.text, title: note.title };
+        mode: "edit";
+        note: TNote;
     };
 
+function NoteFormLayout({ mode, note }: NoteFormLayoutProps) {
+    const getNoteInfo = (note: TNote): TForm => ({ tag: note.tag, text: note.text, title: note.title });
+
     return (
-        <>
-            <div className={styles.container}>
-                <Title>{mode === "new" ? "Create" : "Edit"} Note</Title>
-                <NoteFormProvider
-                    formState={mode === "new" ? null : getNoteInfo(note)}
-                >
-                    <NoteForm mode={mode} note={mode === "new" ? null : note} />
-                </NoteFormProvider>
-            </div>
-        </>
+        <div className={styles.container}>
+            <Title>
+                {mode === "new" ? "Create" : "Edit"}
+                {" "}
+                Note
+            </Title>
+            <NoteFormProvider
+                formState={mode === "new" ? null : getNoteInfo(note)}
+            >
+                <NoteForm mode={mode} note={mode === "new" ? null : note} />
+            </NoteFormProvider>
+        </div>
     );
-};
+}
 
 export default NoteFormLayout;

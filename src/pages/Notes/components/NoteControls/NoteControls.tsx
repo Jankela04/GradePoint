@@ -3,7 +3,7 @@ import Button from "@/components/Button/Button";
 import NoteFilter from "./components/NoteFilter/NoteFilter";
 import styles from "./styles.module.scss";
 
-const NoteControls = () => {
+function NoteControls() {
     const navigate = useNavigate();
     return (
         <div className={styles.note_controls}>
@@ -17,6 +17,6 @@ const NoteControls = () => {
             </Button>
         </div>
     );
-};
+}
 
 export default NoteControls;

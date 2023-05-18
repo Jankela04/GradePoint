@@ -12,7 +12,9 @@ type Props = {
     label: string;
 };
 
-const Card = ({ title, icon, color, to, label }: Props) => {
+function Card({
+    title, icon, color, to, label
+}: Props) {
     const { theme } = useTheme();
     const [hovered, setHovered] = useState(false);
 
@@ -39,6 +41,6 @@ const Card = ({ title, icon, color, to, label }: Props) => {
             )}
         </div>
     );
-};
+}
 
 export default Card;

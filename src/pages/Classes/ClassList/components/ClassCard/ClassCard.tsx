@@ -1,16 +1,16 @@
 import classNames from "classnames";
+import { v4 as uuidv4 } from "uuid";
+import { useNavigate } from "react-router-dom";
 import { useTheme } from "@/context/ThemeContext";
 import CalculateGpa from "@/utils/CalculateGpa";
 import { Class } from "../../ClassList";
 import styles from "./styles.module.scss";
-import { v4 as uuidv4 } from "uuid";
-import { useNavigate } from "react-router-dom";
 
 type Props = {
     classObj: Class;
 };
 
-const ClassCard = ({ classObj }: Props) => {
+function ClassCard({ classObj }: Props) {
     const { theme } = useTheme();
     const navigate = useNavigate();
     return (
@@ -34,6 +34,6 @@ const ClassCard = ({ classObj }: Props) => {
             </div>
         </div>
     );
-};
+}
 
 export default ClassCard;

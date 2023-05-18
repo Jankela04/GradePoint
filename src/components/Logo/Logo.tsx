@@ -1,12 +1,12 @@
-import styles from "./styles.module.scss";
 import { useNavigate } from "react-router-dom";
 import classnames from "classnames";
+import styles from "./styles.module.scss";
 
 type Props = {
     type: "large" | "small";
 };
 
-const Logo = ({ type }: Props) => {
+function Logo({ type }: Props) {
     const className = type === "large" ? styles.large : styles.small;
     const navigate = useNavigate();
     return (
@@ -20,6 +20,6 @@ const Logo = ({ type }: Props) => {
             <span className={styles.point}>Point</span>
         </span>
     );
-};
+}
 
 export default Logo;

@@ -3,7 +3,7 @@ import { useTheme } from "@/context/ThemeContext";
 import useLocalStorage from "@/hooks/useLocalStorage";
 import styles from "./styles.module.scss";
 
-const Name = () => {
+function Name() {
     const [name, setName] = useLocalStorage("name", "");
     const [editMode, setEditMode] = useState(false);
     const { theme } = useTheme();
@@ -23,7 +23,7 @@ const Name = () => {
                     }}
                 >
                     <input
-                        style={{ width: name.length / 1.11 + "ch" }}
+                        style={{ width: `${name.length / 1.11}ch` }}
                         className={styles.input}
                         autoFocus
                         type="text"
@@ -36,6 +36,6 @@ const Name = () => {
             )}
         </div>
     );
-};
+}
 
 export default Name;

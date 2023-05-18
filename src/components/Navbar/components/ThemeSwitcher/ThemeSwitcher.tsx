@@ -1,7 +1,7 @@
 import { useTheme } from "@/context/ThemeContext";
 import styles from "./styles.module.scss";
 
-const Sun = () => {
+function Sun() {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -20,9 +20,9 @@ const Sun = () => {
             <path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7" />
         </svg>
     );
-};
+}
 
-const Moon = () => {
+function Moon() {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -40,9 +40,9 @@ const Moon = () => {
             <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
         </svg>
     );
-};
+}
 
-const ThemeSwitcher = () => {
+function ThemeSwitcher() {
     const { theme, toggleTheme } = useTheme();
 
     return (
@@ -50,6 +50,6 @@ const ThemeSwitcher = () => {
             {theme === "light" ? <Sun /> : <Moon />}
         </button>
     );
-};
+}
 
 export default ThemeSwitcher;

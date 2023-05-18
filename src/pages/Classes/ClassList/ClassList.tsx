@@ -16,15 +16,16 @@ export type Class = {
     grades: Grade[];
 };
 
-const ClassList = () => {
+function ClassList() {
     const { data: classes, loading, error } = useFetch<Class[]>("/classes");
 
-    if (loading)
+    if (loading) {
         return (
             <Title>
                 <p>Loading...</p>
             </Title>
         );
+    }
 
     if (error) return <Title>Error, Something Went Wrong</Title>;
 
@@ -36,6 +37,6 @@ const ClassList = () => {
             <NewClass />
         </div>
     );
-};
+}
 
 export default ClassList;

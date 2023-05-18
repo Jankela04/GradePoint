@@ -11,22 +11,22 @@ export type TNote = {
     edited: Date;
 };
 
-const NoteList = ({ notes }: { notes: TNote[] }) => {
+function NoteList({ notes }: { notes: TNote[] }) {
     const { filter } = useNoteFilter();
 
     const filteredNotes = notes?.filter(
-        (note) =>
-            note.title.toLowerCase().includes(filter.query.toLowerCase()) ||
-            note.tag.toLowerCase().includes(filter.query.toLowerCase()) ||
-            note.text.toLowerCase().includes(filter.query.toLowerCase())
+        (note) => note.title.toLowerCase().includes(filter.query.toLowerCase())
+            || note.tag.toLowerCase().includes(filter.query.toLowerCase())
+            || note.text.toLowerCase().includes(filter.query.toLowerCase())
     );
 
-    if (!notes?.length)
+    if (!notes?.length) {
         return (
             <div className={styles.alert_container}>
                 <p>You don't have any Notes.</p>
             </div>
         );
+    }
 
     return (
         <div className={styles.container}>
@@ -35,6 +35,6 @@ const NoteList = ({ notes }: { notes: TNote[] }) => {
             ))}
         </div>
     );
-};
+}
 
 export default NoteList;

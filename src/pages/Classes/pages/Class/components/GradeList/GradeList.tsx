@@ -5,12 +5,12 @@ import { shortFormatDate } from "@/utils/FormatDate";
 import { Grade } from "../../../../ClassList/ClassList";
 import styles from "./styles.module.scss";
 
-const GradeList = ({ grades }: { grades: Grade[] }) => {
+function GradeList({ grades }: { grades: Grade[] }) {
     const { theme } = useTheme();
     return (
         <div className={styles.grades}>
             {grades.length === 0 ? (
-                <span></span>
+                <span />
             ) : (
                 grades.map((grade) => (
                     <div
@@ -18,12 +18,15 @@ const GradeList = ({ grades }: { grades: Grade[] }) => {
                         className={classNames(styles.grade, styles[theme])}
                     >
                         <h3>{grade.grade}</h3>
-                        <span>Date: {shortFormatDate(grade.date)}</span>
+                        <span>
+                            Date:
+                            {shortFormatDate(grade.date)}
+                        </span>
                     </div>
                 ))
             )}
         </div>
     );
-};
+}
 
 export default GradeList;

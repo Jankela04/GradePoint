@@ -2,7 +2,7 @@ import styles from "./styles.module.scss";
 import { useNoteForm } from "@/context/NoteFormContext";
 import Input from "../../../Input/Input";
 
-const NoteInfo = () => {
+function NoteInfo() {
     const { form, setForm } = useNoteForm();
     return (
         <div className={styles.note_info}>
@@ -11,9 +11,7 @@ const NoteInfo = () => {
                 placeholder="Title"
                 value={form.title}
                 onChange={(e) => {
-                    setForm((prev) => {
-                        return { ...prev, title: e.target.value };
-                    });
+                    setForm((prev) => ({ ...prev, title: e.target.value }));
                 }}
                 className={styles.input}
             />
@@ -22,14 +20,12 @@ const NoteInfo = () => {
                 placeholder="Tag"
                 value={form.tag}
                 onChange={(e) => {
-                    setForm((prev) => {
-                        return { ...prev, tag: e.target.value };
-                    });
+                    setForm((prev) => ({ ...prev, tag: e.target.value }));
                 }}
                 className={styles.input}
             />
         </div>
     );
-};
+}
 
 export default NoteInfo;
