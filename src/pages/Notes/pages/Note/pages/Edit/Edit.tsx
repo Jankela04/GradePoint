@@ -1,11 +1,11 @@
 import { useParams } from "react-router-dom";
 import useFetch from "@/hooks/useFetch";
 import NoteFormLayout from "@/layout/NoteFormLayout/NoteFormLayout";
-import { TNote } from "@/components/NoteList/NoteList";
+import { Note } from "@/types";
 
 function Edit() {
     const { id } = useParams();
-    const { data: note, loading, error } = useFetch<TNote>(`/notes/${id}`);
+    const { data: note, loading, error } = useFetch<Note>(`/notes/${id}`);
     if (loading) {
         return <div>Loading...</div>;
     }

@@ -3,18 +3,7 @@ import useFetch from "@/hooks/useFetch";
 import ClassCard from "./components/ClassCard/ClassCard";
 import NewClass from "./components/NewClass/NewClass";
 import styles from "./styles.module.scss";
-
-export type Grade = {
-    grade: number;
-    date: Date;
-};
-// TODO extract into types file
-export type Class = {
-    id: string;
-    class: string;
-    teacher: string;
-    grades: Grade[];
-};
+import { Class } from "@/types";
 
 function ClassList() {
     const { data: classes, loading, error } = useFetch<Class[]>("/classes");

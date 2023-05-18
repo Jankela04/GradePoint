@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "@/context/ThemeContext";
 import CalculateGpa from "@/utils/CalculateGpa";
-import { Class } from "../../ClassList";
+import { Class } from "@/types";
 import styles from "./styles.module.scss";
 
 type Props = {

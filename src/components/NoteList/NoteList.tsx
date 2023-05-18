@@ -1,17 +1,9 @@
 import styles from "./styles.module.scss";
 import NoteCard from "./NoteCard/NoteCard";
 import { useNoteFilter } from "@/context/NoteFilterContext";
+import type { Note } from "@/types";
 
-export type TNote = {
-    id: string;
-    title: string;
-    tag: string;
-    text: string;
-    created: Date;
-    edited: Date;
-};
-
-function NoteList({ notes }: { notes: TNote[] }) {
+function NoteList({ notes }: { notes: Note[] }) {
     const { filter } = useNoteFilter();
 
     const filteredNotes = notes?.filter(

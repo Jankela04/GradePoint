@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import classNames from "classnames";
 import styles from "./styles.module.scss";
-import { TNote } from "@/components/NoteList/NoteList";
+import { Note as TNote } from "@/types";
 import NoteActions from "./components/NoteActions/NoteActions";
 import Tag from "@/components/Tag/Tag";
 import { useTheme } from "@/context/ThemeContext";

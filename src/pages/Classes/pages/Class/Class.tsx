@@ -3,11 +3,11 @@ import { useState } from "react";
 import Title from "@/components/Title/Title";
 import useFetch from "@/hooks/useFetch";
 import CalculateGpa from "@/utils/CalculateGpa";
-import { Class as TClass } from "../../ClassList/ClassList";
+import { Class as TClass, Note } from "@/types";
 import styles from "./styles.module.scss";
 import Button from "@/components/Button/Button";
 import GradeList from "./components/GradeList/GradeList";
-import { TNote } from "@/components/NoteList/NoteList";
+
 import ClassNotes from "./components/ClassNotes/ClassNotes";
 import DeleteModal from "@/components/Modal/Modal";
 import axiosService from "@/services/axios";
@@ -28,7 +28,7 @@ function Class() {
         navigate("/classes");
     };
 
-    const { data: notes, loading: notesLoading } = useFetch<TNote[]>(
+    const { data: notes, loading: notesLoading } = useFetch<Note[]>(
         `/notes?tag=${classObj?.class}`
     );
 

@@ -1,12 +1,12 @@
 import classNames from "classnames";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useTheme } from "@/context/ThemeContext";
-import { TNote } from "../NoteList";
+import { Note } from "@/types";
 import styles from "./styles.module.scss";
 import Tag from "../../Tag/Tag";
 import { shortFormatDate } from "@/utils/FormatDate";
 
-function NoteCard({ note }: { note: TNote }) {
+function NoteCard({ note }: { note: Note }) {
     const navigate = useNavigate();
     const location = useLocation();
 

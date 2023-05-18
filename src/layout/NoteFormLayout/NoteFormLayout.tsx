@@ -1,5 +1,5 @@
 import { NoteFormProvider, TForm } from "@/context/NoteFormContext";
-import { TNote } from "@/components/NoteList/NoteList";
+import { Note } from "@/types";
 import NoteForm from "@/components/NoteForm/NoteForm";
 import styles from "./styles.module.scss";
 import Title from "@/components/Title/Title";
@@ -13,11 +13,11 @@ type NoteFormLayoutProps =
     }
     | {
         mode: "edit";
-        note: TNote;
+        note: Note;
     };
 
 function NoteFormLayout({ mode, note }: NoteFormLayoutProps) {
-    const getNoteInfo = (note: TNote): TForm => ({
+    const getNoteInfo = (note: Note): TForm => ({
         tag: note.tag,
         text: note.text,
         title: note.title,

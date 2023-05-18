@@ -2,11 +2,12 @@ import Title from "@/components/Title/Title";
 import { NoteFilterProvider } from "@/context/NoteFilterContext";
 import useFetch from "@/hooks/useFetch";
 import NoteControls from "./components/NoteControls/NoteControls";
-import NoteList, { TNote } from "@/components/NoteList/NoteList";
+import NoteList from "@/components/NoteList/NoteList";
+import { Note } from "@/types";
 import styles from "./styles.module.scss";
 
 function Notes() {
-    const { data: notes, loading, error } = useFetch<TNote[]>("/notes");
+    const { data: notes, loading, error } = useFetch<Note[]>("/notes");
 
     if (loading) {
         return (
