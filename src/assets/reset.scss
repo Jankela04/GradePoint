@@ -8,3 +8,23 @@ body {
     font-family: "Tahoma", "Times New Roman", Times, serif;
     overflow-x: hidden;
 }
+
+button {
+    border: none;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    overflow: visible;
+    text-align: inherit;
+    background: transparent;
+
+    color: inherit;
+    font: inherit;
+
+    line-height: normal;
+
+    -webkit-font-smoothing: inherit;
+    -moz-osx-font-smoothing: inherit;
+
+    -webkit-appearance: none;
+}

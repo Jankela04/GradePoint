@@ -10,10 +10,7 @@ function Home() {
 
     return (
         <div className={classNames(styles.home, styles[theme])}>
-            <h1 className={styles.title}>
-                Hello
-                {name}
-            </h1>
+            <h1 className={styles.title}>{`Hello ${name}`}</h1>
             <CardContainer />
         </div>
     );

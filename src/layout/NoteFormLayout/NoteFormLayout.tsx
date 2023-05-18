@@ -17,14 +17,17 @@ type NoteFormLayoutProps =
     };
 
 function NoteFormLayout({ mode, note }: NoteFormLayoutProps) {
-    const getNoteInfo = (note: TNote): TForm => ({ tag: note.tag, text: note.text, title: note.title });
+    const getNoteInfo = (note: TNote): TForm => ({
+        tag: note.tag,
+        text: note.text,
+        title: note.title,
+    });
 
     return (
         <div className={styles.container}>
             <Title>
                 {mode === "new" ? "Create" : "Edit"}
-                {" "}
-                Note
+                {" Note"}
             </Title>
             <NoteFormProvider
                 formState={mode === "new" ? null : getNoteInfo(note)}

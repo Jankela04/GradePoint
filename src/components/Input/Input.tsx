@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { ChangeEventHandler, FC } from "react";
+import { ChangeEventHandler } from "react";
 import { useTheme } from "@/context/ThemeContext";
 import styles from "./styles.module.scss";
 
@@ -15,16 +15,17 @@ type InputProps = {
     id?: string;
 };
 
-const Input: FC<InputProps> = ({
+function Input({
     autoFocus = false,
+    disabled = false,
     type,
-    name,
-    placeholder,
+    name = "",
+    placeholder = "",
     value,
     onChange,
-    className,
-    id,
-}) => {
+    className = "",
+    id = "",
+}: InputProps) {
     const { theme } = useTheme();
 
     const inputClass = classNames(styles.input, styles[theme], className);
@@ -38,7 +39,8 @@ const Input: FC<InputProps> = ({
             onChange={onChange}
             className={inputClass}
             id={id}
+            disabled={disabled}
         />
     );
-};
+}
 export default Input;

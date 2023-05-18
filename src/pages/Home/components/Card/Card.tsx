@@ -12,9 +12,7 @@ type Props = {
     label: string;
 };
 
-function Card({
-    title, icon, color, to, label
-}: Props) {
+function Card({ title, icon, color, to, label }: Props) {
     const { theme } = useTheme();
     const [hovered, setHovered] = useState(false);
 
@@ -24,22 +22,23 @@ function Card({
 
     const navigate = useNavigate();
     return (
-        <div
-            className={`${styles.card}`}
+        <button
+            type="button"
+            className={styles.card}
             style={cardStyle}
             onClick={() => navigate(to)}
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
         >
             <h3>{title}</h3>
-            <img src={icon} />
+            <img src={icon} alt={`${title}'s icon`} />
 
             {hovered && (
                 <p className={classNames(styles.label, styles[theme])}>
                     {label}
                 </p>
             )}
-        </div>
+        </button>
     );
 }
 

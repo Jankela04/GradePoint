@@ -10,7 +10,8 @@ function Logo({ type }: Props) {
     const className = type === "large" ? styles.large : styles.small;
     const navigate = useNavigate();
     return (
-        <span
+        <button
+            type="button"
             className={classnames(className, styles.logo)}
             onClick={() => {
                 navigate("/home");
@@ -18,7 +19,7 @@ function Logo({ type }: Props) {
         >
             <span className={styles.grade}>Grade</span>
             <span className={styles.point}>Point</span>
-        </span>
+        </button>
     );
 }
 

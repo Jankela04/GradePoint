@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/interactive-supports-focus */
 import { useState } from "react";
 import { useTheme } from "@/context/ThemeContext";
 import useLocalStorage from "@/hooks/useLocalStorage";
@@ -7,12 +8,23 @@ function Name() {
     const [name, setName] = useLocalStorage("name", "");
     const [editMode, setEditMode] = useState(false);
     const { theme } = useTheme();
+
+    const handleClick = () => {
+        setEditMode(true);
+    };
+
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+        if (e.key === "Enter") handleClick();
+    };
+
     return (
         <div
+            role="button"
             onBlur={() => {
                 setEditMode(false);
             }}
-            onClick={() => setEditMode(true)}
+            onKeyDown={handleKeyDown}
+            onClick={handleClick}
             className={styles[theme]}
         >
             {editMode ? (

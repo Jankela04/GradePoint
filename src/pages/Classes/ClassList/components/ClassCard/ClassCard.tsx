@@ -14,7 +14,8 @@ function ClassCard({ classObj }: Props) {
     const { theme } = useTheme();
     const navigate = useNavigate();
     return (
-        <div
+        <button
+            type="button"
             className={classNames(styles.class_card, styles[theme])}
             onClick={() => navigate(`/classes/${classObj.id}`)}
         >
@@ -32,7 +33,7 @@ function ClassCard({ classObj }: Props) {
                     {CalculateGpa(classObj)}
                 </div>
             </div>
-        </div>
+        </button>
     );
 }
 

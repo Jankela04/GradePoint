@@ -23,7 +23,7 @@ function NoteList({ notes }: { notes: TNote[] }) {
     if (!notes?.length) {
         return (
             <div className={styles.alert_container}>
-                <p>You don't have any Notes.</p>
+                <p>You don&apos;t have any Notes.</p>
             </div>
         );
     }

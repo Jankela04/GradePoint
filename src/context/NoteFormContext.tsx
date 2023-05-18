@@ -31,7 +31,7 @@ const NoteFormContext = createContext<FormContextProps>({
 
 function NoteFormProvider({
     children,
-    formState,
+    formState = null,
 }: {
     children: ReactNode;
     formState?: TForm | null;

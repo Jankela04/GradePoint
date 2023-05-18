@@ -1,3 +1,4 @@
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { FormEvent, useState } from "react";
 import DatePicker from "react-datepicker";
 import Input from "@/components/Input/Input";
@@ -5,7 +6,6 @@ import Title from "@/components/Title/Title";
 import styles from "./styles.module.scss";
 import "react-datepicker/dist/react-datepicker.css";
 import Button from "@/components/Button/Button";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
 import convertNumber from "@/utils/ConvertToNumber";
 import useFetch from "@/hooks/useFetch";
 import { Class, Grade } from "../../../../ClassList/ClassList";
@@ -69,12 +69,13 @@ function NewGrade() {
                     />
                 </section>
                 <section className={styles.section}>
-                    <label>Date</label>
+                    <label htmlFor="date">Date</label>
                     <DatePicker
                         className={styles.date_picker}
                         selected={date}
-                        onChange={(date: Date) => setDate(date)}
+                        onChange={(pickedDate: Date) => setDate(pickedDate)}
                         dateFormat="dd/MM/yyyy"
+                        id="date"
                     />
                 </section>
                 <div className={styles.actions}>

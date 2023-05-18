@@ -20,7 +20,11 @@ function Navbar() {
         <nav className={classNames(styles.navbar, styles[theme])}>
             <div className={styles.left_side}>
                 <Logo type="small" />
-                <button className={styles.button} onClick={toggleMenu}>
+                <button
+                    className={styles.button}
+                    onClick={toggleMenu}
+                    type="button"
+                >
                     {!showMenu ? <MenuOpenIcon /> : <MenuCloseIcon />}
                 </button>
                 <div

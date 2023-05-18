@@ -12,26 +12,33 @@ function NoteCard({ note }: { note: TNote }) {
 
     const { theme } = useTheme();
 
+    const handleCardClick = () => {
+        navigate(`/notes/${note.id}`, {
+            state: { prevPath: location.pathname },
+        });
+    };
+
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+        if (e.key === "Enter") handleCardClick();
+    };
+
     return (
         <div
+            role="button"
+            tabIndex={0}
             className={classNames(styles.card, styles[theme])}
-            onClick={() => navigate(`/notes/${note.id}`, {
-                state: { prevPath: location.pathname },
-            })}
+            onClick={handleCardClick}
+            onKeyDown={handleKeyDown}
         >
             <h3 className={styles.title}>{note.title}</h3>
             <div className={classNames(styles.info)}>
                 <Tag tag={note.tag} />
                 <div className={styles.dates}>
                     <span className={classNames(styles.date, styles[theme])}>
-                        Created:
-                        {" "}
-                        {shortFormatDate(note.created)}
+                        {`Created: ${shortFormatDate(note.created)}`}
                     </span>
                     <span className={classNames(styles.date, styles[theme])}>
-                        Edited:
-                        {" "}
-                        {shortFormatDate(note.edited)}
+                        {`Edited: ${shortFormatDate(note.edited)}`}
                     </span>
                 </div>
             </div>
