@@ -7,7 +7,6 @@ import { Class as TClass, Note } from "@/types";
 import styles from "./styles.module.scss";
 import Button from "@/components/Button/Button";
 import GradeList from "./components/GradeList/GradeList";
-
 import ClassNotes from "./components/ClassNotes/ClassNotes";
 import DeleteModal from "@/components/Modal/Modal";
 import axiosService from "@/services/axios";
@@ -34,7 +33,8 @@ function Class() {
 
     if (loading || notesLoading) return <Title>Loading...</Title>;
 
-    if (error || !classObj || !notes) return <Title>Something Went Wrong</Title>;
+    if (error || !classObj || !notes)
+        return <Title>Something Went Wrong</Title>;
 
     return (
         <>
@@ -51,8 +51,7 @@ function Class() {
                             {CalculateGpa(classObj)}
                         </span>
                         <span>
-                            Grades:
-                            {" "}
+                            Grades:{" "}
                             {classObj.grades.length === 0
                                 ? "No Grades"
                                 : classObj.grades
@@ -75,9 +74,11 @@ function Class() {
                         <Button
                             rounded
                             variant="secondary"
-                            onClick={() => navigate(`/classes/${classObj.id}/newGrade`, {
-                                state: { id: classObj.id },
-                            })}
+                            onClick={() =>
+                                navigate(`/classes/${classObj.id}/newGrade`, {
+                                    state: { id: classObj.id },
+                                })
+                            }
                         >
                             New Grade
                         </Button>
