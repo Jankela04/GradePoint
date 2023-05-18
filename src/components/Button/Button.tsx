@@ -1,6 +1,6 @@
-import { FC, ReactNode } from "react";
-import styles from "./styles.module.scss";
+import { ReactNode } from "react";
 import classNames from "classnames";
+import styles from "./styles.module.scss";
 import { useTheme } from "@/context/ThemeContext";
 
 type ButtonProps = {
@@ -9,11 +9,11 @@ type ButtonProps = {
     rounded: boolean;
     onClick: () => void;
     disabled: boolean;
-    type: "button" | "submit" | "reset";
+    type: "button" | "submit";
     className: string;
 };
 
-const Button: FC<Partial<ButtonProps>> = ({
+function Button({
     variant,
     children,
     className = "",
@@ -21,7 +21,7 @@ const Button: FC<Partial<ButtonProps>> = ({
     onClick,
     rounded = false,
     type = "button",
-}) => {
+}: Partial<ButtonProps>) {
     const { theme } = useTheme();
     const buttonClass = classNames(
         styles[theme],
@@ -39,11 +39,11 @@ const Button: FC<Partial<ButtonProps>> = ({
             className={buttonClass}
             onClick={onClick}
             disabled={disabled}
-            type={type}
+            type={type === "button" ? "button" : "submit"}
         >
             {children}
         </button>
     );
-};
+}
 
 export default Button;

@@ -1,4 +1,20 @@
 {
-    "notes": [],
-    "classes": []
+  "notes": [
+    {
+      "title": "I",
+      "tag": "Like",
+      "text": "This",
+      "id": "6a1c2c13-ab3d-4ee0-ace9-c0c24ece05e5",
+      "created": "2023-05-18T10:09:48.808Z",
+      "edited": "2023-05-18T10:09:48.808Z"
+    }
+  ],
+  "classes": [
+    {
+      "id": "d5319742-131b-4ad3-b84a-0f8b9bed691e",
+      "class": "Math",
+      "teacher": "John",
+      "grades": []
+    }
+  ]
 }

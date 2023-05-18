@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import Button from "@/components/Button/Button";
 import styles from "./styles.module.scss";
 
-const Error = () => {
+function Error() {
     const navigate = useNavigate();
     return (
         <div className={styles.page}>
@@ -12,13 +12,13 @@ const Error = () => {
                 variant="primary"
                 rounded
                 onClick={() => {
-                    navigate(`/`);
+                    navigate("/");
                 }}
             >
                 Go Back
             </Button>
         </div>
     );
-};
+}
 
 export default Error;

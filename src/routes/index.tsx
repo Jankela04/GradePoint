@@ -13,7 +13,7 @@ import Welcome from "@/pages/Welcome/Welcome";
 import { ProtectedWelcome, ProtectedRoutes } from "@/utils/ProtectedRoutes";
 import Error from "@/pages/Error/Error";
 
-export const router = createBrowserRouter([
+const router = createBrowserRouter([
     {
         element: <ProtectedWelcome />,
         children: [
@@ -101,3 +101,5 @@ export const router = createBrowserRouter([
         ],
     },
 ]);
+
+export default router;

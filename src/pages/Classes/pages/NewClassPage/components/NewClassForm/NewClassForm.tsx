@@ -16,7 +16,7 @@ const initialFormState: ClassForm = {
     teacher: "",
 };
 
-const NewClassForm = () => {
+function NewClassForm() {
     const [form, setForm] = useState<ClassForm>(initialFormState);
     const navigate = useNavigate();
 
@@ -41,11 +41,7 @@ const NewClassForm = () => {
                 <Input
                     value={form.class}
                     type="text"
-                    onChange={(e) =>
-                        setForm((prev) => {
-                            return { ...prev, class: e.target.value };
-                        })
-                    }
+                    onChange={(e) => setForm((prev) => ({ ...prev, class: e.target.value }))}
                     placeholder="Enter Class Name"
                 />
             </div>
@@ -54,11 +50,10 @@ const NewClassForm = () => {
                 <Input
                     value={form.teacher}
                     type="text"
-                    onChange={(e) =>
-                        setForm((prev) => {
-                            return { ...prev, teacher: e.target.value };
-                        })
-                    }
+                    onChange={(e) => setForm((prev) => ({
+                        ...prev,
+                        teacher: e.target.value,
+                    }))}
                     placeholder="Enter Teacher's Name"
                 />
             </div>
@@ -77,6 +72,6 @@ const NewClassForm = () => {
             </div>
         </form>
     );
-};
+}
 
 export default NewClassForm;

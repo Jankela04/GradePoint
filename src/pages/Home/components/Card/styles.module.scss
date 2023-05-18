@@ -1,6 +1,7 @@
 @import "../../../../assets/variables";
 
 .card {
+    border: none;
     color: white;
     cursor: pointer;
     border-radius: 2em;
@@ -11,6 +12,7 @@
     align-items: center;
     flex-direction: column;
     transition: transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    text-align: left;
     img {
         width: 35%;
         margin: auto;
@@ -43,6 +45,12 @@
 @media only screen and (max-width: calc($desktop-breakpoint)) {
     .label {
         bottom: -3em;
+    }
+}
+
+@media only screen and (max-width: calc($tablet-breakpoint + 100px)) {
+    .card {
+        width: 200px;
     }
 }
 

@@ -1,20 +1,21 @@
 import classNames from "classnames";
-import { useTheme } from "@/context/ThemeContext";
-import CalculateGpa from "@/utils/CalculateGpa";
-import { Class } from "../../ClassList";
-import styles from "./styles.module.scss";
 import { v4 as uuidv4 } from "uuid";
 import { useNavigate } from "react-router-dom";
+import { useTheme } from "@/context/ThemeContext";
+import CalculateGpa from "@/utils/CalculateGpa";
+import { Class } from "@/types";
+import styles from "./styles.module.scss";
 
 type Props = {
     classObj: Class;
 };
 
-const ClassCard = ({ classObj }: Props) => {
+function ClassCard({ classObj }: Props) {
     const { theme } = useTheme();
     const navigate = useNavigate();
     return (
-        <div
+        <button
+            type="button"
             className={classNames(styles.class_card, styles[theme])}
             onClick={() => navigate(`/classes/${classObj.id}`)}
         >
@@ -32,8 +33,8 @@ const ClassCard = ({ classObj }: Props) => {
                     {CalculateGpa(classObj)}
                 </div>
             </div>
-        </div>
+        </button>
     );
-};
+}
 
 export default ClassCard;

@@ -1,5 +1,5 @@
-import styles from "./styles.module.scss";
 import ReactModal from "react-modal";
+import styles from "./styles.module.scss";
 import Button from "../Button/Button";
 
 type ModalProps = {
@@ -28,19 +28,19 @@ const modalStyles = {
     },
 };
 
-const Modal = ({
+function Modal({
     isOpen,
     closeModal,
     title,
     confirmLabel,
     onConfirm,
-}: ModalProps) => {
+}: ModalProps) {
     return (
         <ReactModal
             className={styles.modal}
             isOpen={isOpen}
             preventScroll
-            shouldCloseOnOverlayClick={true}
+            shouldCloseOnOverlayClick
             style={modalStyles}
             onRequestClose={closeModal}
             appElement={document.getElementById("root")}
@@ -61,6 +61,6 @@ const Modal = ({
             </div>
         </ReactModal>
     );
-};
+}
 
 export default Modal;

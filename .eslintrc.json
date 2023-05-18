@@ -7,7 +7,8 @@
         "react-app",
         "airbnb",
         "airbnb-typescript",
-        "plugin:import/typescript"
+        "plugin:import/typescript",
+        "prettier"
     ],
     "overrides": [],
     "ignorePatterns": ["vite.config.ts"],
@@ -17,7 +18,7 @@
         "sourceType": "module",
         "project": "./tsconfig.json"
     },
-    "plugins": ["react", "@typescript-eslint"],
+    "plugins": ["react", "@typescript-eslint", "prettier"],
     "rules": {
         "indent": ["error", 4],
         "@typescript-eslint/indent": ["error", 4],
@@ -28,6 +29,21 @@
         "react/jsx-props-no-spreading": ["warn"],
         "react/jsx-indent": ["error", 4],
         "react/jsx-indent-props": ["error", 4],
-        "import/extensions": ["off"]
+        "import/extensions": ["off"],
+        "@typescript-eslint/comma-dangle": ["off"],
+        "@typescript-eslint/no-shadow": ["off"],
+        "jsx-a11y/label-has-associated-control": [
+            "error",
+            {
+                "required": {
+                    "some": ["nesting", "id"]
+                }
+            }
+        ],
+        "object-curly-newline": ["off"],
+        "no-alert": ["off"],
+        "react/require-default-props": ["off"],
+        "jsx-a11y/no-autofocus": ["off"],
+        "@typescript-eslint/no-use-before-define": ["off"]
     }
 }

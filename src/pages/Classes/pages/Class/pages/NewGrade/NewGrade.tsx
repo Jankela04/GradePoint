@@ -1,17 +1,17 @@
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { FormEvent, useState } from "react";
+import DatePicker from "react-datepicker";
 import Input from "@/components/Input/Input";
 import Title from "@/components/Title/Title";
 import styles from "./styles.module.scss";
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Button from "@/components/Button/Button";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
 import convertNumber from "@/utils/ConvertToNumber";
 import useFetch from "@/hooks/useFetch";
 import { Class, Grade } from "../../../../ClassList/ClassList";
 import axiosService from "@/services/axios";
 
-const NewGrade = () => {
+function NewGrade() {
     const [grade, setGrade] = useState<string>("");
     const [date, setDate] = useState(new Date());
     const navigate = useNavigate();
@@ -26,7 +26,7 @@ const NewGrade = () => {
     const handleCancel = () => {
         const path = location.state?.id
             ? `/classes/${location.state?.id}`
-            : `/classes`;
+            : "/classes";
         navigate(path);
     };
     const handleSubmit = async (e: FormEvent) => {
@@ -35,7 +35,7 @@ const NewGrade = () => {
             const gradeNum = convertNumber(grade);
             const newGrade: Grade = {
                 grade: gradeNum,
-                date: date,
+                date,
             };
             if (classObj) {
                 const newClass: Class = {
@@ -69,12 +69,13 @@ const NewGrade = () => {
                     />
                 </section>
                 <section className={styles.section}>
-                    <label>Date</label>
+                    <label htmlFor="date">Date</label>
                     <DatePicker
                         className={styles.date_picker}
                         selected={date}
-                        onChange={(date: Date) => setDate(date)}
+                        onChange={(pickedDate: Date) => setDate(pickedDate)}
                         dateFormat="dd/MM/yyyy"
+                        id="date"
                     />
                 </section>
                 <div className={styles.actions}>
@@ -93,6 +94,6 @@ const NewGrade = () => {
             </form>
         </>
     );
-};
+}
 
 export default NewGrade;

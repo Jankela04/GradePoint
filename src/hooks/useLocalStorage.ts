@@ -6,15 +6,14 @@ const useLocalStorage = <T>(key: string, initialValue: T) => {
 
         if (savedItem !== null) {
             return JSON.parse(savedItem) as T;
-        } else {
-            localStorage.setItem(key, JSON.stringify(initialValue));
-            return initialValue;
         }
+        localStorage.setItem(key, JSON.stringify(initialValue));
+        return initialValue;
     });
 
     useEffect(() => {
         localStorage.setItem(key, JSON.stringify(value));
-    }, [value]);
+    }, [value, key]);
 
     return [value, setValue] as const;
 };

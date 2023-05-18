@@ -1,16 +1,10 @@
 import { useNavigate, createSearchParams } from "react-router-dom";
 import Button from "@/components/Button/Button";
-import NoteList, { TNote } from "@/components/NoteList/NoteList";
-import { Class } from "../../../../ClassList/ClassList";
+import NoteList from "@/components/NoteList/NoteList";
+import { Class, Note } from "@/types";
 import styles from "./styles.module.scss";
 
-const ClassNotes = ({
-    classObj,
-    notes,
-}: {
-    classObj: Class;
-    notes: TNote[];
-}) => {
+function ClassNotes({ classObj, notes }: { classObj: Class; notes: Note[] }) {
     const navigate = useNavigate();
     const handleCreateNote = () => {
         navigate(
@@ -36,6 +30,6 @@ const ClassNotes = ({
             <NoteList notes={notes} />
         </>
     );
-};
+}
 
 export default ClassNotes;

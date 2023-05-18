@@ -2,7 +2,7 @@ import { useNoteFilter } from "@/context/NoteFilterContext";
 import Input from "@/components/Input/Input";
 import styles from "./styles.module.scss";
 
-const NoteFilter = () => {
+function NoteFilter() {
     const { filter, setFilter } = useNoteFilter();
 
     return (
@@ -12,12 +12,10 @@ const NoteFilter = () => {
             className={styles.input}
             placeholder="Search Notes"
             onChange={(e) => {
-                setFilter(() => {
-                    return { ...filter, query: e.target.value };
-                });
+                setFilter(() => ({ ...filter, query: e.target.value }));
             }}
         />
     );
-};
+}
 
 export default NoteFilter;

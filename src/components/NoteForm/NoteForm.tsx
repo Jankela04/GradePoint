@@ -1,21 +1,21 @@
+import { FormEvent } from "react";
+import { v4 as uuidv4 } from "uuid";
+import { useNavigate } from "react-router-dom";
 import NoteFormActions from "./components/NoteFormActions/NoteFormActions";
 import NoteInfo from "./components/NoteInfo/NoteInfo";
 import NoteText from "./components/NoteText/NoteText";
-import { FormEvent } from "react";
-import { TNote } from "../NoteList/NoteList";
-import { v4 as uuidv4 } from "uuid";
-import { useNavigate } from "react-router-dom";
+import { Note } from "@/types";
 import { initialFormState, useNoteForm } from "@/context/NoteFormContext";
 import { Mode } from "@/layout/NoteFormLayout/NoteFormLayout";
 import axiosService from "@/services/axios";
 
-const NoteForm = ({ mode, note }: { mode: Mode; note: TNote | null }) => {
+function NoteForm({ mode, note }: { mode: Mode; note: Note | null }) {
     const { form, setForm } = useNoteForm();
 
     const navigate = useNavigate();
 
     const createNewNote = async () => {
-        const newNote: TNote = {
+        const newNote: Note = {
             ...form,
             id: uuidv4(),
             created: new Date(),
@@ -25,9 +25,9 @@ const NoteForm = ({ mode, note }: { mode: Mode; note: TNote | null }) => {
         setForm(initialFormState);
         navigate("/notes");
     };
-    const editNote = async (note: TNote | null) => {
+    const editNote = async (note: Note | null) => {
         if (note) {
-            const editedNote: TNote = {
+            const editedNote: Note = {
                 ...form,
                 id: note.id,
                 created: note.created,
@@ -58,6 +58,6 @@ const NoteForm = ({ mode, note }: { mode: Mode; note: TNote | null }) => {
             <NoteFormActions mode={mode} />
         </form>
     );
-};
+}
 
 export default NoteForm;

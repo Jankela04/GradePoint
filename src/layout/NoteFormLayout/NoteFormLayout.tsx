@@ -1,5 +1,5 @@
 import { NoteFormProvider, TForm } from "@/context/NoteFormContext";
-import { TNote } from "@/components/NoteList/NoteList";
+import { Note } from "@/types";
 import NoteForm from "@/components/NoteForm/NoteForm";
 import styles from "./styles.module.scss";
 import Title from "@/components/Title/Title";
@@ -8,31 +8,34 @@ export type Mode = "edit" | "new";
 
 type NoteFormLayoutProps =
     | {
-          mode: "new";
-          note?: null;
-      }
+        mode: "new";
+        note?: null;
+    }
     | {
-          mode: "edit";
-          note: TNote;
-      };
-
-const NoteFormLayout = ({ mode, note }: NoteFormLayoutProps) => {
-    const getNoteInfo = (note: TNote): TForm => {
-        return { tag: note.tag, text: note.text, title: note.title };
+        mode: "edit";
+        note: Note;
     };
 
+function NoteFormLayout({ mode, note }: NoteFormLayoutProps) {
+    const getNoteInfo = (note: Note): TForm => ({
+        tag: note.tag,
+        text: note.text,
+        title: note.title,
+    });
+
     return (
-        <>
-            <div className={styles.container}>
-                <Title>{mode === "new" ? "Create" : "Edit"} Note</Title>
-                <NoteFormProvider
-                    formState={mode === "new" ? null : getNoteInfo(note)}
-                >
-                    <NoteForm mode={mode} note={mode === "new" ? null : note} />
-                </NoteFormProvider>
-            </div>
-        </>
+        <div className={styles.container}>
+            <Title>
+                {mode === "new" ? "Create" : "Edit"}
+                {" Note"}
+            </Title>
+            <NoteFormProvider
+                formState={mode === "new" ? null : getNoteInfo(note)}
+            >
+                <NoteForm mode={mode} note={mode === "new" ? null : note} />
+            </NoteFormProvider>
+        </div>
     );
-};
+}
 
 export default NoteFormLayout;

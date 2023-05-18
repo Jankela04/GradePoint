@@ -1,11 +1,11 @@
 import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useState } from "react";
 import styles from "./styles.module.scss";
 import Button from "@/components/Button/Button";
-import { useState } from "react";
 import DeleteModal from "@/components/Modal/Modal";
 import axiosService from "@/services/axios";
 
-const NoteActions = () => {
+function NoteActions() {
     const [isOpen, setIsOpen] = useState(false);
     const closeModal = () => setIsOpen(false);
     const openModal = () => setIsOpen(true);
@@ -32,7 +32,8 @@ const NoteActions = () => {
     return (
         <div className={styles.btn_container}>
             <Button onClick={handleGoBackClick} variant="neutral" rounded>
-                Go Back{" "}
+                Go Back
+                {" "}
             </Button>
             <div className={styles.note_alter_btn_container}>
                 <Button onClick={handleEditClick} variant="primary" rounded>
@@ -44,13 +45,13 @@ const NoteActions = () => {
                 <DeleteModal
                     isOpen={isOpen}
                     closeModal={closeModal}
-                    confirmLabel={"Delete"}
+                    confirmLabel="Delete"
                     onConfirm={deleteNote}
-                    title={"Are You sure You want to delete this Note?"}
+                    title="Are You sure You want to delete this Note?"
                 />
             </div>
         </div>
     );
-};
+}
 
 export default NoteActions;
