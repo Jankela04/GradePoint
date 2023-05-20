@@ -6,14 +6,15 @@ import NoteForm from "@/components/NoteForm/NoteForm";
 import styles from "./styles.module.scss";
 import Title from "@/components/Title/Title";
 
+// prettier-ignore
 export type NoteFormType =
     | {
-          mode: "new";
-          note?: null;
+        mode: "new";
+        note?: null;
       }
     | {
-          mode: "edit";
-          note: Note;
+        mode: "edit";
+        note: Note;
       };
 
 function NoteFormLayout(noteFormProps: NoteFormType) {
