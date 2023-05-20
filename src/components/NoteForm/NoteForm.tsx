@@ -4,8 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import classNames from "classnames";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { Note } from "@/types";
-import { Mode } from "@/layout/NoteFormLayout/NoteFormLayout";
+import { NoteFormType } from "@/layout/NoteFormLayout/NoteFormLayout";
 import noteFormSchema, { NoteForm as TNoteForm } from "./noteFormSchema";
 
 import styles from "./styles.module.scss";
@@ -17,7 +16,7 @@ import Input from "../Input/Input";
 import createNewNote from "./api/createNote";
 import editNote from "./api/editNote";
 
-function NoteForm({ mode, note }: { mode: Mode; note: Note | null }) {
+function NoteForm({ mode, note }: NoteFormType) {
     const { register, handleSubmit } = useForm<TNoteForm>({
         resolver: zodResolver(noteFormSchema),
     });

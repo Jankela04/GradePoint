@@ -1,23 +1,24 @@
-import { NoteFormProvider, TForm } from "@/context/NoteFormContext";
+/* eslint-disable react/jsx-props-no-spreading */
+import { NoteFormProvider } from "@/context/NoteFormContext";
+import { NoteForm as TNoteForm } from "@/components/NoteForm/noteFormSchema";
 import { Note } from "@/types";
 import NoteForm from "@/components/NoteForm/NoteForm";
 import styles from "./styles.module.scss";
 import Title from "@/components/Title/Title";
 
-export type Mode = "edit" | "new";
-
-type NoteFormLayoutProps =
+export type NoteFormType =
     | {
-        mode: "new";
-        note?: null;
-    }
+          mode: "new";
+          note?: null;
+      }
     | {
-        mode: "edit";
-        note: Note;
-    };
+          mode: "edit";
+          note: Note;
+      };
 
-function NoteFormLayout({ mode, note }: NoteFormLayoutProps) {
-    const getNoteInfo = (note: Note): TForm => ({
+function NoteFormLayout(noteFormProps: NoteFormType) {
+    const { mode, note } = noteFormProps;
+    const getNoteInfo = (note: Note): TNoteForm => ({
         tag: note.tag,
         text: note.text,
         title: note.title,
@@ -32,7 +33,7 @@ function NoteFormLayout({ mode, note }: NoteFormLayoutProps) {
             <NoteFormProvider
                 formState={mode === "new" ? null : getNoteInfo(note)}
             >
-                <NoteForm mode={mode} note={mode === "new" ? null : note} />
+                <NoteForm {...noteFormProps} />
             </NoteFormProvider>
         </div>
     );
