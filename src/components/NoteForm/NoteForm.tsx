@@ -16,9 +16,14 @@ import Input from "../Input/Input";
 import createNewNote from "./api/createNote";
 import editNote from "./api/editNote";
 
-function NoteForm({ mode, note }: NoteFormType) {
+type NoteFormProps = NoteFormType & {
+    initialValues: TNoteForm;
+};
+
+function NoteForm({ mode, note, initialValues }: NoteFormProps) {
     const { register, handleSubmit } = useForm<TNoteForm>({
         resolver: zodResolver(noteFormSchema),
+        defaultValues: initialValues,
     });
 
     const { theme } = useTheme();

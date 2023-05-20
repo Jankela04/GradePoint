@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import { NoteFormProvider } from "@/context/NoteFormContext";
+import { useSearchParams } from "react-router-dom";
 import { NoteForm as TNoteForm } from "@/components/NoteForm/noteFormSchema";
 import { Note } from "@/types";
 import NoteForm from "@/components/NoteForm/NoteForm";
@@ -11,19 +11,27 @@ export type NoteFormType =
     | {
         mode: "new";
         note?: null;
-      }
+    }
     | {
         mode: "edit";
         note: Note;
-      };
+    };
 
 function NoteFormLayout(noteFormProps: NoteFormType) {
     const { mode, note } = noteFormProps;
+    const [searchParams] = useSearchParams();
+    const searchParamTag = searchParams.get("tag") || "";
+
     const getNoteInfo = (note: Note): TNoteForm => ({
         tag: note.tag,
         text: note.text,
         title: note.title,
     });
+
+    const initialValues: TNoteForm =
+        mode === "new"
+            ? { title: "", tag: searchParamTag, text: "" }
+            : getNoteInfo(note);
 
     return (
         <div className={styles.container}>
@@ -31,11 +39,7 @@ function NoteFormLayout(noteFormProps: NoteFormType) {
                 {mode === "new" ? "Create" : "Edit"}
                 {" Note"}
             </Title>
-            <NoteFormProvider
-                formState={mode === "new" ? null : getNoteInfo(note)}
-            >
-                <NoteForm {...noteFormProps} />
-            </NoteFormProvider>
+            <NoteForm {...noteFormProps} initialValues={initialValues} />
         </div>
     );
 }
