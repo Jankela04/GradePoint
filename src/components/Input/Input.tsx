@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { forwardRef } from "react";
+import { InputHTMLAttributes, forwardRef } from "react";
 import { useTheme } from "@/context/ThemeContext";
 import styles from "./styles.module.scss";
 
@@ -11,7 +11,7 @@ type InputProps = {
     disabled?: boolean;
     className?: string;
     id?: string;
-};
+} & InputHTMLAttributes<HTMLInputElement>;
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
     (
@@ -23,6 +23,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             placeholder = "",
             className = "",
             id = "",
+            ...rest
         },
         ref
     ) => {
@@ -39,6 +40,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
                 id={id}
                 disabled={disabled}
                 ref={ref}
+                {...rest}
             />
         );
     }

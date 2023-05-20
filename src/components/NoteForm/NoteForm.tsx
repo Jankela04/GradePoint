@@ -44,6 +44,8 @@ function NoteForm({ mode, note }: NoteFormType) {
         }
         navigate("/notes");
     };
+    console.log({ ...register("tag") });
+
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <div className={styles.note_info}>
