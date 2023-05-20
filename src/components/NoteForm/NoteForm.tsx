@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import { useForm } from "react-hook-form";
 import { useLocation, useNavigate } from "react-router-dom";
 import classNames from "classnames";
@@ -40,8 +39,6 @@ function NoteForm({ mode, note, initialValues }: NoteFormProps) {
     };
 
     const onSubmit = async (data: TNoteForm) => {
-        console.log("Data");
-        console.log(data);
         if (mode === "new") {
             createNewNote(data);
         } else {
@@ -49,7 +46,6 @@ function NoteForm({ mode, note, initialValues }: NoteFormProps) {
         }
         navigate("/notes");
     };
-    console.log({ ...register("tag") });
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>

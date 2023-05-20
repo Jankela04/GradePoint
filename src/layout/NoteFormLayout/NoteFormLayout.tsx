@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import { useSearchParams } from "react-router-dom";
 import { NoteForm as TNoteForm } from "@/components/NoteForm/noteFormSchema";
 import { Note } from "@/types";
