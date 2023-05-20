@@ -1,61 +1,84 @@
-import { FormEvent } from "react";
-import { v4 as uuidv4 } from "uuid";
-import { useNavigate } from "react-router-dom";
-import NoteFormActions from "./components/NoteFormActions/NoteFormActions";
-import NoteInfo from "./components/NoteInfo/NoteInfo";
-import NoteText from "./components/NoteText/NoteText";
+/* eslint-disable react/jsx-props-no-spreading */
+import { useForm } from "react-hook-form";
+import { useLocation, useNavigate } from "react-router-dom";
+import classNames from "classnames";
+import { zodResolver } from "@hookform/resolvers/zod";
+
 import { Note } from "@/types";
-import { initialFormState, useNoteForm } from "@/context/NoteFormContext";
 import { Mode } from "@/layout/NoteFormLayout/NoteFormLayout";
-import axiosService from "@/services/axios";
+import noteFormSchema, { NoteForm as TNoteForm } from "./noteFormSchema";
+
+import styles from "./styles.module.scss";
+import { useTheme } from "@/context/ThemeContext";
+
+import Button from "../Button/Button";
+import Input from "../Input/Input";
+
+import createNewNote from "./api/createNote";
+import editNote from "./api/editNote";
 
 function NoteForm({ mode, note }: { mode: Mode; note: Note | null }) {
-    const { form, setForm } = useNoteForm();
+    const { register, handleSubmit } = useForm<TNoteForm>({
+        resolver: zodResolver(noteFormSchema),
+    });
+
+    const { theme } = useTheme();
 
     const navigate = useNavigate();
+    const location = useLocation();
 
-    const createNewNote = async () => {
-        const newNote: Note = {
-            ...form,
-            id: uuidv4(),
-            created: new Date(),
-            edited: new Date(),
-        };
-        await axiosService.post("/notes", newNote);
-        setForm(initialFormState);
-        navigate("/notes");
-    };
-    const editNote = async (note: Note | null) => {
-        if (note) {
-            const editedNote: Note = {
-                ...form,
-                id: note.id,
-                created: note.created,
-                edited: new Date(),
-            };
-            await axiosService.put(`/notes/${note.id}`, editedNote);
-            setForm(initialFormState);
+    const handleCancel = () => {
+        if (location.state?.fromClass) {
+            navigate(`/classes/${location.state.fromClass}`);
+        } else {
             navigate("/notes");
         }
     };
 
-    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        if (form.tag && form.text && form.title) {
-            if (mode === "new") {
-                createNewNote();
-            } else {
-                editNote(note);
-            }
+    const onSubmit = async (data: TNoteForm) => {
+        console.log("Data");
+        console.log(data);
+        if (mode === "new") {
+            createNewNote(data);
         } else {
-            alert("Please fill all inputs.");
+            editNote(note, data);
         }
+        navigate("/notes");
     };
     return (
-        <form onSubmit={(e) => handleSubmit(e)}>
-            <NoteInfo />
-            <NoteText />
-            <NoteFormActions mode={mode} />
+        <form onSubmit={handleSubmit(onSubmit)}>
+            <div className={styles.note_info}>
+                <Input
+                    type="text"
+                    placeholder="Title"
+                    className={styles.input}
+                    {...register("title")}
+                />
+                <Input
+                    type="text"
+                    placeholder="Tag"
+                    className={styles.input}
+                    {...register("tag")}
+                />
+            </div>
+            <textarea
+                className={classNames(styles.textarea, styles[theme])}
+                placeholder="Your note..."
+                {...register("text")}
+            />
+            <div className={styles.actions}>
+                <Button
+                    type="button"
+                    variant="neutral"
+                    rounded
+                    onClick={handleCancel}
+                >
+                    Cancel
+                </Button>
+                <Button type="submit" variant="primary" rounded>
+                    {mode === "new" ? "Create" : "Edit"} Note
+                </Button>
+            </div>
         </form>
     );
 }

@@ -1,4 +1,12 @@
-@import "../../../../assets/variables";
+@import "../../assets/variables";
+
+.note_info {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 2em;
+    margin-bottom: 2em;
+}
 
 .textarea {
     overflow: auto;
@@ -17,5 +25,18 @@
     &.light {
         border: 1px solid $bg-light-border;
         background-color: $bg-light-action;
+    }
+}
+
+.actions {
+    display: flex;
+    width: 100%;
+    margin-top: 2em;
+    justify-content: space-between;
+}
+
+@media only screen and (max-width: $desktop-breakpoint) {
+    .input {
+        width: 100%;
     }
 }
