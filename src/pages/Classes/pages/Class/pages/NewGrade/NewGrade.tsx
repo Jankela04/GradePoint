@@ -2,15 +2,17 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, Controller } from "react-hook-form";
+import "react-datepicker/dist/react-datepicker.css";
+
 import Input from "@/components/Input/Input";
 import Title from "@/components/Title/Title";
-import styles from "./styles.module.scss";
-import "react-datepicker/dist/react-datepicker.css";
 import Button from "@/components/Button/Button";
+import styles from "./styles.module.scss";
+
 import useFetch from "@/hooks/useFetch";
 import type { Class, Grade } from "@/types";
-import axiosService from "@/services/axios";
 import newGradeSchema from "./newGradeSchema";
+import addGrade from "./api/addGrade";
 
 function NewGrade() {
     const { register, handleSubmit, control } = useForm<Grade>({
@@ -34,28 +36,15 @@ function NewGrade() {
             : "/classes";
         navigate(path);
     };
-    const onSubmit = async (data: Grade) => {
-        const { grade, date } = data;
-        try {
-            const newGrade: Grade = {
-                grade,
-                date,
-            };
-            if (classObj) {
-                const newClass: Class = {
-                    ...classObj,
-                    grades: [...classObj.grades, newGrade],
-                };
-                await axiosService.put(`/classes/${classObj?.id}`, newClass);
-                navigate(`/classes/${classObj?.id}`);
-            }
-        } catch (err: any) {
-            alert(err.message);
-        }
-    };
+
     if (loading) return <Title>Loading...</Title>;
 
     if (error || !classObj) return <Title>Something Went Wrong</Title>;
+
+    const onSubmit = async (data: Grade) => {
+        addGrade(data, classObj);
+        navigate(`/classes/${classObj.id}`);
+    };
 
     return (
         <>
