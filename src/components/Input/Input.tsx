@@ -4,14 +4,18 @@ import { useTheme } from "@/context/ThemeContext";
 import styles from "./styles.module.scss";
 
 type InputProps = {
+    label: string;
+    errorText: string;
     autoFocus?: boolean;
     type: string;
     name?: string;
     placeholder?: string;
     disabled?: boolean;
     className?: string;
-    id?: string;
+    id: string;
 } & InputHTMLAttributes<HTMLInputElement>;
+
+const DANGER_COLOR = "#d10000";
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
     (
@@ -23,25 +27,37 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             placeholder = "",
             className = "",
             id = "",
+            label = "",
+            errorText = "",
             ...rest
         },
         ref
     ) => {
         const { theme } = useTheme();
 
+        const isError = errorText !== "";
+
         const inputClass = classNames(styles.input, styles[theme], className);
+
         return (
-            <input
-                autoFocus={autoFocus}
-                type={type}
-                name={name}
-                placeholder={placeholder}
-                className={inputClass}
-                id={id}
-                disabled={disabled}
-                ref={ref}
-                {...rest}
-            />
+            <div className={styles.input_wrapper}>
+                <label htmlFor={id}>{label}</label>
+                <input
+                    style={{
+                        outline: isError ? `2px solid ${DANGER_COLOR}` : "",
+                    }}
+                    autoFocus={autoFocus}
+                    type={type}
+                    name={name}
+                    placeholder={placeholder}
+                    className={inputClass}
+                    id={id}
+                    disabled={disabled}
+                    ref={ref}
+                    {...rest}
+                />
+                {isError && <span>{errorText}</span>}
+            </div>
         );
     }
 );
