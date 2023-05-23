@@ -15,7 +15,12 @@ import newGradeSchema from "./newGradeSchema";
 import addGrade from "./api/addGrade";
 
 function NewGrade() {
-    const { register, handleSubmit, control } = useForm<Grade>({
+    const {
+        register,
+        handleSubmit,
+        control,
+        formState: { errors },
+    } = useForm<Grade>({
         resolver: zodResolver(newGradeSchema),
         defaultValues: {
             date: new Date(),
@@ -51,8 +56,9 @@ function NewGrade() {
             <Title>New Grade</Title>
             <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
                 <section className={styles.section}>
-                    <label htmlFor="grade">Grade</label>
                     <Input
+                        label="Grade: "
+                        errorText={errors.grade?.message ?? ""}
                         autoFocus
                         className={styles.input}
                         type="number"

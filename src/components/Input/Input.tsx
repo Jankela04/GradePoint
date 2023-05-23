@@ -41,7 +41,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
 
         return (
             <div className={styles.input_wrapper}>
-                <label htmlFor={id}>{label}</label>
+                {label !== "" && <label htmlFor={id}>{label}</label>}
                 <input
                     style={{
                         outline: isError ? `2px solid ${DANGER_COLOR}` : "",

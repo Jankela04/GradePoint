@@ -37,11 +37,14 @@ function NewClassForm() {
     return (
         <form className={styles.form} onSubmit={(e) => handleSubmit(e)}>
             <div className={styles.section}>
-                <label htmlFor="class">Class Name</label>
                 <Input
+                    id="Class"
+                    label="Class Name:"
                     value={form.class}
                     type="text"
-                    onChange={(e) => setForm((prev) => ({ ...prev, class: e.target.value }))}
+                    onChange={(e) =>
+                        setForm((prev) => ({ ...prev, class: e.target.value }))
+                    }
                     placeholder="Enter Class Name"
                 />
             </div>
@@ -50,10 +53,12 @@ function NewClassForm() {
                 <Input
                     value={form.teacher}
                     type="text"
-                    onChange={(e) => setForm((prev) => ({
-                        ...prev,
-                        teacher: e.target.value,
-                    }))}
+                    onChange={(e) =>
+                        setForm((prev) => ({
+                            ...prev,
+                            teacher: e.target.value,
+                        }))
+                    }
                     placeholder="Enter Teacher's Name"
                 />
             </div>

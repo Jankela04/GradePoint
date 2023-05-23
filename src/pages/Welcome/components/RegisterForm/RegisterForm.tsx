@@ -29,14 +29,22 @@ function RegisterForm() {
             >
                 {" "}
                 <Input
+                    autoComplete="off"
+                    errorText=""
+                    id="name"
+                    label=""
                     autoFocus
                     type="text"
                     value={name}
-                    className={styles.input}
+                    className={styles.register_input}
                     placeholder="Name"
                     onChange={handleChange}
                 />
-                <Button type="submit" variant="primary">
+                <Button
+                    type="submit"
+                    className={styles.button}
+                    variant="primary"
+                >
                     Next
                 </Button>
             </form>

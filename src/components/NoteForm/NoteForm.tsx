@@ -20,7 +20,11 @@ type NoteFormProps = NoteFormType & {
 };
 
 function NoteForm({ mode, note, initialValues }: NoteFormProps) {
-    const { register, handleSubmit } = useForm<TNoteForm>({
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm<TNoteForm>({
         resolver: zodResolver(noteFormSchema),
         defaultValues: initialValues,
     });
@@ -51,21 +55,27 @@ function NoteForm({ mode, note, initialValues }: NoteFormProps) {
         <form onSubmit={handleSubmit(onSubmit)}>
             <div className={styles.note_info}>
                 <Input
+                    id="title"
+                    label="Title"
+                    errorText={errors.title?.message ?? ""}
                     type="text"
-                    placeholder="Title"
+                    placeholder="e.g. Pythagorean theorem"
                     className={styles.input}
                     {...register("title")}
                 />
                 <Input
+                    id="tag"
+                    label="Tag"
+                    errorText={errors.tag?.message ?? ""}
                     type="text"
-                    placeholder="Tag"
+                    placeholder="e.g. Math"
                     className={styles.input}
                     {...register("tag")}
                 />
             </div>
             <textarea
                 className={classNames(styles.textarea, styles[theme])}
-                placeholder="Your note..."
+                placeholder="Your note... e.g. a^2 + b^2 = c^2"
                 {...register("text")}
             />
             <div className={styles.actions}>
