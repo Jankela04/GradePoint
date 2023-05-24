@@ -57,6 +57,7 @@ function NewGrade() {
             <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
                 <section className={styles.section}>
                     <Input
+                        center
                         label="Grade: "
                         errorText={errors.grade?.message ?? ""}
                         autoFocus

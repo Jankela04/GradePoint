@@ -4,6 +4,7 @@ import { useTheme } from "@/context/ThemeContext";
 import styles from "./styles.module.scss";
 
 type InputProps = {
+    center?: boolean;
     label: string;
     errorText: string;
     autoFocus?: boolean;
@@ -29,6 +30,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             id = "",
             label = "",
             errorText = "",
+            center = false,
             ...rest
         },
         ref
@@ -40,7 +42,10 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         const inputClass = classNames(styles.input, styles[theme], className);
 
         return (
-            <div className={styles.input_wrapper}>
+            <div
+                className={styles.input_wrapper}
+                style={{ alignItems: center ? "center" : "" }}
+            >
                 {label !== "" && <label htmlFor={id}>{label}</label>}
                 <input
                     style={{
