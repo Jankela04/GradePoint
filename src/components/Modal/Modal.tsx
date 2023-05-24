@@ -43,7 +43,7 @@ function Modal({
             shouldCloseOnOverlayClick
             style={modalStyles}
             onRequestClose={closeModal}
-            appElement={document.getElementById("root")}
+            appElement={document.getElementById("root")!}
         >
             <h3 className={styles.title}>{title}</h3>
             <div className={styles.actions}>
