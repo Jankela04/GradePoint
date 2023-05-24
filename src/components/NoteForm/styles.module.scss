@@ -8,6 +8,12 @@
     margin-bottom: 2em;
 }
 
+.textarea_error {
+    font-weight: bold;
+    padding: 1em;
+    color: $danger;
+}
+
 .textarea {
     overflow: auto;
     padding: 0.5em;

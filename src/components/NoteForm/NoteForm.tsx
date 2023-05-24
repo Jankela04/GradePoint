@@ -78,6 +78,11 @@ function NoteForm({ mode, note, initialValues }: NoteFormProps) {
                 placeholder="Your note... e.g. a^2 + b^2 = c^2"
                 {...register("text")}
             />
+            {errors.text && (
+                <span className={styles.textarea_error}>
+                    {errors.text.message}
+                </span>
+            )}
             <div className={styles.actions}>
                 <Button
                     type="button"
