@@ -1,9 +1,10 @@
 import { z } from "zod";
+import { REQUIRED_ERROR_MESSAGE } from "@/constants";
 
 const noteFormSchema = z.object({
-    title: z.string().nonempty(),
-    tag: z.string().nonempty(),
-    text: z.string().nonempty(),
+    title: z.string().nonempty({ message: REQUIRED_ERROR_MESSAGE }),
+    tag: z.string().nonempty({ message: REQUIRED_ERROR_MESSAGE }),
+    text: z.string().nonempty({ message: REQUIRED_ERROR_MESSAGE }),
 });
 
 export type NoteForm = z.infer<typeof noteFormSchema>;
