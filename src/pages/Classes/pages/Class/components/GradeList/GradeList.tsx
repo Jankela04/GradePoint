@@ -2,7 +2,7 @@ import classNames from "classnames";
 import { v4 } from "uuid";
 import { useTheme } from "@/context/ThemeContext";
 import { shortFormatDate } from "@/utils/FormatDate";
-import { Grade } from "../../../../ClassList/ClassList";
+import { Grade } from "@/types";
 import styles from "./styles.module.scss";
 
 function GradeList({ grades }: { grades: Grade[] }) {

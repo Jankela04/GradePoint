@@ -1,60 +1,57 @@
-import { FormEvent, useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { useNavigate } from "react-router-dom";
 import { v4 } from "uuid";
 import Button from "@/components/Button/Button";
 import Input from "@/components/Input/Input";
-import axiosService from "@/services/axios";
 import styles from "./styles.module.scss";
-
-type ClassForm = {
-    class: string;
-    teacher: string;
-};
-
-const initialFormState: ClassForm = {
-    class: "",
-    teacher: "",
-};
+import {
+    NewClassForm as TNewClassForm,
+    newClassSchema,
+} from "./newClassSchema";
+import createClass from "./api/createClass";
 
 function NewClassForm() {
-    const [form, setForm] = useState<ClassForm>(initialFormState);
+    const {
+        register,
+        handleSubmit,
+        reset,
+        formState: { errors },
+    } = useForm<TNewClassForm>({
+        resolver: zodResolver(newClassSchema),
+    });
     const navigate = useNavigate();
 
-    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        if (form.class === "" || form.teacher === "") {
-            alert("Please Fill all inputs");
-        } else {
-            const newClass = { id: v4(), ...form, grades: [] };
-            await axiosService.post("/classes", newClass);
-            navigate(`/classes/${newClass.id}`);
-        }
+    const onSubmit = async (data: TNewClassForm) => {
+        const newClass = { id: v4(), ...data, grades: [] };
+        createClass(newClass);
+        navigate(`/classes/${newClass.id}`);
     };
     const handleCancelClick = () => {
-        setForm(initialFormState);
+        reset();
         navigate("/classes");
     };
+
     return (
-        <form className={styles.form} onSubmit={(e) => handleSubmit(e)}>
+        <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
             <div className={styles.section}>
-                <label htmlFor="class">Class Name</label>
                 <Input
-                    value={form.class}
+                    id="Class"
+                    label="Class Name:"
                     type="text"
-                    onChange={(e) => setForm((prev) => ({ ...prev, class: e.target.value }))}
-                    placeholder="Enter Class Name"
+                    errorText={errors.class?.message ?? ""}
+                    placeholder="e.g. Chemistry"
+                    {...register("class")}
                 />
             </div>
             <div className={styles.section}>
-                <label htmlFor="class">Teacher</label>
                 <Input
-                    value={form.teacher}
+                    id="Teacher"
+                    label="Teacher's Name:"
                     type="text"
-                    onChange={(e) => setForm((prev) => ({
-                        ...prev,
-                        teacher: e.target.value,
-                    }))}
-                    placeholder="Enter Teacher's Name"
+                    errorText={errors.teacher?.message ?? ""}
+                    placeholder="e.g. Walter White"
+                    {...register("teacher")}
                 />
             </div>
             <div className={styles.actions}>

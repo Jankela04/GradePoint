@@ -7,10 +7,13 @@ function NoteFilter() {
 
     return (
         <Input
+            label="Search Notes"
+            errorText=""
+            id="search"
             type="text"
             value={filter.query}
             className={styles.input}
-            placeholder="Search Notes"
+            placeholder="e.g. Math"
             onChange={(e) => {
                 setFilter(() => ({ ...filter, query: e.target.value }));
             }}

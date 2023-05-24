@@ -1,19 +1,31 @@
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { FormEvent, useState } from "react";
 import DatePicker from "react-datepicker";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm, Controller } from "react-hook-form";
+import "react-datepicker/dist/react-datepicker.css";
+
 import Input from "@/components/Input/Input";
 import Title from "@/components/Title/Title";
-import styles from "./styles.module.scss";
-import "react-datepicker/dist/react-datepicker.css";
 import Button from "@/components/Button/Button";
-import convertNumber from "@/utils/ConvertToNumber";
+import styles from "./styles.module.scss";
+
 import useFetch from "@/hooks/useFetch";
-import { Class, Grade } from "../../../../ClassList/ClassList";
-import axiosService from "@/services/axios";
+import type { Class, Grade } from "@/types";
+import newGradeSchema from "./newGradeSchema";
+import addGrade from "./api/addGrade";
 
 function NewGrade() {
-    const [grade, setGrade] = useState<string>("");
-    const [date, setDate] = useState(new Date());
+    const {
+        register,
+        handleSubmit,
+        control,
+        formState: { errors },
+    } = useForm<Grade>({
+        resolver: zodResolver(newGradeSchema),
+        defaultValues: {
+            date: new Date(),
+        },
+    });
     const navigate = useNavigate();
     const location = useLocation();
     const { id } = useParams();
@@ -29,53 +41,52 @@ function NewGrade() {
             : "/classes";
         navigate(path);
     };
-    const handleSubmit = async (e: FormEvent) => {
-        e.preventDefault();
-        try {
-            const gradeNum = convertNumber(grade);
-            const newGrade: Grade = {
-                grade: gradeNum,
-                date,
-            };
-            if (classObj) {
-                const newClass: Class = {
-                    ...classObj,
-                    grades: [...classObj.grades, newGrade],
-                };
-                await axiosService.put(`/classes/${classObj?.id}`, newClass);
-                navigate(`/classes/${classObj?.id}`);
-            }
-        } catch (err: any) {
-            alert(err.message);
-        }
-    };
+
     if (loading) return <Title>Loading...</Title>;
 
     if (error || !classObj) return <Title>Something Went Wrong</Title>;
 
+    const onSubmit = async (data: Grade) => {
+        addGrade(data, classObj);
+        navigate(`/classes/${classObj.id}`);
+    };
+
     return (
         <>
             <Title>New Grade</Title>
-            <form className={styles.form} onSubmit={(e) => handleSubmit(e)}>
+            <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
                 <section className={styles.section}>
-                    <label htmlFor="grade">Grade</label>
                     <Input
+                        center
+                        label="Grade: "
+                        errorText={errors.grade?.message ?? ""}
                         autoFocus
                         className={styles.input}
-                        value={grade}
-                        onChange={(e) => setGrade(e.target.value)}
-                        type="text"
+                        type="number"
                         id="grade"
+                        {...register("grade")}
                     />
                 </section>
                 <section className={styles.section}>
                     <label htmlFor="date">Date</label>
-                    <DatePicker
-                        className={styles.date_picker}
-                        selected={date}
-                        onChange={(pickedDate: Date) => setDate(pickedDate)}
-                        dateFormat="dd/MM/yyyy"
-                        id="date"
+                    <Controller
+                        render={({
+                            field: { name, onBlur, onChange, ref, value },
+                        }) => (
+                            <DatePicker
+                                maxDate={new Date()}
+                                ref={ref}
+                                name={name}
+                                id="date"
+                                onBlur={onBlur}
+                                className={styles.date_picker}
+                                dateFormat="dd/MM/yyyy"
+                                onChange={onChange}
+                                selected={value}
+                            />
+                        )}
+                        name="date"
+                        control={control}
                     />
                 </section>
                 <div className={styles.actions}>

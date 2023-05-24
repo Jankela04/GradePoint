@@ -9,12 +9,5 @@
       "edited": "2023-05-18T10:09:48.808Z"
     }
   ],
-  "classes": [
-    {
-      "id": "d5319742-131b-4ad3-b84a-0f8b9bed691e",
-      "class": "Math",
-      "teacher": "John",
-      "grades": []
-    }
-  ]
+  "classes": []
 }

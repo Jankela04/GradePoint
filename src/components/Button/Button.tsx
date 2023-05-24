@@ -1,3 +1,5 @@
+/* eslint-disable react/button-has-type */
+
 import { ReactNode } from "react";
 import classNames from "classnames";
 import styles from "./styles.module.scss";
@@ -39,7 +41,7 @@ function Button({
             className={buttonClass}
             onClick={onClick}
             disabled={disabled}
-            type={type === "button" ? "button" : "submit"}
+            type={type}
         >
             {children}
         </button>

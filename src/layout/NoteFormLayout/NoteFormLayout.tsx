@@ -1,12 +1,12 @@
-import { NoteFormProvider, TForm } from "@/context/NoteFormContext";
+import { useSearchParams } from "react-router-dom";
+import { NoteForm as TNoteForm } from "@/components/NoteForm/noteFormSchema";
 import { Note } from "@/types";
 import NoteForm from "@/components/NoteForm/NoteForm";
 import styles from "./styles.module.scss";
 import Title from "@/components/Title/Title";
 
-export type Mode = "edit" | "new";
-
-type NoteFormLayoutProps =
+// prettier-ignore
+export type NoteFormType =
     | {
         mode: "new";
         note?: null;
@@ -16,12 +16,21 @@ type NoteFormLayoutProps =
         note: Note;
     };
 
-function NoteFormLayout({ mode, note }: NoteFormLayoutProps) {
-    const getNoteInfo = (note: Note): TForm => ({
+function NoteFormLayout(noteFormProps: NoteFormType) {
+    const { mode, note } = noteFormProps;
+    const [searchParams] = useSearchParams();
+    const searchParamTag = searchParams.get("tag") || "";
+
+    const getNoteInfo = (note: Note): TNoteForm => ({
         tag: note.tag,
         text: note.text,
         title: note.title,
     });
+
+    const initialValues: TNoteForm =
+        mode === "new"
+            ? { title: "", tag: searchParamTag, text: "" }
+            : getNoteInfo(note);
 
     return (
         <div className={styles.container}>
@@ -29,11 +38,7 @@ function NoteFormLayout({ mode, note }: NoteFormLayoutProps) {
                 {mode === "new" ? "Create" : "Edit"}
                 {" Note"}
             </Title>
-            <NoteFormProvider
-                formState={mode === "new" ? null : getNoteInfo(note)}
-            >
-                <NoteForm mode={mode} note={mode === "new" ? null : note} />
-            </NoteFormProvider>
+            <NoteForm {...noteFormProps} initialValues={initialValues} />
         </div>
     );
 }
