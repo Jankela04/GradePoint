@@ -1,5 +1,5 @@
-import { INVALID_GRADE_MESSAGE } from "@/constants";
 import { z } from "zod";
+import { INVALID_GRADE_MESSAGE } from "@/constants";
 
 const today = new Date();
 today.setHours(23, 59, 59, 999);

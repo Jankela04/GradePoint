@@ -11,8 +11,6 @@ const editNote = async (note: Note, data: NoteForm) => {
             edited: new Date(),
         };
         await axiosService.put(`/notes/${note.id}`, editedNote);
-        // setForm(initialFormState);
-        // navigate("/notes");
     }
 };
 
