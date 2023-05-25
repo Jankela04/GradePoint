@@ -1,28 +1,4 @@
 {
-  "notes": [
-    {
-      "title": "I",
-      "tag": "Like",
-      "text": "This",
-      "id": "6a1c2c13-ab3d-4ee0-ace9-c0c24ece05e5",
-      "created": "2023-05-18T10:09:48.808Z",
-      "edited": "2023-05-18T10:09:48.808Z"
-    },
-    {
-      "title": "fdas",
-      "tag": "fds",
-      "text": "fsd",
-      "id": "9dc5f1f9-0884-451a-9d3c-d8e206b97193",
-      "created": "2023-05-24T20:51:58.408Z",
-      "edited": "2023-05-24T20:51:58.408Z"
-    }
-  ],
-  "classes": [
-    {
-      "id": "2654bdbc-ce1b-4efb-b437-fdb39b245368",
-      "class": "gh",
-      "teacher": "gsdf",
-      "grades": []
-    }
-  ]
+    "notes": [],
+    "classes": []
 }

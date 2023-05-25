@@ -8,5 +8,6 @@ Note taking and grade management app for students
 
 2.  Install dependencies: `npm install`
 
-3.  Run json-server: `npx json-server --watch src/data/db.json`
+3.  Run json-server: `npm run dev:server`
+
 4.  Run development server `npm run dev`
