@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import useFetch from "@/hooks/useFetch";
 import { NoteFormLayout } from "@/layout/NoteFormLayout";
 import { Note } from "@/types";
+import { MainLayout } from "@/layout/MainLayout";
 
 function Edit() {
     const { id } = useParams();
@@ -18,7 +19,11 @@ function Edit() {
         return <div>Note not found</div>;
     }
 
-    return <NoteFormLayout mode="edit" note={note} />;
+    return (
+        <MainLayout>
+            <NoteFormLayout mode="edit" note={note} />
+        </MainLayout>
+    );
 }
 
 export default Edit;

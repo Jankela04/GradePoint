@@ -10,6 +10,7 @@ import GradeList from "./components/GradeList/GradeList";
 import ClassNotes from "./components/ClassNotes/ClassNotes";
 import { Modal as DeleteModal } from "@/components/Elements";
 import axiosService from "@/services/axios";
+import { MainLayout } from "@/layout/MainLayout";
 
 function Class() {
     const { id } = useParams();
@@ -37,7 +38,7 @@ function Class() {
         return <Title>Something Went Wrong</Title>;
 
     return (
-        <>
+        <MainLayout>
             <Title>{classObj?.class}</Title>
             <div className={styles.container}>
                 <div className={styles.header}>
@@ -55,8 +56,8 @@ function Class() {
                             {classObj.grades.length === 0
                                 ? "No Grades"
                                 : classObj.grades
-                                    .map((grade) => grade.grade)
-                                    .join(", ")}
+                                      .map((grade) => grade.grade)
+                                      .join(", ")}
                         </span>
                         <span>
                             Notes:
@@ -94,7 +95,7 @@ function Class() {
                 <GradeList grades={classObj.grades} />
                 <ClassNotes classObj={classObj} notes={notes} />
             </div>
-        </>
+        </MainLayout>
     );
 }
 

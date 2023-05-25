@@ -1,5 +1,4 @@
 import { createBrowserRouter } from "react-router-dom";
-import MainLayout from "@/layout/MainLayout/MainLayout";
 import Classes from "@/pages/Classes/Classes";
 import Class from "@/pages/Classes/pages/Class/Class";
 import NewGrade from "@/pages/Classes/pages/Class/pages/NewGrade/NewGrade";
@@ -32,67 +31,35 @@ const router = createBrowserRouter([
             },
             {
                 path: "/notes",
-                element: (
-                    <MainLayout>
-                        <Notes />
-                    </MainLayout>
-                ),
+                element: <Notes />,
             },
             {
                 path: "/notes/new",
-                element: (
-                    <MainLayout>
-                        <NewNote />
-                    </MainLayout>
-                ),
+                element: <NewNote />,
             },
             {
                 path: "/notes/:id",
-                element: (
-                    <MainLayout>
-                        <Note />
-                    </MainLayout>
-                ),
+                element: <Note />,
             },
             {
                 path: "/notes/:id/edit",
-                element: (
-                    <MainLayout>
-                        <Edit />
-                    </MainLayout>
-                ),
+                element: <Edit />,
             },
             {
                 path: "/classes",
-                element: (
-                    <MainLayout>
-                        <Classes />
-                    </MainLayout>
-                ),
+                element: <Classes />,
             },
             {
                 path: "/classes/new",
-                element: (
-                    <MainLayout>
-                        <NewClassPage />
-                    </MainLayout>
-                ),
+                element: <NewClassPage />,
             },
             {
                 path: "/classes/:id",
-                element: (
-                    <MainLayout>
-                        <Class />
-                    </MainLayout>
-                ),
+                element: <Class />,
             },
             {
                 path: "/classes/:id/newGrade",
-                element: (
-                    <MainLayout>
-                        <NewGrade />
-                    </MainLayout>
-                ),
+                element: <NewGrade />,
             },
             {
                 path: "/*",

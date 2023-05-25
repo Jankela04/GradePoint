@@ -1,7 +1,12 @@
 import { NoteFormLayout } from "@/layout/NoteFormLayout";
+import { MainLayout } from "@/layout/MainLayout";
 
 function NewNote() {
-    return <NoteFormLayout mode="new" />;
+    return (
+        <MainLayout>
+            <NoteFormLayout mode="new" />
+        </MainLayout>
+    );
 }
 
 export default NewNote;

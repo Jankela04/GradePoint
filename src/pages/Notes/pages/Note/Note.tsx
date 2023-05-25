@@ -8,6 +8,7 @@ import { useTheme } from "@/context/ThemeContext";
 import useFetch from "@/hooks/useFetch";
 import { formatDate } from "@/utils/FormatDate";
 import { Title } from "@/components/Elements";
+import { MainLayout } from "@/layout/MainLayout";
 
 function Note() {
     const { id } = useParams();
@@ -31,7 +32,7 @@ function Note() {
     }
 
     return (
-        <>
+        <MainLayout>
             <Title>{note?.title}</Title>
             <div className={styles.tag}>
                 <Tag tag={note?.tag} />
@@ -53,7 +54,7 @@ function Note() {
                 </div>
                 <NoteActions />
             </div>
-        </>
+        </MainLayout>
     );
 }
 export default Note;
