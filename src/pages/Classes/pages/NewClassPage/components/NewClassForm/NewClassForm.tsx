@@ -2,8 +2,8 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useNavigate } from "react-router-dom";
 import { v4 } from "uuid";
-import Button from "@/components/Button/Button";
-import Input from "@/components/Input/Input";
+import { Button } from "@/components/Elements";
+import { Input } from "@/components/Elements";
 import styles from "./styles.module.scss";
 import {
     NewClassForm as TNewClassForm,

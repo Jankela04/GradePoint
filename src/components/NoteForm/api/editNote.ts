@@ -1,8 +1,8 @@
 import axiosService from "@/services/axios";
 import { Note } from "@/types";
-import { NoteForm } from "../noteFormSchema";
+import { TNoteForm } from "../noteFormSchema";
 
-const editNote = async (note: Note, data: NoteForm) => {
+const editNote = async (note: Note, data: TNoteForm) => {
     if (note) {
         const editedNote: Note = {
             ...data,

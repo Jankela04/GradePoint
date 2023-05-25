@@ -1,4 +1,4 @@
-import Title from "@/components/Title/Title";
+import { Title } from "@/components/Elements";
 import useFetch from "@/hooks/useFetch";
 import ClassCard from "./components/ClassCard/ClassCard";
 import NewClass from "./components/NewClass/NewClass";

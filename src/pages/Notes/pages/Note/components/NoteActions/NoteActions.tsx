@@ -1,8 +1,8 @@
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
 import styles from "./styles.module.scss";
-import Button from "@/components/Button/Button";
-import DeleteModal from "@/components/Modal/Modal";
+import { Button } from "@/components/Elements";
+import { Modal as DeleteModal } from "@/components/Elements";
 import axiosService from "@/services/axios";
 
 function NoteActions() {
@@ -32,8 +32,7 @@ function NoteActions() {
     return (
         <div className={styles.btn_container}>
             <Button onClick={handleGoBackClick} variant="neutral" rounded>
-                Go Back
-                {" "}
+                Go Back{" "}
             </Button>
             <div className={styles.note_alter_btn_container}>
                 <Button onClick={handleEditClick} variant="primary" rounded>

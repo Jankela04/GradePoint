@@ -4,13 +4,13 @@ import classNames from "classnames";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { NoteFormType } from "@/layout/NoteFormLayout/NoteFormLayout";
-import noteFormSchema, { NoteForm as TNoteForm } from "./noteFormSchema";
+import noteFormSchema, { TNoteForm } from "./noteFormSchema";
 
 import styles from "./styles.module.scss";
 import { useTheme } from "@/context/ThemeContext";
 
-import Button from "../Button/Button";
-import Input from "../Input/Input";
+import { Button } from "../Elements";
+import { Input } from "@/components/Elements";
 
 import createNewNote from "./api/createNote";
 import editNote from "./api/editNote";

@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import Logo from "../Logo/Logo";
+import { Logo } from "../Elements";
 import Name from "./components/Name/Name";
 import styles from "./styles.module.scss";
 import { useTheme } from "@/context/ThemeContext";

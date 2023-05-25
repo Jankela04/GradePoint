@@ -1,6 +1,6 @@
 import { useNavigate, createSearchParams } from "react-router-dom";
-import Button from "@/components/Button/Button";
-import NoteList from "@/components/NoteList/NoteList";
+import { Button } from "@/components/Elements";
+import { NoteList } from "@/components/NoteList";
 import { Class, Note } from "@/types";
 import styles from "./styles.module.scss";
 

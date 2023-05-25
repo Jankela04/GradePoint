@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useTheme } from "@/context/ThemeContext";
 import { Note } from "@/types";
 import styles from "./styles.module.scss";
-import Tag from "../../Tag/Tag";
+import { Tag } from "@/components/Elements";
 import { shortFormatDate } from "@/utils/FormatDate";
 
 function NoteCard({ note }: { note: Note }) {

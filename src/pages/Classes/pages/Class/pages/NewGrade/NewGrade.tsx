@@ -4,9 +4,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, Controller } from "react-hook-form";
 import "react-datepicker/dist/react-datepicker.css";
 
-import Input from "@/components/Input/Input";
-import Title from "@/components/Title/Title";
-import Button from "@/components/Button/Button";
+import { Input } from "@/components/Elements";
+import { Title } from "@/components/Elements";
+import { Button } from "@/components/Elements";
 import styles from "./styles.module.scss";
 
 import useFetch from "@/hooks/useFetch";

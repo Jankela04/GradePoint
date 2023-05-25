@@ -1,4 +1,4 @@
-import Title from "@/components/Title/Title";
+import { Title } from "@/components/Elements";
 import NewClassForm from "./components/NewClassForm/NewClassForm";
 
 function NewClassPage() {

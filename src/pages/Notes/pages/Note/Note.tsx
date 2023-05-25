@@ -3,11 +3,11 @@ import classNames from "classnames";
 import styles from "./styles.module.scss";
 import { Note as TNote } from "@/types";
 import NoteActions from "./components/NoteActions/NoteActions";
-import Tag from "@/components/Tag/Tag";
+import { Tag } from "@/components/Elements";
 import { useTheme } from "@/context/ThemeContext";
 import useFetch from "@/hooks/useFetch";
 import { formatDate } from "@/utils/FormatDate";
-import Title from "@/components/Title/Title";
+import { Title } from "@/components/Elements";
 
 function Note() {
     const { id } = useParams();

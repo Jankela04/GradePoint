@@ -1,14 +1,14 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
-import Title from "@/components/Title/Title";
+import { Title } from "@/components/Elements";
 import useFetch from "@/hooks/useFetch";
 import CalculateGpa from "@/utils/CalculateGpa";
 import { Class as TClass, Note } from "@/types";
 import styles from "./styles.module.scss";
-import Button from "@/components/Button/Button";
+import { Button } from "@/components/Elements";
 import GradeList from "./components/GradeList/GradeList";
 import ClassNotes from "./components/ClassNotes/ClassNotes";
-import DeleteModal from "@/components/Modal/Modal";
+import { Modal as DeleteModal } from "@/components/Elements";
 import axiosService from "@/services/axios";
 
 function Class() {

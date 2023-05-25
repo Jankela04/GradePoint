@@ -1,5 +1,5 @@
 import { useNoteFilter } from "@/context/NoteFilterContext";
-import Input from "@/components/Input/Input";
+import { Input } from "@/components/Elements";
 import styles from "./styles.module.scss";
 
 function NoteFilter() {

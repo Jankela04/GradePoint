@@ -1,8 +1,8 @@
-import Title from "@/components/Title/Title";
+import { Title } from "@/components/Elements";
 import { NoteFilterProvider } from "@/context/NoteFilterContext";
 import useFetch from "@/hooks/useFetch";
 import NoteControls from "./components/NoteControls/NoteControls";
-import NoteList from "@/components/NoteList/NoteList";
+import { NoteList } from "@/components/NoteList";
 import { Note } from "@/types";
 import styles from "./styles.module.scss";
 

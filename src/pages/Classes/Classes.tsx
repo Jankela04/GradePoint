@@ -1,4 +1,4 @@
-import Title from "@/components/Title/Title";
+import { Title } from "@/components/Elements";
 import ClassList from "./ClassList/ClassList";
 
 function Classes() {
