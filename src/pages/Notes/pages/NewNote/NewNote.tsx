@@ -1,4 +1,4 @@
-import NoteFormLayout from "@/layout/NoteFormLayout/NoteFormLayout";
+import { NoteFormLayout } from "@/layout/NoteFormLayout";
 
 function NewNote() {
     return <NoteFormLayout mode="new" />;

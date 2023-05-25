@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import useFetch from "@/hooks/useFetch";
-import NoteFormLayout from "@/layout/NoteFormLayout/NoteFormLayout";
+import { NoteFormLayout } from "@/layout/NoteFormLayout";
 import { Note } from "@/types";
 
 function Edit() {

@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import classNames from "classnames";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { NoteFormType } from "@/layout/NoteFormLayout/NoteFormLayout";
+import { NoteFormType } from "@/layout/NoteFormLayout";
 import noteFormSchema, { TNoteForm } from "./noteFormSchema";
 
 import styles from "./styles.module.scss";
