@@ -9,7 +9,7 @@ import { Button } from "@/components/Elements";
 import GradeList from "./components/GradeList/GradeList";
 import ClassNotes from "./components/ClassNotes/ClassNotes";
 import { Modal as DeleteModal } from "@/components/Elements";
-import axiosService from "@/services/axios";
+import axios from "@/lib/axios";
 import { MainLayout } from "@/layout/MainLayout";
 
 function Class() {
@@ -24,7 +24,7 @@ function Class() {
     const closeModal = () => setModalIsOpen(false);
     const openModal = () => setModalIsOpen(true);
     const deleteClass = async () => {
-        await axiosService.delete(`/classes/${classObj?.id}`);
+        await axios.delete(`/classes/${classObj?.id}`);
         navigate("/classes");
     };
 

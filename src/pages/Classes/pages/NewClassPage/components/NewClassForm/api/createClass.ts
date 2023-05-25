@@ -1,4 +1,4 @@
-import axiosService from "@/services/axios";
+import axios from "@/lib/axios";
 import { Grade } from "@/types";
 
 type NewClass = {
@@ -9,7 +9,7 @@ type NewClass = {
 };
 
 const createClass = async (newClass: NewClass) => {
-    await axiosService.post("/classes", newClass);
+    await axios.post("/classes", newClass);
 };
 
 export default createClass;

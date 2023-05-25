@@ -3,7 +3,7 @@ import { useState } from "react";
 import styles from "./styles.module.scss";
 import { Button } from "@/components/Elements";
 import { Modal as DeleteModal } from "@/components/Elements";
-import axiosService from "@/services/axios";
+import axios from "@/lib/axios";
 
 function NoteActions() {
     const [isOpen, setIsOpen] = useState(false);
@@ -25,7 +25,7 @@ function NoteActions() {
     };
 
     const deleteNote = async () => {
-        await axiosService.delete(`/notes/${id}`);
+        await axios.delete(`/notes/${id}`);
         navigate(path);
     };
 

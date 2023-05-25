@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 import { Note } from "@/types";
-import axiosService from "@/services/axios";
+import axios from "@/lib/axios";
 import { TNoteForm } from "../noteFormSchema";
 
 const createNewNote = async (data: TNoteForm) => {
@@ -10,7 +10,7 @@ const createNewNote = async (data: TNoteForm) => {
         created: new Date(),
         edited: new Date(),
     };
-    await axiosService.post("/notes", newNote);
+    await axios.post("/notes", newNote);
 };
 
 export default createNewNote;

@@ -1,4 +1,4 @@
-import axiosService from "@/services/axios";
+import axios from "@/lib/axios";
 import { Note } from "@/types";
 import { TNoteForm } from "../noteFormSchema";
 
@@ -10,7 +10,7 @@ const editNote = async (note: Note, data: TNoteForm) => {
             created: note.created,
             edited: new Date(),
         };
-        await axiosService.put(`/notes/${note.id}`, editedNote);
+        await axios.put(`/notes/${note.id}`, editedNote);
     }
 };
 

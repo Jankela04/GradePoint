@@ -1,11 +1,9 @@
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const axiosService = axios;
+axios.defaults.baseURL = "http://localhost:3000";
 
-axiosService.defaults.baseURL = "http://localhost:3000";
-
-axiosService.interceptors.response.use(
+axios.interceptors.response.use(
     (response) => response,
     (error) => {
         const navigate = useNavigate();
@@ -16,4 +14,4 @@ axiosService.interceptors.response.use(
     }
 );
 
-export default axiosService;
+export default axios;
