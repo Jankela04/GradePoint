@@ -3,7 +3,7 @@ import Classes from "@/pages/Classes/Classes";
 import Class from "@/pages/Classes/pages/Class/Class";
 import NewGrade from "@/pages/Classes/pages/Class/pages/NewGrade/NewGrade";
 import NewClassPage from "@/pages/Classes/pages/NewClassPage/NewClassPage";
-import Home from "@/pages/Home/Home";
+import { HomePage } from "@/pages/Home";
 import Notes from "@/pages/Notes/Notes";
 import NewNote from "@/pages/Notes/pages/NewNote/NewNote";
 import Note from "@/pages/Notes/pages/Note/Note";
@@ -27,7 +27,7 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "/home",
-                element: <Home />,
+                element: <HomePage />,
             },
             {
                 path: "/notes",
