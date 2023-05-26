@@ -1,7 +1,7 @@
 import classnames from "classnames";
 import styles from "./styles.module.scss";
 import { Logo } from "@/components/Elements";
-import RegisterForm from "./components/RegisterForm/RegisterForm";
+import RegisterForm from "./RegisterForm";
 import { useTheme } from "@/context/ThemeContext";
 
 function Welcome() {

@@ -8,9 +8,9 @@ import Notes from "@/pages/Notes/Notes";
 import NewNote from "@/pages/Notes/pages/NewNote/NewNote";
 import Note from "@/pages/Notes/pages/Note/Note";
 import Edit from "@/pages/Notes/pages/Note/pages/Edit/Edit";
-import Welcome from "@/pages/Welcome/Welcome";
-import { ProtectedWelcome, ProtectedRoutes } from "@/utils/ProtectedRoutes";
-import Error from "@/pages/Error/Error";
+import { WelcomePage } from "@/pages/Welcome";
+import { ProtectedWelcome, ProtectedRoutes } from ".//ProtectedRoutes";
+import { ErrorPage } from "@/pages/Error";
 
 const router = createBrowserRouter([
     {
@@ -18,7 +18,7 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "/",
-                element: <Welcome />,
+                element: <WelcomePage />,
             },
         ],
     },
@@ -63,7 +63,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "/*",
-                element: <Error />,
+                element: <ErrorPage />,
             },
         ],
     },

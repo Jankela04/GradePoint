@@ -21,3 +21,29 @@
     font-size: 3rem;
     letter-spacing: 0.05em;
 }
+
+.placeholder {
+    padding: 2em 0 1em 0;
+    font-size: 2rem;
+    text-align: center;
+}
+.form {
+    display: flex;
+    justify-content: center;
+}
+
+.register_input {
+    height: 3rem;
+    border-radius: 0.5em 0 0 0.5em !important;
+    max-width: 10em;
+}
+
+.button {
+    height: 3rem;
+}
+
+@media only screen and (max-width: 370px) {
+    form {
+        margin: 0 2em;
+    }
+}
