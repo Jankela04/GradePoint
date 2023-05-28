@@ -1,6 +1,6 @@
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
-import styles from "./styles.module.scss";
+import styles from "./styles/NoteActions.module.scss";
 import { Button } from "@/components/Elements";
 import { Modal as DeleteModal } from "@/components/Elements";
 import axios from "@/lib/axios";

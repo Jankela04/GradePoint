@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
 import classNames from "classnames";
-import styles from "./styles.module.scss";
+import styles from "./styles/Note.module.scss";
 import { Note as TNote } from "@/types";
-import NoteActions from "./components/NoteActions/NoteActions";
+import NoteActions from "./NoteActions";
 import { Tag } from "@/components/Elements";
 import { useTheme } from "@/context/ThemeContext";
 import useFetch from "@/hooks/useFetch";

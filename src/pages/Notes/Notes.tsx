@@ -1,10 +1,10 @@
 import { Title } from "@/components/Elements";
 import { NoteFilterProvider } from "@/context/NoteFilterContext";
 import useFetch from "@/hooks/useFetch";
-import NoteControls from "./components/NoteControls/NoteControls";
+import NoteControls from "./NoteControls";
 import { NoteList } from "@/components/NoteList";
 import { Note } from "@/types";
-import styles from "./styles.module.scss";
+import styles from "./styles/Notes.module.scss";
 import { MainLayout } from "@/layout/MainLayout";
 
 function Notes() {

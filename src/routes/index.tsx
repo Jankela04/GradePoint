@@ -4,10 +4,7 @@ import Class from "@/pages/Classes/pages/Class/Class";
 import NewGrade from "@/pages/Classes/pages/Class/pages/NewGrade/NewGrade";
 import NewClassPage from "@/pages/Classes/pages/NewClassPage/NewClassPage";
 import { HomePage } from "@/pages/Home";
-import Notes from "@/pages/Notes/Notes";
-import NewNote from "@/pages/Notes/pages/NewNote/NewNote";
-import Note from "@/pages/Notes/pages/Note/Note";
-import Edit from "@/pages/Notes/pages/Note/pages/Edit/Edit";
+import { EditNotePage, NotesPage, NewNotePage, NotePage } from "@/pages/Notes";
 import { WelcomePage } from "@/pages/Welcome";
 import { ProtectedWelcome, ProtectedRoutes } from ".//ProtectedRoutes";
 import { ErrorPage } from "@/pages/Error";
@@ -31,19 +28,19 @@ const router = createBrowserRouter([
             },
             {
                 path: "/notes",
-                element: <Notes />,
+                element: <NotesPage />,
             },
             {
                 path: "/notes/new",
-                element: <NewNote />,
+                element: <NewNotePage />,
             },
             {
                 path: "/notes/:id",
-                element: <Note />,
+                element: <NotePage />,
             },
             {
                 path: "/notes/:id/edit",
-                element: <Edit />,
+                element: <EditNotePage />,
             },
             {
                 path: "/classes",
