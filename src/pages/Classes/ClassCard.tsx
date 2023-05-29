@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useTheme } from "@/context/ThemeContext";
 import CalculateGpa from "@/utils/CalculateGpa";
 import { Class } from "@/types";
-import styles from "./styles.module.scss";
+import styles from "./styles/ClassCard.module.scss";
 
 type Props = {
     classObj: Class;

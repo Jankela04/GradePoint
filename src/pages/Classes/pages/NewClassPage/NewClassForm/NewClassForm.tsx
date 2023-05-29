@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { v4 } from "uuid";
 import { Button } from "@/components/Elements";
 import { Input } from "@/components/Elements";
-import styles from "./styles.module.scss";
+import styles from "./NewClassForm.module.scss";
 import {
     NewClassForm as TNewClassForm,
     newClassSchema,

@@ -1,5 +1,5 @@
 import { Title } from "@/components/Elements";
-import NewClassForm from "./components/NewClassForm/NewClassForm";
+import NewClassForm from "./NewClassForm/NewClassForm";
 import { MainLayout } from "@/layout/MainLayout";
 
 function NewClassPage() {

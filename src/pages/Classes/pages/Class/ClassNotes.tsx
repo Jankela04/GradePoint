@@ -2,7 +2,7 @@ import { useNavigate, createSearchParams } from "react-router-dom";
 import { Button } from "@/components/Elements";
 import { NoteList } from "@/components/NoteList";
 import { Class, Note } from "@/types";
-import styles from "./styles.module.scss";
+import styles from "./styles/ClassNotes.module.scss";
 
 function ClassNotes({ classObj, notes }: { classObj: Class; notes: Note[] }) {
     const navigate = useNavigate();

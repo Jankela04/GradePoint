@@ -1,8 +1,8 @@
 import { Title } from "@/components/Elements";
 import useFetch from "@/hooks/useFetch";
-import ClassCard from "./components/ClassCard/ClassCard";
-import NewClass from "./components/NewClass/NewClass";
-import styles from "./styles.module.scss";
+import ClassCard from "./ClassCard";
+import NewClass from "./NewClass";
+import styles from "./styles/ClassList.module.scss";
 import { Class } from "@/types";
 
 function ClassList() {

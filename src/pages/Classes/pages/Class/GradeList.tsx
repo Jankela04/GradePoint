@@ -3,7 +3,7 @@ import { v4 } from "uuid";
 import { useTheme } from "@/context/ThemeContext";
 import { shortFormatDate } from "@/utils/FormatDate";
 import { Grade } from "@/types";
-import styles from "./styles.module.scss";
+import styles from "./styles/GradeList.module.scss";
 
 function GradeList({ grades }: { grades: Grade[] }) {
     const { theme } = useTheme();

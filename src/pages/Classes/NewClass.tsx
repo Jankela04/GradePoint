@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "@/context/ThemeContext";
-import styles from "./styles.module.scss";
+import styles from "./styles/NewClass.module.scss";
 
 function NewClass() {
     const { theme } = useTheme();

@@ -4,10 +4,10 @@ import { Title } from "@/components/Elements";
 import useFetch from "@/hooks/useFetch";
 import CalculateGpa from "@/utils/CalculateGpa";
 import { Class as TClass, Note } from "@/types";
-import styles from "./styles.module.scss";
+import styles from "./styles/Class.module.scss";
 import { Button } from "@/components/Elements";
-import GradeList from "./components/GradeList/GradeList";
-import ClassNotes from "./components/ClassNotes/ClassNotes";
+import GradeList from "./GradeList";
+import ClassNotes from "./ClassNotes";
 import { Modal as DeleteModal } from "@/components/Elements";
 import axios from "@/lib/axios";
 import { MainLayout } from "@/layout/MainLayout";
@@ -56,8 +56,8 @@ function Class() {
                             {classObj.grades.length === 0
                                 ? "No Grades"
                                 : classObj.grades
-                                      .map((grade) => grade.grade)
-                                      .join(", ")}
+                                    .map((grade) => grade.grade)
+                                    .join(", ")}
                         </span>
                         <span>
                             Notes:

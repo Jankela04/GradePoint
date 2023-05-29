@@ -1,12 +1,14 @@
 import { createBrowserRouter } from "react-router-dom";
-import Classes from "@/pages/Classes/Classes";
-import Class from "@/pages/Classes/pages/Class/Class";
-import NewGrade from "@/pages/Classes/pages/Class/pages/NewGrade/NewGrade";
-import NewClassPage from "@/pages/Classes/pages/NewClassPage/NewClassPage";
+import {
+    ClassPage,
+    ClassesPage,
+    NewGradePage,
+    NewClassPage,
+} from "@/pages/Classes";
 import { HomePage } from "@/pages/Home";
 import { EditNotePage, NotesPage, NewNotePage, NotePage } from "@/pages/Notes";
 import { WelcomePage } from "@/pages/Welcome";
-import { ProtectedWelcome, ProtectedRoutes } from ".//ProtectedRoutes";
+import { ProtectedWelcome, ProtectedRoutes } from "./ProtectedRoutes";
 import { ErrorPage } from "@/pages/Error";
 
 const router = createBrowserRouter([
@@ -44,7 +46,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "/classes",
-                element: <Classes />,
+                element: <ClassesPage />,
             },
             {
                 path: "/classes/new",
@@ -52,11 +54,11 @@ const router = createBrowserRouter([
             },
             {
                 path: "/classes/:id",
-                element: <Class />,
+                element: <ClassPage />,
             },
             {
                 path: "/classes/:id/newGrade",
-                element: <NewGrade />,
+                element: <NewGradePage />,
             },
             {
                 path: "/*",
