@@ -1,0 +1,58 @@
+@import "../../../assets/variables";
+
+.button {
+    user-select: none;
+    cursor: pointer;
+    padding: 0.6em 0.7em;
+    font-size: 1.2rem;
+    color: white;
+    border: none;
+}
+
+.primary {
+    background-color: $primary;
+    &:hover {
+        background-color: $primary-dark;
+    }
+}
+
+.secondary {
+    background-color: $secondary;
+    &:hover {
+        background-color: $secondary-dark;
+    }
+}
+.danger {
+    background-color: $danger;
+    &:hover {
+        background-color: $danger-dark;
+    }
+}
+
+.neutral {
+    background-color: transparent;
+    &.dark {
+        color: $text-dark;
+        border: 1px solid $text-dark;
+        &:hover {
+            background-color: $bg-dark-action-secondary;
+        }
+    }
+    &.light {
+        color: $text-light;
+        border: 1px solid $text-light;
+        &:hover {
+            background-color: lighten($bg-light-hover, 5%);
+        }
+    }
+}
+
+.disabled {
+    background-color: desaturate($primary, 100%);
+    cursor: default;
+    pointer-events: none;
+}
+
+.rounded {
+    border-radius: 0.5em;
+}

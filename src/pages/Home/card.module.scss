@@ -1,0 +1,64 @@
+@import "../../assets/variables";
+
+.card {
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 2em;
+    min-width: 200px;
+    width: 300px;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    transition: transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    text-align: left;
+    img {
+        width: 35%;
+        margin: auto;
+    }
+    h3 {
+        user-select: none;
+        text-align: center;
+        font-size: 2rem;
+        margin-top: 0.5em;
+    }
+}
+
+.card:hover {
+    transform: translateY(-3em);
+}
+
+.label {
+    position: absolute;
+    bottom: -2em;
+    color: $text-dark;
+    left: 0.5em;
+    font-size: 1.5rem;
+    animation: fade_in 0.5s ease-in;
+
+    &.light {
+        color: $text-light;
+    }
+}
+
+@media only screen and (max-width: calc($desktop-breakpoint)) {
+    .label {
+        bottom: -3em;
+    }
+}
+
+@media only screen and (max-width: calc($tablet-breakpoint + 100px)) {
+    .card {
+        width: 200px;
+    }
+}
+
+@keyframes fade_in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

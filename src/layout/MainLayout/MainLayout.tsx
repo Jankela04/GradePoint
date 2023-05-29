@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import classNames from "classnames";
-import Navbar from "@/components/Navbar/Navbar";
+import { Navbar } from "@/components/Navbar";
 import { useTheme } from "@/context/ThemeContext";
 import styles from "./styles.module.scss";
 

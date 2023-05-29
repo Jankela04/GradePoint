@@ -1,13 +1,14 @@
 import { useParams } from "react-router-dom";
 import classNames from "classnames";
-import styles from "./styles.module.scss";
+import styles from "./styles/Note.module.scss";
 import { Note as TNote } from "@/types";
-import NoteActions from "./components/NoteActions/NoteActions";
-import Tag from "@/components/Tag/Tag";
+import NoteActions from "./NoteActions";
+import { Tag } from "@/components/Elements";
 import { useTheme } from "@/context/ThemeContext";
 import useFetch from "@/hooks/useFetch";
 import { formatDate } from "@/utils/FormatDate";
-import Title from "@/components/Title/Title";
+import { Title } from "@/components/Elements";
+import { MainLayout } from "@/layout/MainLayout";
 
 function Note() {
     const { id } = useParams();
@@ -31,7 +32,7 @@ function Note() {
     }
 
     return (
-        <>
+        <MainLayout>
             <Title>{note?.title}</Title>
             <div className={styles.tag}>
                 <Tag tag={note?.tag} />
@@ -53,7 +54,7 @@ function Note() {
                 </div>
                 <NoteActions />
             </div>
-        </>
+        </MainLayout>
     );
 }
 export default Note;

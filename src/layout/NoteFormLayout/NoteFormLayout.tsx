@@ -1,9 +1,8 @@
 import { useSearchParams } from "react-router-dom";
-import { NoteForm as TNoteForm } from "@/components/NoteForm/noteFormSchema";
 import { Note } from "@/types";
-import NoteForm from "@/components/NoteForm/NoteForm";
+import { NoteForm, type TNoteForm } from "@/components/NoteForm";
 import styles from "./styles.module.scss";
-import Title from "@/components/Title/Title";
+import { Title } from "@/components/Elements";
 
 // prettier-ignore
 export type NoteFormType =

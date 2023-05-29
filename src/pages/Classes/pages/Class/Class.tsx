@@ -1,15 +1,16 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
-import Title from "@/components/Title/Title";
+import { Title } from "@/components/Elements";
 import useFetch from "@/hooks/useFetch";
 import CalculateGpa from "@/utils/CalculateGpa";
 import { Class as TClass, Note } from "@/types";
-import styles from "./styles.module.scss";
-import Button from "@/components/Button/Button";
-import GradeList from "./components/GradeList/GradeList";
-import ClassNotes from "./components/ClassNotes/ClassNotes";
-import DeleteModal from "@/components/Modal/Modal";
-import axiosService from "@/services/axios";
+import styles from "./styles/Class.module.scss";
+import { Button } from "@/components/Elements";
+import GradeList from "./GradeList";
+import ClassNotes from "./ClassNotes";
+import { Modal as DeleteModal } from "@/components/Elements";
+import axios from "@/lib/axios";
+import { MainLayout } from "@/layout/MainLayout";
 
 function Class() {
     const { id } = useParams();
@@ -23,7 +24,7 @@ function Class() {
     const closeModal = () => setModalIsOpen(false);
     const openModal = () => setModalIsOpen(true);
     const deleteClass = async () => {
-        await axiosService.delete(`/classes/${classObj?.id}`);
+        await axios.delete(`/classes/${classObj?.id}`);
         navigate("/classes");
     };
 
@@ -37,7 +38,7 @@ function Class() {
         return <Title>Something Went Wrong</Title>;
 
     return (
-        <>
+        <MainLayout>
             <Title>{classObj?.class}</Title>
             <div className={styles.container}>
                 <div className={styles.header}>
@@ -94,7 +95,7 @@ function Class() {
                 <GradeList grades={classObj.grades} />
                 <ClassNotes classObj={classObj} notes={notes} />
             </div>
-        </>
+        </MainLayout>
     );
 }
 

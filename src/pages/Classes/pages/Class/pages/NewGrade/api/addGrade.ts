@@ -1,4 +1,4 @@
-import axiosService from "@/services/axios";
+import axios from "@/lib/axios";
 import { Class, Grade } from "@/types";
 
 const addGrade = async (data: Grade, classObj: Class) => {
@@ -6,7 +6,7 @@ const addGrade = async (data: Grade, classObj: Class) => {
         ...classObj,
         grades: [...classObj.grades, data],
     };
-    await axiosService.put(`/classes/${classObj?.id}`, newClass);
+    await axios.put(`/classes/${classObj?.id}`, newClass);
 };
 
 export default addGrade;

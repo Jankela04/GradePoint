@@ -1,17 +1,15 @@
 import { createBrowserRouter } from "react-router-dom";
-import MainLayout from "@/layout/MainLayout/MainLayout";
-import Classes from "@/pages/Classes/Classes";
-import Class from "@/pages/Classes/pages/Class/Class";
-import NewGrade from "@/pages/Classes/pages/Class/pages/NewGrade/NewGrade";
-import NewClassPage from "@/pages/Classes/pages/NewClassPage/NewClassPage";
-import Home from "@/pages/Home/Home";
-import Notes from "@/pages/Notes/Notes";
-import NewNote from "@/pages/Notes/pages/NewNote/NewNote";
-import Note from "@/pages/Notes/pages/Note/Note";
-import Edit from "@/pages/Notes/pages/Note/pages/Edit/Edit";
-import Welcome from "@/pages/Welcome/Welcome";
-import { ProtectedWelcome, ProtectedRoutes } from "@/utils/ProtectedRoutes";
-import Error from "@/pages/Error/Error";
+import {
+    ClassPage,
+    ClassesPage,
+    NewGradePage,
+    NewClassPage,
+} from "@/pages/Classes";
+import { HomePage } from "@/pages/Home";
+import { EditNotePage, NotesPage, NewNotePage, NotePage } from "@/pages/Notes";
+import { WelcomePage } from "@/pages/Welcome";
+import { ProtectedWelcome, ProtectedRoutes } from "./ProtectedRoutes";
+import { ErrorPage } from "@/pages/Error";
 
 const router = createBrowserRouter([
     {
@@ -19,7 +17,7 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "/",
-                element: <Welcome />,
+                element: <WelcomePage />,
             },
         ],
     },
@@ -28,75 +26,43 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "/home",
-                element: <Home />,
+                element: <HomePage />,
             },
             {
                 path: "/notes",
-                element: (
-                    <MainLayout>
-                        <Notes />
-                    </MainLayout>
-                ),
+                element: <NotesPage />,
             },
             {
                 path: "/notes/new",
-                element: (
-                    <MainLayout>
-                        <NewNote />
-                    </MainLayout>
-                ),
+                element: <NewNotePage />,
             },
             {
                 path: "/notes/:id",
-                element: (
-                    <MainLayout>
-                        <Note />
-                    </MainLayout>
-                ),
+                element: <NotePage />,
             },
             {
                 path: "/notes/:id/edit",
-                element: (
-                    <MainLayout>
-                        <Edit />
-                    </MainLayout>
-                ),
+                element: <EditNotePage />,
             },
             {
                 path: "/classes",
-                element: (
-                    <MainLayout>
-                        <Classes />
-                    </MainLayout>
-                ),
+                element: <ClassesPage />,
             },
             {
                 path: "/classes/new",
-                element: (
-                    <MainLayout>
-                        <NewClassPage />
-                    </MainLayout>
-                ),
+                element: <NewClassPage />,
             },
             {
                 path: "/classes/:id",
-                element: (
-                    <MainLayout>
-                        <Class />
-                    </MainLayout>
-                ),
+                element: <ClassPage />,
             },
             {
                 path: "/classes/:id/newGrade",
-                element: (
-                    <MainLayout>
-                        <NewGrade />
-                    </MainLayout>
-                ),
+                element: <NewGradePage />,
             },
             {
                 path: "/*",
-                element: <Error />,
+                element: <ErrorPage />,
             },
         ],
     },

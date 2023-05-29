@@ -1,0 +1,14 @@
+@import "../../../../../assets/variables";
+
+.btn_container {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1em;
+    gap: 1em;
+}
+
+.note_alter_btn_container {
+    display: flex;
+    gap: 1em;
+}

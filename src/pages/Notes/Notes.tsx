@@ -1,10 +1,11 @@
-import Title from "@/components/Title/Title";
+import { Title } from "@/components/Elements";
 import { NoteFilterProvider } from "@/context/NoteFilterContext";
 import useFetch from "@/hooks/useFetch";
-import NoteControls from "./components/NoteControls/NoteControls";
-import NoteList from "@/components/NoteList/NoteList";
+import NoteControls from "./NoteControls";
+import { NoteList } from "@/components/NoteList";
 import { Note } from "@/types";
-import styles from "./styles.module.scss";
+import styles from "./styles/Notes.module.scss";
+import { MainLayout } from "@/layout/MainLayout";
 
 function Notes() {
     const { data: notes, loading, error } = useFetch<Note[]>("/notes");
@@ -21,13 +22,15 @@ function Notes() {
 
     if (notes) {
         return (
-            <div className={styles.container}>
-                <Title>Notes</Title>
-                <NoteFilterProvider>
-                    <NoteControls />
-                    <NoteList notes={notes} />
-                </NoteFilterProvider>
-            </div>
+            <MainLayout>
+                <div className={styles.container}>
+                    <Title>Notes</Title>
+                    <NoteFilterProvider>
+                        <NoteControls />
+                        <NoteList notes={notes} />
+                    </NoteFilterProvider>
+                </div>
+            </MainLayout>
         );
     }
 }

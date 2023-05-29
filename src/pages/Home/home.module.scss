@@ -1,0 +1,45 @@
+@import "../../assets/variables";
+
+.home {
+    width: 100vw;
+    height: 100vh;
+
+    .title {
+        letter-spacing: 0.05em;
+        text-align: center;
+        padding: 2em 0;
+        font-size: 3rem;
+    }
+}
+.home .light {
+    background-color: $bg-light;
+    color: $text-light;
+}
+
+.home.dark {
+    background-color: $bg-dark;
+    color: $text-dark;
+    .title {
+        color: inherit;
+    }
+}
+
+.buttons_container {
+    max-width: 70vw;
+    display: flex;
+    margin: 5em auto;
+    justify-content: space-between;
+    gap: 20vw;
+}
+
+@media only screen and (max-width: calc($tablet-breakpoint + 100px)) {
+    .buttons_container {
+        gap: 5em;
+        flex-direction: column;
+        align-items: center;
+
+        & > div {
+            width: 200px;
+        }
+    }
+}

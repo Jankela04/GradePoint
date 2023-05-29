@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axiosService from "@/services/axios";
+import axios from "@/lib/axios";
 
 const useFetch = <T>(url: string) => {
     const [data, setData] = useState<T | null>(null);
@@ -9,7 +9,7 @@ const useFetch = <T>(url: string) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await axiosService.get(url);
+                const res = await axios.get(url);
                 setLoading(false);
                 setData(res.data);
             } catch (err) {

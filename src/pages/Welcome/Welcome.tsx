@@ -1,7 +1,7 @@
 import classnames from "classnames";
 import styles from "./styles.module.scss";
-import Logo from "@/components/Logo/Logo";
-import RegisterForm from "./components/RegisterForm/RegisterForm";
+import { Logo } from "@/components/Elements";
+import RegisterForm from "./RegisterForm";
 import { useTheme } from "@/context/ThemeContext";
 
 function Welcome() {
@@ -9,9 +9,7 @@ function Welcome() {
     return (
         <div className={classnames(styles.home, styles[theme])}>
             <h1 className={styles.title}>
-                Welcome to
-                {" "}
-                <Logo type="large" />
+                Welcome to <Logo type="large" />
             </h1>
 
             <RegisterForm />

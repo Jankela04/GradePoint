@@ -7,6 +7,6 @@ const noteFormSchema = z.object({
     text: z.string().nonempty({ message: REQUIRED_ERROR_MESSAGE }),
 });
 
-export type NoteForm = z.infer<typeof noteFormSchema>;
+export type TNoteForm = z.infer<typeof noteFormSchema>;
 
 export default noteFormSchema;
