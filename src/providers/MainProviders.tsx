@@ -2,6 +2,7 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import queryClient from "@/lib/react-query";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { BrowserRouter } from "react-router-dom";
 
 type MainProvidersProps = {
     children: React.ReactNode;
@@ -12,7 +13,7 @@ function MainProviders({ children }: MainProvidersProps) {
         <ThemeProvider>
             <QueryClientProvider client={queryClient}>
                 <ReactQueryDevtools />
-                {children}
+                <BrowserRouter>{children}</BrowserRouter>
             </QueryClientProvider>
         </ThemeProvider>
     );
