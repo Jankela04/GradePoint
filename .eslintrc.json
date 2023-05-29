@@ -8,7 +8,8 @@
         "airbnb",
         "airbnb-typescript",
         "plugin:import/typescript",
-        "prettier"
+        "prettier",
+        "plugin:@tanstack/eslint-plugin-query/recommended"
     ],
     "overrides": [],
     "ignorePatterns": ["vite.config.ts"],
@@ -18,7 +19,7 @@
         "sourceType": "module",
         "project": "./tsconfig.json"
     },
-    "plugins": ["react", "@typescript-eslint", "prettier"],
+    "plugins": ["react", "@typescript-eslint", "prettier", "@tanstack/query"],
     "rules": {
         "indent": ["error", 4],
         "@typescript-eslint/indent": ["error", 4],
