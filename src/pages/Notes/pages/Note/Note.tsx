@@ -1,21 +1,24 @@
 import { useParams } from "react-router-dom";
 import classNames from "classnames";
 import styles from "./styles/Note.module.scss";
-import { Note as TNote } from "@/types";
 import NoteActions from "./NoteActions";
 import { Tag } from "@/components/Elements";
 import { useTheme } from "@/context/ThemeContext";
-import useFetch from "@/hooks/useFetch";
 import { formatDate } from "@/utils/FormatDate";
 import { Title } from "@/components/Elements";
 import { MainLayout } from "@/layout/MainLayout";
+import useNoteQuery from "./api/getNote";
+
+export type NoteParams = {
+    id: string;
+};
 
 function Note() {
-    const { id } = useParams();
+    const { id } = useParams() as NoteParams;
     const { theme } = useTheme();
-    const { data: note, loading, error } = useFetch<TNote>(`/notes/${id}`);
+    const { data: note, isLoading, error } = useNoteQuery(id);
 
-    if (loading) {
+    if (isLoading) {
         return (
             <div className={styles.alert}>
                 <span>Loading...</span>
