@@ -1,14 +1,13 @@
 import { Title } from "@/components/Elements";
-import useFetch from "@/hooks/useFetch";
 import ClassCard from "./ClassCard";
 import NewClass from "./NewClass";
 import styles from "./styles/ClassList.module.scss";
-import { Class } from "@/types";
+import useClassesQuery from "./api/getClasses";
 
 function ClassList() {
-    const { data: classes, loading, error } = useFetch<Class[]>("/classes");
+    const { data: classes, isLoading, error } = useClassesQuery();
 
-    if (loading) {
+    if (isLoading) {
         return (
             <Title>
                 <p>Loading...</p>

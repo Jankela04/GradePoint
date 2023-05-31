@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-no-useless-fragment */
+
 import { useRoutes } from "react-router-dom";
 import {
     ClassPage,

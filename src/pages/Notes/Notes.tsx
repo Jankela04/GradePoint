@@ -1,16 +1,15 @@
 import { Title } from "@/components/Elements";
 import { NoteFilterProvider } from "@/context/NoteFilterContext";
-import useFetch from "@/hooks/useFetch";
 import NoteControls from "./NoteControls";
 import { NoteList } from "@/components/NoteList";
-import { Note } from "@/types";
 import styles from "./styles/Notes.module.scss";
 import { MainLayout } from "@/layout/MainLayout";
+import useNotesQuery from "./api/getNotes";
 
 function Notes() {
-    const { data: notes, loading, error } = useFetch<Note[]>("/notes");
+    const { data: notes, error, isLoading } = useNotesQuery();
 
-    if (loading) {
+    if (isLoading) {
         return (
             <div className={styles.alert_container}>
                 <p>Loading...</p>

@@ -1,9 +1,9 @@
 import { v4 as uuidv4 } from "uuid";
+import { useNavigate } from "react-router-dom";
+import { useMutation } from "@tanstack/react-query";
 import { Note } from "@/types";
 import axios from "@/lib/axios";
 import { TNoteForm } from "../noteFormSchema";
-import { useMutation } from "@tanstack/react-query";
-import { useNavigate } from "react-router-dom";
 import queryClient from "@/lib/react-query";
 
 const createNewNote = async (data: TNoteForm) => {
