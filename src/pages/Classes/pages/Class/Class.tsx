@@ -1,38 +1,36 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
 import { Title } from "@/components/Elements";
-import useFetch from "@/hooks/useFetch";
 import CalculateGpa from "@/utils/CalculateGpa";
-import { Class as TClass, Note } from "@/types";
 import styles from "./styles/Class.module.scss";
 import { Button } from "@/components/Elements";
 import GradeList from "./GradeList";
 import ClassNotes from "./ClassNotes";
 import { Modal as DeleteModal } from "@/components/Elements";
-import axios from "@/lib/axios";
 import { MainLayout } from "@/layout/MainLayout";
+import useClassQuery from "./api/getClass";
+import useClassNotesQuery from "./api/getClassNotes";
+import useDeleteClassMutation from "./api/deleteClass";
+
+export type ClassPageParams = {
+    id: string;
+};
 
 function Class() {
-    const { id } = useParams();
+    const { id } = useParams() as ClassPageParams;
     const navigate = useNavigate();
-    const {
-        data: classObj,
-        loading,
-        error,
-    } = useFetch<TClass>(`/classes/${id}`);
+    const { data: classObj, isLoading, error } = useClassQuery(id);
+    const { data: notes, isLoading: notesLoading } = useClassNotesQuery(
+        classObj?.class
+    );
+
+    const { deleteClass } = useDeleteClassMutation(id);
+
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const closeModal = () => setModalIsOpen(false);
     const openModal = () => setModalIsOpen(true);
-    const deleteClass = async () => {
-        await axios.delete(`/classes/${classObj?.id}`);
-        navigate("/classes");
-    };
 
-    const { data: notes, loading: notesLoading } = useFetch<Note[]>(
-        `/notes?tag=${classObj?.class}`
-    );
-
-    if (loading || notesLoading) return <Title>Loading...</Title>;
+    if (isLoading || notesLoading) return <Title>Loading...</Title>;
 
     if (error || !classObj || !notes)
         return <Title>Something Went Wrong</Title>;
@@ -56,8 +54,8 @@ function Class() {
                             {classObj.grades.length === 0
                                 ? "No Grades"
                                 : classObj.grades
-                                    .map((grade) => grade.grade)
-                                    .join(", ")}
+                                      .map((grade) => grade.grade)
+                                      .join(", ")}
                         </span>
                         <span>
                             Notes:

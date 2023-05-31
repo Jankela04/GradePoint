@@ -9,12 +9,12 @@ import { Title } from "@/components/Elements";
 import { MainLayout } from "@/layout/MainLayout";
 import useNoteQuery from "./api/getNote";
 
-export type NoteParams = {
+export type NotePageParams = {
     id: string;
 };
 
 function Note() {
-    const { id } = useParams() as NoteParams;
+    const { id } = useParams() as NotePageParams;
     const { theme } = useTheme();
     const { data: note, isLoading, error } = useNoteQuery(id);
 
