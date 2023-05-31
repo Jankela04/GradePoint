@@ -1,12 +1,30 @@
 import axios from "@/lib/axios";
 import { Class, Grade } from "@/types";
+import { useMutation } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
 
-const addGrade = async (data: Grade, classObj: Class) => {
+type AddGradeData = {
+    grade: Grade;
+    classObj: Class;
+};
+
+const addNewGrade = async (data: AddGradeData) => {
+    const { classObj, grade } = data;
     const newClass: Class = {
         ...classObj,
-        grades: [...classObj.grades, data],
+        grades: [...classObj.grades, grade],
     };
     await axios.put(`/classes/${classObj?.id}`, newClass);
 };
 
-export default addGrade;
+const useAddGradeMutation = (classID: string) => {
+    const navigate = useNavigate();
+    const { mutate: addGrade } = useMutation({
+        mutationKey: ["class", "grade"],
+        mutationFn: (data: AddGradeData) => addNewGrade(data),
+        onSuccess: () => navigate(`/classes/${classID}`),
+    });
+
+    return { addGrade };
+};
+export default useAddGradeMutation;
