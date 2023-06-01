@@ -55,7 +55,7 @@ function Note() {
                 <div className={classNames(styles.text, styles[theme])}>
                     {note?.text}
                 </div>
-                <NoteActions />
+                <NoteActions noteId={id} />
             </div>
         </MainLayout>
     );

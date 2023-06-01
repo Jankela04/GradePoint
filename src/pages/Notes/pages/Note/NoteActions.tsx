@@ -1,32 +1,36 @@
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import styles from "./styles/NoteActions.module.scss";
 import { Button } from "@/components/Elements";
 import { Modal as DeleteModal } from "@/components/Elements";
-import axios from "@/lib/axios";
+import useDeleteNoteMutation from "./api/deleteNote";
 
-function NoteActions() {
+type NoteActionsProps = {
+    noteId: string;
+};
+
+function NoteActions({ noteId }: NoteActionsProps) {
     const [isOpen, setIsOpen] = useState(false);
+
     const closeModal = () => setIsOpen(false);
     const openModal = () => setIsOpen(true);
 
     const navigate = useNavigate();
     const location = useLocation();
-    const path = location.state?.prevPath ?? "/notes";
+    const prevPath = location.state?.prevPath ?? "/notes";
 
-    const { id } = useParams();
+    const { deleteNote } = useDeleteNoteMutation();
 
     const handleEditClick = () => {
-        navigate(`/notes/${id}/edit`);
+        navigate(`/notes/${noteId}/edit`);
+    };
+
+    const handleDelete = () => {
+        deleteNote(noteId);
     };
 
     const handleGoBackClick = () => {
-        navigate(path);
-    };
-
-    const deleteNote = async () => {
-        await axios.delete(`/notes/${id}`);
-        navigate(path);
+        navigate(prevPath);
     };
 
     return (
@@ -45,7 +49,7 @@ function NoteActions() {
                     isOpen={isOpen}
                     closeModal={closeModal}
                     confirmLabel="Delete"
-                    onConfirm={deleteNote}
+                    onConfirm={handleDelete}
                     title="Are You sure You want to delete this Note?"
                 />
             </div>
