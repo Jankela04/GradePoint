@@ -15,7 +15,7 @@ function MainProviders({ children }: MainProvidersProps) {
         <ThemeProvider>
             <Suspense fallback={<LoadingPage />}>
                 <QueryClientProvider client={queryClient}>
-                    <ReactQueryDevtools />
+                    {import.meta.env.DEV && <ReactQueryDevtools />}
                     <BrowserRouter>{children}</BrowserRouter>
                 </QueryClientProvider>
             </Suspense>
