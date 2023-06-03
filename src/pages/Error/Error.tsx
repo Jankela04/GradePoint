@@ -9,7 +9,7 @@ function Error() {
             <h1>Error 404</h1>
             <h3>Wrong Page</h3>
             <Button
-                variant="primary"
+                variant="secondary"
                 rounded
                 onClick={() => {
                     navigate("/");
