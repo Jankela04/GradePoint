@@ -7,7 +7,6 @@ import { Button } from "@/components/Elements";
 import GradeList from "./GradeList";
 import ClassNotes from "./ClassNotes";
 import { Modal as DeleteModal } from "@/components/Elements";
-import { MainLayout } from "@/layout/MainLayout";
 import useClassQuery from "./api/getClass";
 import useClassNotesQuery from "./api/getClassNotes";
 import useDeleteClassMutation from "./api/deleteClass";
@@ -36,7 +35,7 @@ function Class() {
         return <Title>Something Went Wrong</Title>;
 
     return (
-        <MainLayout>
+        <>
             <Title>{classObj?.class}</Title>
             <div className={styles.container}>
                 <div className={styles.header}>
@@ -93,7 +92,7 @@ function Class() {
                 <GradeList grades={classObj.grades} />
                 <ClassNotes classObj={classObj} notes={notes} />
             </div>
-        </MainLayout>
+        </>
     );
 }
 
