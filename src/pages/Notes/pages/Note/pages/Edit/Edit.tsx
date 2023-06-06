@@ -1,29 +1,16 @@
 import { useParams } from "react-router-dom";
-import useFetch from "@/hooks/useFetch";
 import { NoteFormLayout } from "@/layout/NoteFormLayout";
-import { Note } from "@/types";
-import { MainLayout } from "@/layout/MainLayout";
+import useNoteQuery from "../../api/getNote";
+import type { NotePageParams } from "../../Note";
 
 function Edit() {
-    const { id } = useParams();
-    const { data: note, loading, error } = useFetch<Note>(`/notes/${id}`);
-    if (loading) {
-        return <div>Loading...</div>;
-    }
+    const { id } = useParams() as NotePageParams;
 
-    if (error) {
-        return <div>Error, Something Went Wrong</div>;
-    }
+    const { data: note } = useNoteQuery(id);
 
-    if (!note) {
-        return <div>Note not found</div>;
-    }
+    if (!note) return null;
 
-    return (
-        <MainLayout>
-            <NoteFormLayout mode="edit" note={note} />
-        </MainLayout>
-    );
+    return <NoteFormLayout mode="edit" note={note} />;
 }
 
 export default Edit;

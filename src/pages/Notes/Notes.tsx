@@ -1,38 +1,24 @@
 import { Title } from "@/components/Elements";
 import { NoteFilterProvider } from "@/context/NoteFilterContext";
-import useFetch from "@/hooks/useFetch";
 import NoteControls from "./NoteControls";
 import { NoteList } from "@/components/NoteList";
-import { Note } from "@/types";
 import styles from "./styles/Notes.module.scss";
-import { MainLayout } from "@/layout/MainLayout";
+import useNotesQuery from "./api/getNotes";
 
 function Notes() {
-    const { data: notes, loading, error } = useFetch<Note[]>("/notes");
+    const { data: notes } = useNotesQuery();
 
-    if (loading) {
-        return (
-            <div className={styles.alert_container}>
-                <p>Loading...</p>
-            </div>
-        );
-    }
+    if (!notes) return null;
 
-    if (error) return <div>Error, Something Went Wrong</div>;
-
-    if (notes) {
-        return (
-            <MainLayout>
-                <div className={styles.container}>
-                    <Title>Notes</Title>
-                    <NoteFilterProvider>
-                        <NoteControls />
-                        <NoteList notes={notes} />
-                    </NoteFilterProvider>
-                </div>
-            </MainLayout>
-        );
-    }
+    return (
+        <div className={styles.container}>
+            <Title>Notes</Title>
+            <NoteFilterProvider>
+                <NoteControls />
+                <NoteList notes={notes} />
+            </NoteFilterProvider>
+        </div>
+    );
 }
 
 export default Notes;

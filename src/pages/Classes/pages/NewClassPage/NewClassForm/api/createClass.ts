@@ -1,15 +1,19 @@
+import { useMutation } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
 import axios from "@/lib/axios";
-import { Grade } from "@/types";
+import { type Class } from "@/types";
 
-type NewClass = {
-    grades: Grade[];
-    class: string;
-    teacher: string;
-    id: string;
-};
-
-const createClass = async (newClass: NewClass) => {
+const createNewClass = async (newClass: Class) => {
     await axios.post("/classes", newClass);
+    return newClass;
 };
 
-export default createClass;
+const useCreateClassMutation = () => {
+    const navigate = useNavigate();
+    const { mutate: createClass } = useMutation({
+        mutationFn: (data: Class) => createNewClass(data),
+        onSuccess: (data) => navigate(`/classes/${data.id}`),
+    });
+    return { createClass };
+};
+export default useCreateClassMutation;

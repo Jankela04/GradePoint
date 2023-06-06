@@ -12,8 +12,7 @@ import { useTheme } from "@/context/ThemeContext";
 import { Button } from "../Elements";
 import { Input } from "@/components/Elements";
 
-import createNewNote from "./api/createNote";
-import editNote from "./api/editNote";
+import useNoteMutations from "./api/useNoteMutation";
 
 type NoteFormProps = NoteFormType & {
     initialValues: TNoteForm;
@@ -28,6 +27,7 @@ function NoteForm({ mode, note, initialValues }: NoteFormProps) {
         resolver: zodResolver(noteFormSchema),
         defaultValues: initialValues,
     });
+    const { createNote, editNote } = useNoteMutations();
 
     const { theme } = useTheme();
 
@@ -44,11 +44,10 @@ function NoteForm({ mode, note, initialValues }: NoteFormProps) {
 
     const onSubmit = async (data: TNoteForm) => {
         if (mode === "new") {
-            createNewNote(data);
+            createNote(data);
         } else {
-            editNote(note, data);
+            editNote({ data, note });
         }
-        navigate("/notes");
     };
 
     return (

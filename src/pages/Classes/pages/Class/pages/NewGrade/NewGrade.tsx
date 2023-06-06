@@ -3,17 +3,18 @@ import DatePicker from "react-datepicker";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, Controller } from "react-hook-form";
 import "react-datepicker/dist/react-datepicker.css";
-
-import { MainLayout } from "@/layout/MainLayout";
 import { Input } from "@/components/Elements";
 import { Title } from "@/components/Elements";
 import { Button } from "@/components/Elements";
 import styles from "./styles.module.scss";
-
-import useFetch from "@/hooks/useFetch";
-import type { Class, Grade } from "@/types";
+import type { Grade } from "@/types";
 import newGradeSchema from "./newGradeSchema";
-import addGrade from "./api/addGrade";
+import useClassQuery from "../../api/getClass";
+import useAddGradeMutation from "./api/addGrade";
+
+type NewGradePageParam = {
+    id: string;
+};
 
 function NewGrade() {
     const {
@@ -27,14 +28,13 @@ function NewGrade() {
             date: new Date(),
         },
     });
+
     const navigate = useNavigate();
     const location = useLocation();
-    const { id } = useParams();
-    const {
-        data: classObj,
-        loading,
-        error,
-    } = useFetch<Class>(`/classes/${id}`);
+    const { id } = useParams() as NewGradePageParam;
+    const { data: classObj, isLoading, error } = useClassQuery(id);
+
+    const { addGrade } = useAddGradeMutation(id);
 
     const handleCancel = () => {
         const path = location.state?.id
@@ -43,17 +43,16 @@ function NewGrade() {
         navigate(path);
     };
 
-    if (loading) return <Title>Loading...</Title>;
+    if (isLoading) return <Title>Loading...</Title>;
 
     if (error || !classObj) return <Title>Something Went Wrong</Title>;
 
     const onSubmit = async (data: Grade) => {
-        addGrade(data, classObj);
-        navigate(`/classes/${classObj.id}`);
+        addGrade({ grade: data, classObj });
     };
 
     return (
-        <MainLayout>
+        <>
             <Title>New Grade</Title>
             <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
                 <section className={styles.section}>
@@ -104,7 +103,7 @@ function NewGrade() {
                     </Button>
                 </div>
             </form>
-        </MainLayout>
+        </>
     );
 }
 

@@ -9,7 +9,7 @@ import {
     NewClassForm as TNewClassForm,
     newClassSchema,
 } from "./newClassSchema";
-import createClass from "./api/createClass";
+import useCreateClassMutation from "./api/createClass";
 
 function NewClassForm() {
     const {
@@ -20,12 +20,12 @@ function NewClassForm() {
     } = useForm<TNewClassForm>({
         resolver: zodResolver(newClassSchema),
     });
+    const { createClass } = useCreateClassMutation();
     const navigate = useNavigate();
 
     const onSubmit = async (data: TNewClassForm) => {
         const newClass = { id: v4(), ...data, grades: [] };
         createClass(newClass);
-        navigate(`/classes/${newClass.id}`);
     };
     const handleCancelClick = () => {
         reset();

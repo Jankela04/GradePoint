@@ -1,4 +1,6 @@
-import { createBrowserRouter } from "react-router-dom";
+/* eslint-disable react/jsx-no-useless-fragment */
+
+import { useRoutes } from "react-router-dom";
 import {
     ClassPage,
     ClassesPage,
@@ -11,7 +13,7 @@ import { WelcomePage } from "@/pages/Welcome";
 import { ProtectedWelcome, ProtectedRoutes } from "./ProtectedRoutes";
 import { ErrorPage } from "@/pages/Error";
 
-const router = createBrowserRouter([
+const routes = [
     {
         element: <ProtectedWelcome />,
         children: [
@@ -66,6 +68,12 @@ const router = createBrowserRouter([
             },
         ],
     },
-]);
+];
 
-export default router;
+function AppRoutes() {
+    const element = useRoutes([...routes]);
+
+    return <>{element}</>;
+}
+
+export default AppRoutes;

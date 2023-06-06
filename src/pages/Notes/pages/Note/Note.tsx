@@ -1,38 +1,26 @@
 import { useParams } from "react-router-dom";
 import classNames from "classnames";
 import styles from "./styles/Note.module.scss";
-import { Note as TNote } from "@/types";
 import NoteActions from "./NoteActions";
 import { Tag } from "@/components/Elements";
 import { useTheme } from "@/context/ThemeContext";
-import useFetch from "@/hooks/useFetch";
 import { formatDate } from "@/utils/FormatDate";
 import { Title } from "@/components/Elements";
-import { MainLayout } from "@/layout/MainLayout";
+import useNoteQuery from "./api/getNote";
+
+export type NotePageParams = {
+    id: string;
+};
 
 function Note() {
-    const { id } = useParams();
+    const { id } = useParams() as NotePageParams;
     const { theme } = useTheme();
-    const { data: note, loading, error } = useFetch<TNote>(`/notes/${id}`);
+    const { data: note } = useNoteQuery(id);
 
-    if (loading) {
-        return (
-            <div className={styles.alert}>
-                <span>Loading...</span>
-            </div>
-        );
-    }
-
-    if (error || !note) {
-        return (
-            <div className={styles.alert}>
-                <span>Something Went Wrong</span>
-            </div>
-        );
-    }
+    if (!note) return null;
 
     return (
-        <MainLayout>
+        <>
             <Title>{note?.title}</Title>
             <div className={styles.tag}>
                 <Tag tag={note?.tag} />
@@ -52,9 +40,9 @@ function Note() {
                 <div className={classNames(styles.text, styles[theme])}>
                     {note?.text}
                 </div>
-                <NoteActions />
+                <NoteActions noteId={id} />
             </div>
-        </MainLayout>
+        </>
     );
 }
 export default Note;
