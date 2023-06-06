@@ -1,7 +1,7 @@
+import classNames from "classnames";
 import { Spinner } from "@/components/Elements";
 import styles from "./LoadingPage.module.scss";
 import { useTheme } from "@/context/ThemeContext";
-import classNames from "classnames";
 
 function LoadingPage() {
     const { theme } = useTheme();

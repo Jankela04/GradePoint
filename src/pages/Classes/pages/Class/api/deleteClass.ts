@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
-import axios from "@/lib/axios";
 import { useNavigate } from "react-router-dom";
+import axios from "@/lib/axios";
 
 const removeClass = async (ID: string) => {
     await axios.delete(`/classes/${ID}`);

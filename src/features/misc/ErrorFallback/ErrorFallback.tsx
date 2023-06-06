@@ -6,7 +6,7 @@ type ErrorFallbackProps = {
     error: any;
 };
 
-const ErrorFallback = ({ error }: ErrorFallbackProps) => {
+function ErrorFallback({ error }: ErrorFallbackProps) {
     return (
         <div className={classNames(styles.page)}>
             <div className={styles.card}>
@@ -23,6 +23,6 @@ const ErrorFallback = ({ error }: ErrorFallbackProps) => {
             </div>
         </div>
     );
-};
+}
 
 export default ErrorFallback;

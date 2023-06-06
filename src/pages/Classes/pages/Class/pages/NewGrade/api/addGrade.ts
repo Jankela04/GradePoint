@@ -1,7 +1,7 @@
-import axios from "@/lib/axios";
-import { Class, Grade } from "@/types";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
+import axios from "@/lib/axios";
+import { Class, Grade } from "@/types";
 
 type AddGradeData = {
     grade: Grade;

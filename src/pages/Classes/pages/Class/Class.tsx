@@ -53,8 +53,8 @@ function Class() {
                             {classObj.grades.length === 0
                                 ? "No Grades"
                                 : classObj.grades
-                                      .map((grade) => grade.grade)
-                                      .join(", ")}
+                                    .map((grade) => grade.grade)
+                                    .join(", ")}
                         </span>
                         <span>
                             Notes:

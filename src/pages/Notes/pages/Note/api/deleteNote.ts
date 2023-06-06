@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
-import axios from "@/lib/axios";
 import { useLocation, useNavigate } from "react-router-dom";
+import axios from "@/lib/axios";
 
 const removeNote = async (ID: string) => {
     await axios.delete(`/notes/${ID}`);
