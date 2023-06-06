@@ -7,31 +7,21 @@ import { MainLayout } from "@/layout/MainLayout";
 import useNotesQuery from "./api/getNotes";
 
 function Notes() {
-    const { data: notes, error, isLoading } = useNotesQuery();
+    const { data: notes } = useNotesQuery();
 
-    if (isLoading) {
-        return (
-            <div className={styles.alert_container}>
-                <p>Loading...</p>
+    if (!notes) return null;
+
+    return (
+        <MainLayout>
+            <div className={styles.container}>
+                <Title>Notes</Title>
+                <NoteFilterProvider>
+                    <NoteControls />
+                    <NoteList notes={notes} />
+                </NoteFilterProvider>
             </div>
-        );
-    }
-
-    if (error) return <div>Error, Something Went Wrong</div>;
-
-    if (notes) {
-        return (
-            <MainLayout>
-                <div className={styles.container}>
-                    <Title>Notes</Title>
-                    <NoteFilterProvider>
-                        <NoteControls />
-                        <NoteList notes={notes} />
-                    </NoteFilterProvider>
-                </div>
-            </MainLayout>
-        );
-    }
+        </MainLayout>
+    );
 }
 
 export default Notes;

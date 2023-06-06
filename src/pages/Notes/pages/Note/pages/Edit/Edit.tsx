@@ -2,24 +2,14 @@ import { useParams } from "react-router-dom";
 import { NoteFormLayout } from "@/layout/NoteFormLayout";
 import { MainLayout } from "@/layout/MainLayout";
 import useNoteQuery from "../../api/getNote";
-import type { NoteParams } from "../../Note";
+import type { NotePageParams } from "../../Note";
 
 function Edit() {
-    const { id } = useParams() as NoteParams;
+    const { id } = useParams() as NotePageParams;
 
-    const { data: note, isLoading, error } = useNoteQuery(id);
+    const { data: note } = useNoteQuery(id);
 
-    if (isLoading) {
-        return <div>Loading...</div>;
-    }
-
-    if (error) {
-        return <div>Error, Something Went Wrong</div>;
-    }
-
-    if (!note) {
-        return <div>Note not found</div>;
-    }
+    if (!note) return null;
 
     return (
         <MainLayout>

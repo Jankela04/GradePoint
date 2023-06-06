@@ -16,23 +16,9 @@ export type NotePageParams = {
 function Note() {
     const { id } = useParams() as NotePageParams;
     const { theme } = useTheme();
-    const { data: note, isLoading, error } = useNoteQuery(id);
+    const { data: note } = useNoteQuery(id);
 
-    if (isLoading) {
-        return (
-            <div className={styles.alert}>
-                <span>Loading...</span>
-            </div>
-        );
-    }
-
-    if (error || !note) {
-        return (
-            <div className={styles.alert}>
-                <span>Something Went Wrong</span>
-            </div>
-        );
-    }
+    if (!note) return null;
 
     return (
         <MainLayout>
