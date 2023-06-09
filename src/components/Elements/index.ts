@@ -5,3 +5,4 @@ export { Modal } from "./Modal";
 export { Tag } from "./Tag";
 export { Title } from "./Title";
 export { Spinner } from "./Spinner";
+export { Container } from "./Container";
