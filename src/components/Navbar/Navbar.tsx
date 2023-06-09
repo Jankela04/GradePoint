@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { Logo } from "../Elements";
+import { Container, Logo } from "../Elements";
 import Name from "./components/Name/Name";
 import styles from "./styles.module.scss";
 import { useTheme } from "@/context/ThemeContext";
@@ -17,48 +17,56 @@ function Navbar() {
         setShowMenu(false);
     };
     return (
-        <nav className={classNames(styles.navbar, styles[theme])}>
-            <div className={styles.left_side}>
-                <Logo type="small" />
-                <button
-                    className={styles.button}
-                    onClick={toggleMenu}
-                    type="button"
-                >
-                    {!showMenu ? <MenuOpenIcon /> : <MenuCloseIcon />}
-                </button>
-                <div
-                    className={
-                        showMenu
-                            ? classNames(
-                                styles.links,
-                                styles.active,
-                                styles[theme]
-                            )
-                            : styles.links
-                    }
-                >
-                    <Link
-                        className={styles[theme]}
-                        onClick={handleClick}
-                        to="/notes"
+        <Container>
+            <nav
+                className={classNames(
+                    styles.navbar,
+                    styles[theme],
+                    styles.full_bleed
+                )}
+            >
+                <div className={styles.left_side}>
+                    <Logo type="small" />
+                    <button
+                        className={styles.button}
+                        onClick={toggleMenu}
+                        type="button"
                     >
-                        Notes
-                    </Link>
-                    <Link
-                        className={styles[theme]}
-                        onClick={handleClick}
-                        to="/classes"
+                        {!showMenu ? <MenuOpenIcon /> : <MenuCloseIcon />}
+                    </button>
+                    <div
+                        className={
+                            showMenu
+                                ? classNames(
+                                    styles.links,
+                                    styles.active,
+                                    styles[theme]
+                                )
+                                : styles.links
+                        }
                     >
-                        Classes
-                    </Link>
+                        <Link
+                            className={styles[theme]}
+                            onClick={handleClick}
+                            to="/notes"
+                        >
+                            Notes
+                        </Link>
+                        <Link
+                            className={styles[theme]}
+                            onClick={handleClick}
+                            to="/classes"
+                        >
+                            Classes
+                        </Link>
+                    </div>
                 </div>
-            </div>
-            <div className={styles.right_side}>
-                <ThemeSwitcher />
-                <Name />
-            </div>
-        </nav>
+                <div className={styles.right_side}>
+                    <ThemeSwitcher />
+                    <Name />
+                </div>
+            </nav>
+        </Container>
     );
 }
 
