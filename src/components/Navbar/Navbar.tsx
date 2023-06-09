@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Container, Logo } from "../Elements";
 import Name from "./components/Name/Name";
 import styles from "./styles.module.scss";
@@ -9,13 +9,29 @@ import ThemeSwitcher from "./components/ThemeSwitcher/ThemeSwitcher";
 
 function Navbar() {
     const { theme } = useTheme();
-    const [showMenu, setShowMenu] = useState(false);
+
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const toggleMenu = () => {
-        setShowMenu((prev) => !prev);
+        setIsMobileMenuOpen((prev) => !prev);
     };
     const handleClick = () => {
-        setShowMenu(false);
+        setIsMobileMenuOpen(false);
     };
+
+    useEffect(() => {
+        window.addEventListener(
+            "resize",
+            () => window.innerWidth >= 550 && setIsMobileMenuOpen(false)
+        );
+
+        return () => {
+            window.removeEventListener(
+                "resize",
+                () => window.innerWidth >= 550 && setIsMobileMenuOpen(false)
+            );
+        };
+    }, []);
+
     return (
         <Container>
             <nav
@@ -32,18 +48,17 @@ function Navbar() {
                         onClick={toggleMenu}
                         type="button"
                     >
-                        {!showMenu ? <MenuOpenIcon /> : <MenuCloseIcon />}
+                        {!isMobileMenuOpen ? (
+                            <MenuOpenIcon />
+                        ) : (
+                            <MenuCloseIcon />
+                        )}
                     </button>
                     <div
-                        className={
-                            showMenu
-                                ? classNames(
-                                    styles.links,
-                                    styles.active,
-                                    styles[theme]
-                                )
-                                : styles.links
-                        }
+                        className={classNames(
+                            styles.desktop_links,
+                            styles[theme]
+                        )}
                     >
                         <Link
                             className={styles[theme]}
@@ -66,6 +81,24 @@ function Navbar() {
                     <Name />
                 </div>
             </nav>
+            {isMobileMenuOpen && (
+                <div className={classNames(styles.mobile_links, styles[theme])}>
+                    <Link
+                        className={styles[theme]}
+                        onClick={handleClick}
+                        to="/notes"
+                    >
+                        Notes
+                    </Link>
+                    <Link
+                        className={styles[theme]}
+                        onClick={handleClick}
+                        to="/classes"
+                    >
+                        Classes
+                    </Link>
+                </div>
+            )}
         </Container>
     );
 }
