@@ -8,6 +8,9 @@
     cursor: pointer;
     user-select: none;
 
+    a {
+        all: unset;
+    }
     .title {
         margin-bottom: 1em;
     }
