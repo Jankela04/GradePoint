@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { useLocation, useNavigate } from "react-router-dom";
 import classNames from "classnames";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useHotkeys } from "react-hotkeys-hook";
 
 import { NoteFormType } from "@/layout/NoteFormLayout";
 import noteFormSchema, { TNoteForm } from "./noteFormSchema";
@@ -49,6 +50,10 @@ function NoteForm({ mode, note, initialValues }: NoteFormProps) {
             editNote({ data, note });
         }
     };
+
+    useHotkeys("ctrl+enter", () => handleSubmit(onSubmit)(), {
+        enableOnFormTags: ["INPUT", "TEXTAREA"],
+    });
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
