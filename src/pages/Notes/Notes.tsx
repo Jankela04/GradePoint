@@ -1,23 +1,21 @@
-import { Container, Title } from "@/components/Elements";
+import { Container, Title, InlineSpinner } from "@/components/Elements";
 import { NoteFilterProvider } from "@/context/NoteFilterContext";
 import NoteControls from "./NoteControls";
 import { NoteList } from "@/components/NoteList";
-import useNotesQuery from "./api/getNotes";
+import { Suspense } from "react";
 
-function Notes() {
-    const { data: notes } = useNotesQuery();
-
-    if (!notes) return null;
-
+function NotesPage() {
     return (
         <Container>
             <Title>Notes</Title>
             <NoteFilterProvider>
                 <NoteControls />
-                <NoteList notes={notes} />
+                <Suspense fallback={<InlineSpinner />}>
+                    <NoteList />
+                </Suspense>
             </NoteFilterProvider>
         </Container>
     );
 }
 
-export default Notes;
+export default NotesPage;

@@ -1,15 +1,27 @@
 import styles from "./styles.module.scss";
 import NoteCard from "./NoteCard/NoteCard";
 import { useNoteFilter } from "@/context/NoteFilterContext";
-import type { Note } from "@/types";
+import useNotesQuery from "./api/getNotes";
 
-function NoteList({ notes }: { notes: Note[] }) {
+type NoteListProps = {
+    tag?: string;
+};
+/**
+ * A component that fetches and displays notes based on a provided tag or all notes if no tag is specified.
+ *
+ * @param {string} tag - An optional string specifying the tag to filter the notes by.
+ */
+function NoteList({ tag }: NoteListProps) {
     const { filter } = useNoteFilter();
+    const { data: notes } = useNotesQuery(tag);
+
+    if (!notes) return null;
 
     const filteredNotes = notes?.filter(
-        (note) => note.title.toLowerCase().includes(filter.query.toLowerCase())
-            || note.tag.toLowerCase().includes(filter.query.toLowerCase())
-            || note.text.toLowerCase().includes(filter.query.toLowerCase())
+        (note) =>
+            note.title.toLowerCase().includes(filter.query.toLowerCase()) ||
+            note.tag.toLowerCase().includes(filter.query.toLowerCase()) ||
+            note.text.toLowerCase().includes(filter.query.toLowerCase())
     );
 
     if (!notes?.length) {
