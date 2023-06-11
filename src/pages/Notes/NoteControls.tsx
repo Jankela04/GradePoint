@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/Elements";
-import styles from "./styles/NoteControls.module.scss";
+import styles from "./NoteControls.module.scss";
 import { useNoteFilter } from "@/context/NoteFilterContext";
 import { Input } from "@/components/Elements";
 
