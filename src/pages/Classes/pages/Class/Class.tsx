@@ -8,7 +8,6 @@ import GradeList from "./GradeList";
 import ClassNotes from "./ClassNotes";
 import { Modal as DeleteModal } from "@/components/Elements";
 import useClassQuery from "./api/getClass";
-import useClassNotesQuery from "./api/getClassNotes";
 import useDeleteClassMutation from "./api/deleteClass";
 
 export type ClassPageParams = {
@@ -18,10 +17,7 @@ export type ClassPageParams = {
 function Class() {
     const { id } = useParams() as ClassPageParams;
     const navigate = useNavigate();
-    const { data: classObj, isLoading, error } = useClassQuery(id);
-    const { data: notes, isLoading: notesLoading } = useClassNotesQuery(
-        classObj?.class
-    );
+    const { data: classObj } = useClassQuery(id);
 
     const { deleteClass } = useDeleteClassMutation(id);
 
@@ -29,10 +25,7 @@ function Class() {
     const closeModal = () => setModalIsOpen(false);
     const openModal = () => setModalIsOpen(true);
 
-    if (isLoading || notesLoading) return <Title>Loading...</Title>;
-
-    if (error || !classObj || !notes)
-        return <Title>Something Went Wrong</Title>;
+    if (!classObj) return null;
 
     return (
         <>
@@ -55,10 +48,6 @@ function Class() {
                                 : classObj.grades
                                       .map((grade) => grade.grade)
                                       .join(", ")}
-                        </span>
-                        <span>
-                            Notes:
-                            {notes.length}
                         </span>
                     </div>
                     <div className={styles.actions}>
@@ -90,7 +79,7 @@ function Class() {
                     title="Are You sure You want to delete Class?"
                 />
                 <GradeList grades={classObj.grades} />
-                <ClassNotes classObj={classObj} notes={notes} />
+                <ClassNotes classObj={classObj} />
             </Container>
         </>
     );
