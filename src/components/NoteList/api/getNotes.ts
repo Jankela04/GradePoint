@@ -10,6 +10,6 @@ const getNotes = async (tag?: string) => {
 };
 
 const useNotesQuery = (tag?: string) =>
-    useQuery({ queryKey: ["notes"], queryFn: () => getNotes(tag) });
+    useQuery({ queryKey: ["notes", tag], queryFn: () => getNotes(tag) });
 
 export default useNotesQuery;
