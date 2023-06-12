@@ -1,9 +1,9 @@
 import { useNavigate, createSearchParams } from "react-router-dom";
+import { Suspense } from "react";
 import { Button, InlineSpinner } from "@/components/Elements";
 import { NoteList } from "@/components/NoteList";
 import { Class } from "@/types";
 import styles from "./styles/ClassNotes.module.scss";
-import { Suspense } from "react";
 
 function ClassNotes({ classObj }: { classObj: Class }) {
     const navigate = useNavigate();

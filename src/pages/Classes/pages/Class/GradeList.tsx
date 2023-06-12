@@ -12,17 +12,17 @@ function GradeList({ grades }: { grades: Grade[] }) {
             {grades.length === 0
                 ? null
                 : grades.map((grade) => (
-                      <div
-                          key={v4()}
-                          className={classNames(styles.grade, styles[theme])}
-                      >
-                          <h3>{grade.grade}</h3>
-                          <span>
-                              Date:
-                              {shortFormatDate(grade.date)}
-                          </span>
-                      </div>
-                  ))}
+                    <div
+                        key={v4()}
+                        className={classNames(styles.grade, styles[theme])}
+                    >
+                        <h3>{grade.grade}</h3>
+                        <span>
+                            Date:
+                            {shortFormatDate(grade.date)}
+                        </span>
+                    </div>
+                ))}
         </div>
     );
 }
