@@ -6,4 +6,3 @@ export { Tag } from "./Tag";
 export { Title } from "./Title";
 export { Spinner, InlineSpinner } from "./Spinner";
 export { Container } from "./Container";
-export { AsyncSelect } from "./Select";
