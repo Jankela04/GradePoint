@@ -1,6 +1,6 @@
 /* eslint-disable react/button-has-type */
 
-import { ReactNode } from "react";
+import { ReactNode, forwardRef } from "react";
 import classNames from "classnames";
 import styles from "./styles.module.scss";
 import { useTheme } from "@/context/ThemeContext";
@@ -15,37 +15,42 @@ type ButtonProps = {
     className: string;
 };
 
-function Button({
-    variant,
-    children,
-    className = "",
-    disabled = false,
-    onClick,
-    rounded = false,
-    type = "button",
-}: Partial<ButtonProps>) {
-    const { theme } = useTheme();
-    const buttonClass = classNames(
-        styles[theme],
-        styles.button,
-        rounded ? styles.rounded : "",
-        disabled ? styles.disabled : "",
-        className,
-        variant === "primary" ? styles.primary : "",
-        variant === "secondary" ? styles.secondary : "",
-        variant === "danger" ? styles.danger : "",
-        variant === "neutral" ? styles.neutral : ""
-    );
-    return (
-        <button
-            className={buttonClass}
-            onClick={onClick}
-            disabled={disabled}
-            type={type}
-        >
-            {children}
-        </button>
-    );
-}
+const Button = forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
+    (
+        {
+            variant = "primary",
+            children,
+            className = "",
+            disabled = false,
+            onClick,
+            rounded = false,
+            type = "button",
+            ...props
+        }: Partial<ButtonProps>,
+        ref
+    ) => {
+        const { theme } = useTheme();
+        const buttonClass = classNames(
+            styles[theme],
+            styles.button,
+            rounded ? styles.rounded : "",
+            disabled ? styles.disabled : "",
+            className,
+            styles[variant]
+        );
+        return (
+            <button
+                ref={ref}
+                className={buttonClass}
+                onClick={onClick}
+                disabled={disabled}
+                type={type}
+                {...props}
+            >
+                {children}
+            </button>
+        );
+    }
+);
 
 export default Button;

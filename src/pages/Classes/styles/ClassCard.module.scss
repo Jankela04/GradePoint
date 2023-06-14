@@ -4,6 +4,9 @@
     width: 500px;
     padding: 1em;
     cursor: pointer;
+    a {
+        all: unset;
+    }
     &.dark {
         background-color: $bg-dark-action;
         border: 1px solid $bg-dark-border;

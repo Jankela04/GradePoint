@@ -1,17 +1,40 @@
 /* eslint-disable react/jsx-no-useless-fragment */
 
 import { useRoutes } from "react-router-dom";
-import {
-    ClassPage,
-    ClassesPage,
-    NewGradePage,
-    NewClassPage,
-} from "@/pages/Classes";
-import { HomePage } from "@/pages/Home";
-import { EditNotePage, NotesPage, NewNotePage, NotePage } from "@/pages/Notes";
-import { WelcomePage } from "@/pages/Welcome";
 import { ProtectedWelcome, ProtectedRoutes } from "./ProtectedRoutes";
-import { ErrorPage } from "@/pages/Error";
+import lazyImport from "@/utils/LazyImport";
+
+const { ErrorPage } = lazyImport(() => import("@/pages/Error"), "ErrorPage");
+const { WelcomePage } = lazyImport(
+    () => import("@/pages/Welcome"),
+    "WelcomePage"
+);
+const { HomePage } = lazyImport(() => import("@/pages/Home"), "HomePage");
+
+const { NotesPage } = lazyImport(() => import("@/pages/Notes"), "NotesPage");
+const { NotePage } = lazyImport(() => import("@/pages/Notes"), "NotePage");
+const { EditNotePage } = lazyImport(
+    () => import("@/pages/Notes"),
+    "EditNotePage"
+);
+const { NewNotePage } = lazyImport(
+    () => import("@/pages/Notes"),
+    "NewNotePage"
+);
+
+const { ClassesPage } = lazyImport(
+    () => import("@/pages/Classes"),
+    "ClassesPage"
+);
+const { ClassPage } = lazyImport(() => import("@/pages/Classes"), "ClassPage");
+const { NewClassPage } = lazyImport(
+    () => import("@/pages/Classes"),
+    "NewClassPage"
+);
+const { NewGradePage } = lazyImport(
+    () => import("@/pages/Classes"),
+    "NewGradePage"
+);
 
 const routes = [
     {

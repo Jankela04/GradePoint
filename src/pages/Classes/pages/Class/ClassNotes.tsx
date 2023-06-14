@@ -1,10 +1,11 @@
 import { useNavigate, createSearchParams } from "react-router-dom";
-import { Button } from "@/components/Elements";
+import { Suspense } from "react";
+import { Button, InlineSpinner } from "@/components/Elements";
 import { NoteList } from "@/components/NoteList";
-import { Class, Note } from "@/types";
+import { Class } from "@/types";
 import styles from "./styles/ClassNotes.module.scss";
 
-function ClassNotes({ classObj, notes }: { classObj: Class; notes: Note[] }) {
+function ClassNotes({ classObj }: { classObj: Class }) {
     const navigate = useNavigate();
     const handleCreateNote = () => {
         navigate(
@@ -27,7 +28,9 @@ function ClassNotes({ classObj, notes }: { classObj: Class; notes: Note[] }) {
                     Create Note
                 </Button>
             </div>
-            <NoteList notes={notes} />
+            <Suspense fallback={<InlineSpinner />}>
+                <NoteList tag={classObj.class} />
+            </Suspense>
         </>
     );
 }

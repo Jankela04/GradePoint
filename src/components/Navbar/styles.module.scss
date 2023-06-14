@@ -1,16 +1,17 @@
 @import "../../assets/variables";
 
 .navbar {
-    width: 100vw;
     display: flex;
     justify-content: space-between;
-    padding-inline: 2em;
     height: 3em;
     align-items: center;
+    clip-path: inset(0 -100vmax);
     &.dark {
+        box-shadow: 0 0 0 100vmax $bg-dark-action-secondary;
         background-color: $bg-dark-action-secondary;
     }
     &.light {
+        box-shadow: 0 0 0 100vmax $bg-light-action-secondary;
         background-color: $bg-light-action-secondary;
     }
 
@@ -20,54 +21,50 @@
         align-items: center;
     }
 }
+a {
+    text-decoration: none;
+    font-size: 1.2rem;
+    &:hover {
+        text-decoration: underline;
+    }
+    &.light {
+        color: $text-light;
+    }
+    &.dark {
+        color: $text-dark;
+    }
+}
 .left_side {
     display: flex;
     align-items: center;
     gap: 2em;
 
-    a {
-        text-decoration: none;
-        font-size: 1.2rem;
-        &:hover {
-            text-decoration: underline;
-        }
-        &.light {
-            color: $text-light;
-        }
-        &.dark {
-            color: $text-dark;
-        }
-    }
     .button {
         display: none;
         background-color: transparent;
         border: none;
         cursor: pointer;
     }
-    .links {
+    .desktop_links {
         display: flex;
         align-items: center;
         gap: 2em;
     }
-    .links_mobile {
-        display: none;
-    }
 }
-
+.mobile_links {
+    display: none;
+}
 @media only screen and (max-width: $large-mobile-breakpoint) {
     .left_side {
-        gap: 0.5em;
+        gap: 1em;
         .button {
             display: block;
         }
-        .links {
+        .desktop_links {
             display: none;
         }
     }
-    .links {
-        display: none;
-    }
-    .links.active {
+    .mobile_links {
         position: absolute;
         top: 3em;
         left: 0;

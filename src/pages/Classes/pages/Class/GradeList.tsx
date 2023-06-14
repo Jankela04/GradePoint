@@ -9,10 +9,9 @@ function GradeList({ grades }: { grades: Grade[] }) {
     const { theme } = useTheme();
     return (
         <div className={styles.grades}>
-            {grades.length === 0 ? (
-                <span />
-            ) : (
-                grades.map((grade) => (
+            {grades.length === 0
+                ? null
+                : grades.map((grade) => (
                     <div
                         key={v4()}
                         className={classNames(styles.grade, styles[theme])}
@@ -23,8 +22,7 @@ function GradeList({ grades }: { grades: Grade[] }) {
                             {shortFormatDate(grade.date)}
                         </span>
                     </div>
-                ))
-            )}
+                ))}
         </div>
     );
 }

@@ -1,25 +1,20 @@
 @import "../../../../../assets/variables";
 
-.container {
-    max-width: 90vw;
-    margin: 0 auto;
-    padding-bottom: 2em;
-    .header {
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3em;
+    .info {
         display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 3em;
-        .info {
-            display: flex;
-            flex-direction: column;
-            gap: 1em;
-            span {
-                font-size: 1.3rem;
-            }
+        flex-direction: column;
+        gap: 1em;
+        span {
+            font-size: 1.3rem;
         }
-        .actions {
-            display: flex;
-            gap: 1em;
-        }
+    }
+    .actions {
+        display: flex;
+        gap: 1em;
     }
 }

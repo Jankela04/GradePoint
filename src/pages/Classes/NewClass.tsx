@@ -1,19 +1,28 @@
 import classNames from "classnames";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useTheme } from "@/context/ThemeContext";
 import styles from "./styles/NewClass.module.scss";
 
 function NewClass() {
     const { theme } = useTheme();
     const navigate = useNavigate();
+
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+        if (e.key === "Enter") {
+            navigate("/classes/new");
+        }
+    };
     return (
-        <button
-            type="button"
-            onClick={() => navigate("/classes/new")}
+        <div
+            role="button"
+            onKeyDown={handleKeyDown}
+            tabIndex={0}
             className={classNames(styles.card, styles[theme])}
         >
-            <h1>Create a New Class</h1>
-        </button>
+            <Link to="/classes/new">
+                <h1>Create a New Class</h1>
+            </Link>
+        </div>
     );
 }
 

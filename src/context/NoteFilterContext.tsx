@@ -5,6 +5,7 @@ import {
     ReactNode,
     useState,
     useContext,
+    useMemo,
 } from "react";
 
 export type TNoteFilter = {
@@ -29,8 +30,12 @@ const NoteFilterContext = createContext<FilterContextProps>({
 
 function NoteFilterProvider({ children }: { children: ReactNode }) {
     const [filter, setFilter] = useState<TNoteFilter>(initialFilterState);
+    const contextValue = useMemo(
+        () => ({ filter, setFilter }),
+        [filter, setFilter]
+    );
     return (
-        <NoteFilterContext.Provider value={{ filter, setFilter }}>
+        <NoteFilterContext.Provider value={contextValue}>
             {children}
         </NoteFilterContext.Provider>
     );

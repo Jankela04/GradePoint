@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import { Link } from "react-router-dom";
-import { useState } from "react";
-import { Logo } from "../Elements";
+import { useEffect, useState } from "react";
+import { Container, Logo } from "../Elements";
 import Name from "./components/Name/Name";
 import styles from "./styles.module.scss";
 import { useTheme } from "@/context/ThemeContext";
@@ -9,35 +9,80 @@ import ThemeSwitcher from "./components/ThemeSwitcher/ThemeSwitcher";
 
 function Navbar() {
     const { theme } = useTheme();
-    const [showMenu, setShowMenu] = useState(false);
+
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const toggleMenu = () => {
-        setShowMenu((prev) => !prev);
+        setIsMobileMenuOpen((prev) => !prev);
     };
     const handleClick = () => {
-        setShowMenu(false);
+        setIsMobileMenuOpen(false);
     };
+
+    useEffect(() => {
+        window.addEventListener(
+            "resize",
+            () => window.innerWidth >= 550 && setIsMobileMenuOpen(false)
+        );
+
+        return () => {
+            window.removeEventListener(
+                "resize",
+                () => window.innerWidth >= 550 && setIsMobileMenuOpen(false)
+            );
+        };
+    }, []);
+
     return (
-        <nav className={classNames(styles.navbar, styles[theme])}>
-            <div className={styles.left_side}>
-                <Logo type="small" />
-                <button
-                    className={styles.button}
-                    onClick={toggleMenu}
-                    type="button"
-                >
-                    {!showMenu ? <MenuOpenIcon /> : <MenuCloseIcon />}
-                </button>
-                <div
-                    className={
-                        showMenu
-                            ? classNames(
-                                styles.links,
-                                styles.active,
-                                styles[theme]
-                            )
-                            : styles.links
-                    }
-                >
+        <Container>
+            <nav
+                className={classNames(
+                    styles.navbar,
+                    styles[theme],
+                    styles.full_bleed
+                )}
+            >
+                <div className={styles.left_side}>
+                    <Logo type="small" />
+                    <button
+                        className={styles.button}
+                        onClick={toggleMenu}
+                        type="button"
+                    >
+                        {!isMobileMenuOpen ? (
+                            <MenuOpenIcon />
+                        ) : (
+                            <MenuCloseIcon />
+                        )}
+                    </button>
+                    <div
+                        className={classNames(
+                            styles.desktop_links,
+                            styles[theme]
+                        )}
+                    >
+                        <Link
+                            className={styles[theme]}
+                            onClick={handleClick}
+                            to="/notes"
+                        >
+                            Notes
+                        </Link>
+                        <Link
+                            className={styles[theme]}
+                            onClick={handleClick}
+                            to="/classes"
+                        >
+                            Classes
+                        </Link>
+                    </div>
+                </div>
+                <div className={styles.right_side}>
+                    <ThemeSwitcher />
+                    <Name />
+                </div>
+            </nav>
+            {isMobileMenuOpen && (
+                <div className={classNames(styles.mobile_links, styles[theme])}>
                     <Link
                         className={styles[theme]}
                         onClick={handleClick}
@@ -53,12 +98,8 @@ function Navbar() {
                         Classes
                     </Link>
                 </div>
-            </div>
-            <div className={styles.right_side}>
-                <ThemeSwitcher />
-                <Name />
-            </div>
-        </nav>
+            )}
+        </Container>
     );
 }
 

@@ -1,7 +1,6 @@
 import { useSearchParams } from "react-router-dom";
 import { Note } from "@/types";
 import { NoteForm, type TNoteForm } from "@/components/NoteForm";
-import styles from "./styles.module.scss";
 import { Title } from "@/components/Elements";
 
 // prettier-ignore
@@ -32,13 +31,13 @@ function NoteFormLayout(noteFormProps: NoteFormType) {
             : getNoteInfo(note);
 
     return (
-        <div className={styles.container}>
+        <>
             <Title>
                 {mode === "new" ? "Create" : "Edit"}
                 {" Note"}
             </Title>
             <NoteForm {...noteFormProps} initialValues={initialValues} />
-        </div>
+        </>
     );
 }
 
