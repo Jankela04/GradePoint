@@ -3,7 +3,7 @@ import DatePicker from "react-datepicker";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, Controller } from "react-hook-form";
 import "react-datepicker/dist/react-datepicker.css";
-import { Input } from "@/components/Elements";
+import { Head, Input } from "@/components/Elements";
 import { Title } from "@/components/Elements";
 import { Button } from "@/components/Elements";
 import styles from "./styles.module.scss";
@@ -53,6 +53,10 @@ function NewGrade() {
 
     return (
         <>
+            <Head
+                title="Add New Grade"
+                description={`Add New Grade to ${classObj.class}`}
+            />
             <Title>New Grade</Title>
             <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
                 <section className={styles.section}>

@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
-import { Container, Title } from "@/components/Elements";
+import { Container, Head, Title } from "@/components/Elements";
 import CalculateGpa from "@/utils/CalculateGpa";
 import styles from "./styles/Class.module.scss";
 import { Button } from "@/components/Elements";
@@ -29,6 +29,7 @@ function Class() {
 
     return (
         <>
+            <Head title={classObj.class} />
             <Title>{classObj?.class}</Title>
             <Container>
                 <div className={styles.header}>
@@ -46,8 +47,8 @@ function Class() {
                             {classObj.grades.length === 0
                                 ? "No Grades"
                                 : classObj.grades
-                                    .map((grade) => grade.grade)
-                                    .join(", ")}
+                                      .map((grade) => grade.grade)
+                                      .join(", ")}
                         </span>
                     </div>
                     <div className={styles.actions}>

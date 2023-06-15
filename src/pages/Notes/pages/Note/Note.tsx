@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import classNames from "classnames";
 import styles from "./styles/Note.module.scss";
 import NoteActions from "./NoteActions";
-import { Tag } from "@/components/Elements";
+import { Head, Tag } from "@/components/Elements";
 import { useTheme } from "@/context/ThemeContext";
 import { formatDate } from "@/utils/FormatDate";
 import { Title } from "@/components/Elements";
@@ -21,6 +21,7 @@ function Note() {
 
     return (
         <>
+            <Head title={note.title} />
             <Title>{note?.title}</Title>
             <div className={styles.tag}>
                 <Tag tag={note?.tag} />

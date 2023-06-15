@@ -1,7 +1,7 @@
 import { useSearchParams } from "react-router-dom";
 import { Note } from "@/types";
 import { NoteForm, type TNoteForm } from "@/components/NoteForm";
-import { Title } from "@/components/Elements";
+import { Head, Title } from "@/components/Elements";
 
 // prettier-ignore
 export type NoteFormType =
@@ -32,6 +32,7 @@ function NoteFormLayout(noteFormProps: NoteFormType) {
 
     return (
         <>
+            <Head title={`${mode === "new" ? "Create" : "Edit"} Note`} />
             <Title>
                 {mode === "new" ? "Create" : "Edit"}
                 {" Note"}
