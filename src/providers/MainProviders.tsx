@@ -7,6 +7,7 @@ import queryClient from "@/lib/react-query";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { LoadingPage } from "@/features/misc/LoadingPage";
 import { ErrorFallback } from "@/features/misc/ErrorFallback";
+import { HelmetProvider } from "react-helmet-async";
 
 type MainProvidersProps = {
     children: React.ReactNode;
@@ -17,10 +18,12 @@ function MainProviders({ children }: MainProvidersProps) {
         <ThemeProvider>
             <ErrorBoundary fallbackRender={ErrorFallback}>
                 <Suspense fallback={<LoadingPage />}>
-                    <QueryClientProvider client={queryClient}>
-                        {import.meta.env.DEV && <ReactQueryDevtools />}
-                        <BrowserRouter>{children}</BrowserRouter>
-                    </QueryClientProvider>
+                    <HelmetProvider>
+                        <QueryClientProvider client={queryClient}>
+                            {import.meta.env.DEV && <ReactQueryDevtools />}
+                            <BrowserRouter>{children}</BrowserRouter>
+                        </QueryClientProvider>
+                    </HelmetProvider>
                 </Suspense>
             </ErrorBoundary>
         </ThemeProvider>
