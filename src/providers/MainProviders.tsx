@@ -3,11 +3,11 @@ import { ErrorBoundary } from "react-error-boundary";
 import { Suspense } from "react";
 import { BrowserRouter } from "react-router-dom";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { HelmetProvider } from "react-helmet-async";
 import queryClient from "@/lib/react-query";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { LoadingPage } from "@/features/misc/LoadingPage";
 import { ErrorFallback } from "@/features/misc/ErrorFallback";
-import { HelmetProvider } from "react-helmet-async";
 
 type MainProvidersProps = {
     children: React.ReactNode;
